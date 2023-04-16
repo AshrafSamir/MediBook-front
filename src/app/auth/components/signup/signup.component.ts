@@ -23,8 +23,19 @@ export class SignupComponent implements OnInit {
   }
 
   submitForm() {
+
     console.log(this.signupForm.value)
   }
+
+  onFileSelected(event:any) {
+    //const file = event.target.files[0];
+    //const formData = new FormData();
+    //formData.append('file', file);
+    // Send the form data to the server
+    this.signupForm.controls['image']?.setValue(event.target.files[0].name)
+    //console.log(event.target.files[0].name)
+  }
+
 }
 
 
