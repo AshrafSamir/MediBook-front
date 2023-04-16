@@ -1,0 +1,20 @@
+{
+    "Home":"Home",
+    "Sign In":"Sign In",
+    "Sign Up":"Sign Up",
+    "Email":"Email",
+    "Emailisrequired":"Email is required",
+    "EnterEmailForm":"Enter Email Form",
+    "Password":"Password",
+    "Passwordisrequired" :"Password is required",
+    "Passwordmustbemorethan8chars":"Password must be more than 8 chars",
+    "Username":"Username",
+    "Usernameisrequired" : "Username is required",
+    "Image":"Image",
+    "Gender":"Gender",
+    "Selectgender":"Select gender",
+    "Male":"Male",
+    "Female":"Female",
+    "Other":"Other",
+    "Genderisrequired":"Gender is required"
+}

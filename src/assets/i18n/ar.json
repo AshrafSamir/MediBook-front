@@ -1,0 +1,21 @@
+{
+    "Home":"الرئيسية",
+    "Sign In":"تسجيل الدخول",
+    "Sign Up":"انشاء حساب",
+    "Email":"البريد الالكتروني",
+    "Emailisrequired":"يجب ادخال البريد الالكتروني",
+    "EnterEmailForm":"ادخال هيئة البريد الالكتروني",
+    "Password":"كلمة السر",
+    "Passwordisrequired" :"يجب ادخال كلمة السر",
+    "Passwordmustbemorethan8chars":"كلمة السر يجب ان تكون اكثر من 8 حروف",
+    "Username":"اسم المستخدم",
+    "Usernameisrequired" : "يجب ادخال اسم المستخدم",
+    "Image":"الصورة",
+    "Gender":"الجنس",
+    "Selectgender":"اختر جنسك",
+    "Male":"ذكر",
+    "Female":"انثي",
+    "Other":"اخري",
+    "Genderisrequired":"يجب اختيار الجنس"
+
+}

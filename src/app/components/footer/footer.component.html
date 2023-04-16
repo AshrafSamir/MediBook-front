@@ -1,0 +1,13 @@
+<footer class="bg-dark py-5  w-100" style="position: absolute; bottom: 0;">
+            <!-- border-start -->
+           
+                <div>
+                    <label>
+                      <select #langSelect id="language" (change)="translate.use(langSelect.value)" (change)=" changeDir(langSelect.value)">
+                        <option  *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ lang }}</option>                        
+                      </select>
+                    </label>
+                  </div>
+          
+
+</footer>

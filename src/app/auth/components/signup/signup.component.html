@@ -1,0 +1,42 @@
+<form [formGroup]="signupForm" (ngSubmit)="submitForm()" class="w-50 mx-auto">
+    <div>
+      <label class="mt-2" for="email">{{'Email' | translate}}</label>
+      <input type="email" id="email" formControlName="email" class="form-control">
+      <div *ngIf="signupForm.get('email')?.invalid && (signupForm.get('email')?.['dirty'] || signupForm.get('email')?.['touched'])"  class="alert alert-danger mt-2">
+        <div *ngIf="signupForm.get('email')?.errors?.['required']">{{'Emailisrequired' | translate}}</div>
+        <div *ngIf="signupForm.get('email')?.errors?.['email']">{{'EnterEmailForm' | translate}}</div>
+      </div>
+    </div>
+    <div>
+      <label class="mt-2" for="username">{{'Username' | translate}}</label>
+      <input type="text" id="username" formControlName="username" class="form-control">
+      <div *ngIf="signupForm.get('username')?.invalid && (signupForm.get('username')?.dirty || signupForm.get('username')?.touched)" class="alert alert-danger mt-2" >
+        <div *ngIf="signupForm.get('username')?.errors?.['required']">{{'Usernameisrequired' | translate}}</div>
+      </div>
+    </div>
+    <div>
+      <label class="mt-2" for="password">{{'Password' | translate}}</label>
+      <input type="password" id="password" formControlName="password" class="form-control">
+      <div *ngIf="signupForm.get('password')?.invalid && (signupForm.get('password')?.dirty || signupForm.get('password')?.touched)" class="alert alert-danger mt-2">
+        <div *ngIf="signupForm.get('password')?.errors?.['required']">{{'Passwordisrequired' | translate}}</div>
+        <div *ngIf="signupForm.get('password')?.errors?.['minlength']">{{'Passwordmustbemorethan8chars' | translate}}</div>
+      </div>
+    </div>
+    <div>
+      <label class="mt-2" for="image">{{'Image' | translate}}</label>
+      <input type="file" id="image" formControlName="image" class="form-control">
+    </div>
+    <div>
+      <label class="mt-2" for="gender">{{'Gender' | translate}}</label>
+      <select id="gender" formControlName="gender" class="form-control" >
+        <option value="">{{'Selectgender' | translate}}</option>
+        <option value="male">{{'Male' | translate}}</option>
+        <option value="female">{{'Female' | translate}}</option>
+        <option value="other">{{'Other' | translate}}</option>
+      </select>
+      <div *ngIf="signupForm.get('gender')?.invalid && (signupForm.get('gender')?.dirty || signupForm.get('gender')?.touched)" class="alert alert-danger mt-2">
+        <div *ngIf="signupForm.get('gender')?.errors?.['required']">{{'Email' | translate}}Gender is required</div>
+      </div>
+    </div>
+    <button class="btn btn-success mt-3" type="submit" [disabled]="signupForm.invalid">{{'Sign Up' | translate}}</button>
+  </form>

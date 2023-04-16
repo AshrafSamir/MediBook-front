@@ -1,0 +1,21 @@
+<form (ngSubmit)="submitForm()" [formGroup]="loginForm" class="w-50 mx-auto">
+   
+    <label for="email" class="mt-2">{{'Email' | translate}}</label>
+    <input id="email" formControlName="email" class="form-control" type="text">
+    <div  *ngIf="loginForm.get('email')?.errors != null  && loginForm.get('email')?.touched" class="alert alert-danger mt-2">
+        <p  *ngIf="loginForm.get('email')?.errors?.['required']" class="m-0">{{'Emailisrequired' | translate}}</p>
+        <p  *ngIf="loginForm.get('email')?.errors?.['pattern']" class="m-0">{{'EnterEmailForm' | translate}}</p>
+    </div>
+    
+    <label for="password" class="mt-2">{{'Password' | translate}}</label>
+    <input id="password" formControlName="password" class="form-control" type="password">
+    <div  *ngIf="loginForm.get('password')?.errors != null  && loginForm.get('password')?.touched" class="alert alert-danger mt-2">
+        <p  *ngIf="loginForm.get('password')?.errors?.['required']" class="m-0">{{'Passwordisrequired' | translate}}</p>
+        <p  *ngIf="loginForm.get('password')?.errors?.['minlength']" class="m-0">{{'Passwordmustbemorethan8chars' | translate}}</p>
+    </div>
+    
+    <button class="btn btn-success mt-3" [disabled]="loginForm.invalid">{{'Sign In' | translate}}</button>
+    <!-- <div  *ngIf="errors" class="alert alert-danger mt-2">
+        <p class="m-0 p-0">{{errors}}</p>
+    </div> -->
+    </form>
