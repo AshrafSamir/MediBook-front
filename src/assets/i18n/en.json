@@ -11,6 +11,7 @@
     "Username":"Username",
     "Usernameisrequired" : "Username is required",
     "Image":"Image",
+    "Imageisrequired":"Image is required",
     "Gender":"Gender",
     "Selectgender":"Select gender",
     "Male":"Male",

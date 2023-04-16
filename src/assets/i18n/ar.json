@@ -11,6 +11,7 @@
     "Username":"اسم المستخدم",
     "Usernameisrequired" : "يجب ادخال اسم المستخدم",
     "Image":"الصورة",
+    "Imageisrequired":"يجب ارفاق صورة",
     "Gender":"الجنس",
     "Selectgender":"اختر جنسك",
     "Male":"ذكر",
