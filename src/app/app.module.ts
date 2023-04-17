@@ -33,7 +33,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     GitstartedComponent,
     WhyusComponent,
     AppointmentComponent,
-    GalleryComponent
+    GalleryComponent,
   ],
   imports: [
     BrowserModule,
