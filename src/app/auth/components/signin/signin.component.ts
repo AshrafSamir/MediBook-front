@@ -17,7 +17,7 @@ export class SigninComponent implements OnInit {
   }
   loginForm:FormGroup=new FormGroup({
     credential: new FormControl(null,[Validators.required , /*Validators.pattern(/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/)*/]),
-    password: new FormControl(null,[Validators.required , Validators.minLength(6)]),
+    password: new FormControl(null,[Validators.required ,/* Validators.minLength(6)*/]),
   })
   submitForm()
   {
