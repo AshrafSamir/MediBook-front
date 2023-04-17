@@ -1,4 +1,4 @@
-<form [formGroup]="signupForm" (ngSubmit)="submitForm()" class="w-50 mx-auto">
+<form [formGroup]="signupForm" (ngSubmit)="submitForm()" class="w-50 mx-auto" enctype="multipart/form-data">
     <div>
       <label class="mt-2" for="email">{{'Email' | translate}}</label>
       <input type="email" id="email" formControlName="email" class="form-control">
@@ -8,6 +8,45 @@
       </div>
     </div>
     <div>
+
+
+
+      <div>
+        <label class="mt-2" for="name">{{'name' | translate}}</label>
+        <input type="name" id="name" formControlName="name" class="form-control">
+        <div *ngIf="signupForm.get('name')?.invalid && (signupForm.get('name')?.['dirty'] || signupForm.get('name')?.['touched'])"  class="alert alert-danger mt-2">
+          <div *ngIf="signupForm.get('name')?.errors?.['required']">{{'nameisrequired' | translate}}</div>
+        </div>
+      </div>
+
+
+      <div>
+        <label class="mt-2" for="mobilePhone">{{'mobilePhone' | translate}}</label>
+        <input type="mobilePhone" id="mobilePhone" formControlName="mobilePhone" class="form-control">
+        <div *ngIf="signupForm.get('mobilePhone')?.invalid && (signupForm.get('mobilePhone')?.['dirty'] || signupForm.get('mobilePhone')?.['touched'])"  class="alert alert-danger mt-2">
+          <div *ngIf="signupForm.get('mobilePhone')?.errors?.['required']">{{'mobilePhoneisrequired' | translate}}</div>
+        </div>
+      </div>
+
+     
+
+      <div>
+        <label class="mt-2" for="type">{{'type' | translate}}</label>
+        <select id="type" formControlName="type" class="form-control" >
+          <option value="">{{'Selecttype' | translate}}</option>
+          <option value="patient">{{'Patient' | translate}}</option>
+          <option value="doctor">{{'Doctor' | translate}}</option>
+        </select>
+        <div *ngIf="signupForm.get('type')?.invalid && (signupForm.get('type')?.dirty || signupForm.get('type')?.touched)" class="alert alert-danger mt-2">
+          <div *ngIf="signupForm.get('type')?.errors?.['required']">{{'typeisrequired' | translate}}</div>
+        </div>
+      </div>
+
+
+
+
+
+
       <label class="mt-2" for="username">{{'Username' | translate}}</label>
       <input type="text" id="username" formControlName="username" class="form-control">
       <div *ngIf="signupForm.get('username')?.invalid && (signupForm.get('username')?.dirty || signupForm.get('username')?.touched)" class="alert alert-danger mt-2" >
@@ -35,9 +74,40 @@
         <option value="female">{{'Female' | translate}}</option>
         <option value="other">{{'Other' | translate}}</option>
       </select>
+
+      <div *ngIf="signupForm.controls['type'].value == 'doctor'">
+        <label class="mt-2" for="clinicAddress">{{'clinicAddress' | translate}}</label>
+        <input type="clinicAddress" id="clinicAddress" formControlName="clinicAddress" class="form-control">
+        <div *ngIf="signupForm.get('clinicAddress')?.invalid && (signupForm.get('clinicAddress')?.dirty || signupForm.get('clinicAddress')?.touched)" class="alert alert-danger mt-2">
+          <div *ngIf="signupForm.get('clinicAddress')?.errors?.['required']">{{'clinicAddressisrequired' | translate}}</div>
+        </div>
+      </div>
+
+       <div *ngIf="signupForm.controls['type'].value == 'doctor'">
+        <label class="mt-2" for="specification">{{'specification' | translate}}</label>
+        <input type="specification" id="specification" formControlName="specification" class="form-control">
+        <div *ngIf="signupForm.get('specification')?.invalid && (signupForm.get('specification')?.dirty || signupForm.get('specification')?.touched)" class="alert alert-danger mt-2">
+          <div *ngIf="signupForm.get('specification')?.errors?.['required']">{{'specificationisrequired' | translate}}</div>
+        </div>
+      </div>
+
+
+      <div *ngIf="signupForm.controls['type'].value == 'doctor'">
+        <label class="mt-2" for="role">{{'role' | translate}}</label>
+        <select id="role" formControlName="role" class="form-control" >
+          <option value="">{{'Selectrole' | translate}}</option>
+          <option value="human">{{'Human' | translate}}</option>
+          <option value="veterinary">{{'Veterinary' | translate}}</option>
+        </select>
+        <div *ngIf="signupForm.get('type')?.invalid && (signupForm.get('type')?.dirty || signupForm.get('type')?.touched)" class="alert alert-danger mt-2">
+          <div *ngIf="signupForm.get('type')?.errors?.['required']">{{'typeisrequired' | translate}}</div>
+        </div>
+      </div>
       <div *ngIf="signupForm.get('gender')?.invalid && (signupForm.get('gender')?.dirty || signupForm.get('gender')?.touched)" class="alert alert-danger mt-2">
         <div *ngIf="signupForm.get('gender')?.errors?.['required']">{{'Genderisrequired' | translate}}</div>
       </div>
     </div>
-    <button class="btn btn-success mt-3" type="submit" [disabled]="signupForm.invalid">{{'Sign Up' | translate}}</button>
+    <button class="btn btn-success mt-3" type="submit"  >{{'Sign Up' | translate}}</button>
   </form>
+
+  <!-- [disabled]="signupForm.invalid" -->

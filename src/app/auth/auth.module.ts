@@ -7,7 +7,7 @@ import { SigninComponent } from './components/signin/signin.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HttpLoaderFactory } from '../app.module';
 
@@ -24,6 +24,7 @@ import { HttpLoaderFactory } from '../app.module';
     SharedModule,
     ReactiveFormsModule,
     FormsModule,
+    HttpClientModule,
     TranslateModule.forChild({
       loader: {
         provide: TranslateLoader,
