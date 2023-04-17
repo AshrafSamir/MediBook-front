@@ -24,7 +24,9 @@
     "specificationisrequired":"يجب ادخال التخصص",
     "role" : "الدور",
     "roleisrequired":"يجب ادخال الدور",
-    "welcome" :"اهلا"
+    "welcome" :"اهلا",
+    "logout" :"تسجيل الخروج"
+
 
 
 }

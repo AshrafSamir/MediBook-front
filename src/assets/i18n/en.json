@@ -24,7 +24,9 @@
     "specificationisrequired":"Specification is required",
     "role" : "role",
     "roleisrequired":"role is required",
-    "welcome" :"welcome"
+    "welcome" :"welcome",
+    "logout" :"Logout"
+
 
 
 }

@@ -2,3 +2,46 @@
 
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
+
+.btnCustomeStyle
+{
+    background: #1977cc;
+    border: 0;
+    padding: 10px 35px;
+    color: #fff;
+    transition: 0.4s;
+    border-radius: 50px;
+}
+
+.btnCustomeStyle:hover
+{
+    background: #1f94fb;
+    cursor: pointer;
+}
+
+.btnCustomeStyle:disabled
+{
+    background: #85c4fb;
+}
+
+.section-bg-light {
+    background-color: #f1f7fd;
+}
+
+body {
+    font-family: "Open Sans", sans-serif;
+    //color: #444444;
+}
+
+h2
+{
+    font-size: 32px;
+    font-weight: bold;
+    position: relative;
+    color: #2c4964;
+}
+label
+{
+    font-size: 1.3rem;
+    color: #2c4964;
+}

@@ -34,7 +34,7 @@
        
         </ul>
         <div class="d-flex" role="search">
-          <button *ngIf="type == 'doctor' || type == 'patient'" class="btn btn-outline-success" (click)="logout()" >Logout</button>
+          <button *ngIf="type == 'doctor' || type == 'patient'" class="btn btn-outline-success" (click)="logout()" >{{'logout' | translate}}</button>
         </div>
       </div>
     </div>
