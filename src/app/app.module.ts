@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -17,6 +16,7 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { HttpClientModule } from '@angular/common/http';
 import { GitstartedComponent } from './components/gitstarted/gitstarted.component';
 import { WhyusComponent } from './components/whyus/whyus.component';
+import { ServicesComponent } from './components/services/services.component';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -29,7 +29,9 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     HomeComponent,
     FooterComponent,
     GitstartedComponent,
-    WhyusComponent
+    WhyusComponent,
+    ServicesComponent,
+    
   ],
   imports: [
     BrowserModule,
