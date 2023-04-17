@@ -15,7 +15,7 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import {HttpClient} from '@angular/common/http'
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { HttpClientModule } from '@angular/common/http';
-import { GitstartedComponent } from './components/home/gitstarted/gitstarted.component';
+import { GitstartedComponent } from './components/gitstarted/gitstarted.component';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
