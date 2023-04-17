@@ -27,7 +27,11 @@
     "@popperjs/core": "^2.11.6",
     "angular-font-awesome": "^3.1.2",
     "bootstrap": "^5.2.3",
+<<<<<<< HEAD
     "font-awesome": "^4.7.0",
+=======
+    "bootstrap-icons": "^1.10.0",
+>>>>>>> 107a3ea8a8791e1168fd399b27fc1ccc4e26316e
     "ngx-toastr": "^16.1.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
