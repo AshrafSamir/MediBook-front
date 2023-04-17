@@ -60,7 +60,17 @@
     "subPediatrics": "We provide our children with high level management and care and we work hard to achieve these goals",
     "Welcome to Medilab": "Welcome to Medilab",
     "We looking forward to serve you and your family's healthcare needs": "We looking forward to serve you and your family's healthcare needs",
-    "Get Started": "Get Started"
+    "Get Started": "Get Started",
 
 
+    "clinicAddressisrequired":"Clinic Address is required",
+    "specification" : "Specification",
+    "specificationisrequired":"Specification is required",
+    "role" : "role",
+    "roleisrequired":"role is required",
+    "welcome" :"welcome",
+    "logout" :"Logout",
+"Welcome to Medilab":"Welcome to Medilab",
+"We looking forward to serve you and your family's healthcare needs":"We looking forward to serve you and your family's healthcare needs",
+"Get Started":"Get Started"
 }

@@ -9,6 +9,43 @@
             <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
             <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
             <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+<nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link " routerLinkActive="active" aria-current="page" routerLink="">{{'Home' | translate}}</a>
+          </li>
+           <li class="nav-item">
+            <a class="nav-link" routerLink="/auth/signup">auth</a>
+          </li> -->
+          <!-- <li *ngIf="type == 'null'" class="nav-item">
+            <a class="nav-link" routerLinkActive="active" routerLink="/auth/signin">{{'Sign In' | translate}}</a>
+          </li>
+          <li *ngIf="type == 'null'" class="nav-item">
+            <a class="nav-link" routerLinkActive="active" routerLink="/auth/signup">{{'Sign Up' | translate}}</a>
+          </li>
+          <li *ngIf="type == 'doctor'" class="nav-item">
+            <a class="nav-link" routerLinkActive="active" routerLink="/auth/signup">doctor home</a>
+          </li>
+          <li *ngIf="type == 'patient'" class="nav-item">
+            <a class="nav-link" routerLinkActive="active" routerLink="/auth/signup">patient home</a>
+          </li> -->
+          <!-- <li class="nav-item">
+            <a class="nav-link" routerLink="/doctor">doctor</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/patient">patient</a>
+          </li> -->
+      
+       
+        <!-- </ul>
+        <div class="d-flex" role="search">
+          <button *ngIf="type == 'doctor' || type == 'patient'" class="btn btn-outline-success" (click)="logout()" >{{'logout' | translate}}</button>
         </div>
     </div>
 </div> -->
@@ -45,12 +82,21 @@
                     </ul>
                 </li>
 
-                <li class="nav-item">
+                <li *ngIf="type == 'null'" class="nav-item">
                     <a class="nav-link" routerLinkActive="active" routerLink="/auth/signin">{{'Sign In' | translate}}</a>
                 </li>
-                <li class="nav-item">
+                <li *ngIf="type == 'null'" class="nav-item">
                     <a class="nav-link" routerLinkActive="active" routerLink="/auth/signup">{{'Sign Up' | translate}}</a>
                 </li>
+                <li *ngIf="type == 'doctor' || type == 'patient'"  class="nav-item">
+                  <a class="nav-link" routerLinkActive="active" (click)="logout()" >{{'logout' | translate}}</a>
+              </li>
+              <li *ngIf="type == 'doctor'" class="nav-item">
+                <a class="nav-link" routerLinkActive="active">doctor home</a>
+              </li>
+              <li *ngIf="type == 'patient'" class="nav-item">
+                <a class="nav-link" routerLinkActive="active" >patient home</a>
+              </li>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav>

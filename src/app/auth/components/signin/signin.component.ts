@@ -16,8 +16,8 @@ export class SigninComponent implements OnInit {
   ngOnInit(): void {
   }
   loginForm:FormGroup=new FormGroup({
-    credential: new FormControl(null,/*[Validators.required , Validators.pattern(/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/)]*/),
-    password: new FormControl(null,/*[Validators.required , Validators.minLength(6)]*/),
+    credential: new FormControl(null,[Validators.required , /*Validators.pattern(/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/)*/]),
+    password: new FormControl(null,[Validators.required ,/* Validators.minLength(6)*/]),
   })
   submitForm()
   {
@@ -25,14 +25,30 @@ export class SigninComponent implements OnInit {
       console.log(res)
       if(res.message == 'wrong password')
       {
-        this.toastr.error('error', 'asd');
+        this.toastr.error('error', 'wrong password');
+      }
+      else if (res.message == 'wrong username or email or phone ')
+      {
+        this.toastr.error('error', 'wrong username or email or phone');
 
       }
       else
       {
         this.toastr.success('success', 'Sign in Successfully');
+        localStorage.setItem('userData',JSON.stringify(res.user)) //JSON.stringify()
+        if(res.user.type == 'doctor')
+        {
+          this.auth.userType.next('doctor');
+          this.router.navigate(['doctor'])
+          console.log(this.auth.userType.getValue())
 
-        this.router.navigate(['auth/signin'])
+        }
+        else if(res.user.type == 'patient')
+        {
+          this.auth.userType.next('patient');
+          this.router.navigate(['patient'])
+          console.log(this.auth.userType.getValue())
+        }
       }
     })
   console.log(this.loginForm.value)

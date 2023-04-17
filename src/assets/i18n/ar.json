@@ -59,8 +59,15 @@
     "subPediatrics": "نوفر لأبنائنا مستوى عال من الإدارة والرعاية ونعمل بجد لتحقيق هذه الأهداف",
     "Welcome to Medilab": "",
     "We looking forward to serve you and your family's healthcare needs": "",
-    "Get Started": ""
-
-
-
+    "Get Started": "",
+    "clinicAddressisrequired":"يجب ادخال عنوان العيادة",
+    "specification" : "التخصص",
+    "specificationisrequired":"يجب ادخال التخصص",
+    "role" : "الدور",
+    "roleisrequired":"يجب ادخال الدور",
+    "welcome" :"اهلا",
+    "logout" :"تسجيل الخروج",
+   "Welcome to Medilab":"",
+   "We looking forward to serve you and your family's healthcare needs":"",
+   "Get Started":""
 }
