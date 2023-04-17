@@ -18,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { GitstartedComponent } from './components/gitstarted/gitstarted.component';
 import { WhyusComponent } from './components/whyus/whyus.component';
 import { AppointmentComponent } from './components/appointment/appointment.component';
+import { GalleryComponent } from './components/gallery/gallery.component';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -31,7 +32,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     FooterComponent,
     GitstartedComponent,
     WhyusComponent,
-    AppointmentComponent
+    AppointmentComponent,
+    GalleryComponent
   ],
   imports: [
     BrowserModule,
