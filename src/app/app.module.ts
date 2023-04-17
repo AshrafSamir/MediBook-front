@@ -16,6 +16,7 @@ import {HttpClient} from '@angular/common/http'
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { HttpClientModule } from '@angular/common/http';
 import { GitstartedComponent } from './components/gitstarted/gitstarted.component';
+import { WhyusComponent } from './components/whyus/whyus.component';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -27,7 +28,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     NavbarComponent,
     HomeComponent,
     FooterComponent,
-    GitstartedComponent
+    GitstartedComponent,
+    WhyusComponent
   ],
   imports: [
     BrowserModule,
