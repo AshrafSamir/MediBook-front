@@ -17,5 +17,14 @@
     "Male":"Male",
     "Female":"Female",
     "Other":"Other",
-    "Genderisrequired":"Gender is required"
+    "Genderisrequired":"Gender is required",
+    "clinicAddress": "Clinic Address",
+    "clinicAddressisrequired":"Clinic Address is required",
+    "specification" : "Specification",
+    "specificationisrequired":"Specification is required",
+    "role" : "role",
+    "roleisrequired":"role is required",
+    "welcome" :"welcome"
+
+
 }

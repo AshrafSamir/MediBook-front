@@ -99,8 +99,8 @@
           <option value="human">{{'Human' | translate}}</option>
           <option value="veterinary">{{'Veterinary' | translate}}</option>
         </select>
-        <div *ngIf="signupForm.get('type')?.invalid && (signupForm.get('type')?.dirty || signupForm.get('type')?.touched)" class="alert alert-danger mt-2">
-          <div *ngIf="signupForm.get('type')?.errors?.['required']">{{'typeisrequired' | translate}}</div>
+        <div *ngIf="signupForm.get('role')?.invalid && (signupForm.get('role')?.dirty || signupForm.get('role')?.touched)" class="alert alert-danger mt-2">
+          <div *ngIf="signupForm.get('role')?.errors?.['required']">{{'roleisrequired' | translate}}</div>
         </div>
       </div>
       <div *ngIf="signupForm.get('gender')?.invalid && (signupForm.get('gender')?.dirty || signupForm.get('gender')?.touched)" class="alert alert-danger mt-2">

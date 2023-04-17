@@ -17,6 +17,14 @@
     "Male":"ذكر",
     "Female":"انثي",
     "Other":"اخري",
-    "Genderisrequired":"يجب اختيار الجنس"
+    "Genderisrequired":"يجب اختيار الجنس",
+    "clinicAddress": "عنوان العيادة",
+    "clinicAddressisrequired":"يجب ادخال عنوان العيادة",
+    "specification" : "التخصص",
+    "specificationisrequired":"يجب ادخال التخصص",
+    "role" : "الدور",
+    "roleisrequired":"يجب ادخال الدور",
+    "welcome" :"اهلا"
+
 
 }
