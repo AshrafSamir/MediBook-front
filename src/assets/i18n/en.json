@@ -24,7 +24,9 @@
     "specificationisrequired":"Specification is required",
     "role" : "role",
     "roleisrequired":"role is required",
-    "welcome" :"welcome"
-
+    "welcome" :"welcome",
+"Welcome to Medilab":"Welcome to Medilab",
+"We looking forward to serve you and your family's healthcare needs":"We looking forward to serve you and your family's healthcare needs",
+"Get Started":"Get Started"
 
 }

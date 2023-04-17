@@ -24,7 +24,10 @@
     "specificationisrequired":"يجب ادخال التخصص",
     "role" : "الدور",
     "roleisrequired":"يجب ادخال الدور",
-    "welcome" :"اهلا"
+    "welcome" :"اهلا",
+   "Welcome to Medilab":"",
+   "We looking forward to serve you and your family's healthcare needs":"",
+   "Get Started":""
 
 
 }
