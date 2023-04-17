@@ -1,4 +1,97 @@
 /* You can add global styles to this file, and also import other style files */
 
+
 /* Importing Bootstrap SCSS file. */
+
 @import 'bootstrap/scss/bootstrap';
+section {
+    padding: 60px 0;
+    overflow: hidden;
+}
+
+.section-bg {
+    background-color: #f1f7fd;
+}
+
+.section-title {
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+.section-title h2 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    position: relative;
+    color: #2c4964;
+}
+
+.section-title h2::before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 120px;
+    height: 1px;
+    background: #ddd;
+    bottom: 1px;
+    left: calc(50% - 60px);
+}
+
+.section-title h2::after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: #1977cc;
+    bottom: 0;
+    left: calc(50% - 20px);
+}
+
+.section-title p {
+    margin-bottom: 0;
+}
+
+.btnCustomeStyle
+{
+    background: #1977cc;
+    border: 0;
+    padding: 10px 35px;
+    color: #fff;
+    transition: 0.4s;
+    border-radius: 50px;
+}
+
+.btnCustomeStyle:hover
+{
+    background: #1f94fb;
+    cursor: pointer;
+}
+
+.btnCustomeStyle:disabled
+{
+    background: #85c4fb;
+}
+
+.section-bg-light {
+    background-color: #f1f7fd;
+}
+
+body {
+    font-family: "Open Sans", sans-serif;
+    //color: #444444;
+}
+
+h2
+{
+    font-size: 32px;
+    font-weight: bold;
+    position: relative;
+    color: #2c4964;
+}
+label
+{
+    font-size: 1.3rem;
+    color: #2c4964;
+}

@@ -8,7 +8,7 @@ import { environment } from '../../../../api';
   providedIn: 'root'
 })
 export class AuthService {
-  userData = new BehaviorSubject("null");
+  userType = new BehaviorSubject("null");
 
   constructor(private _HttpClient:HttpClient 
     , private _Router:Router) 
@@ -31,14 +31,14 @@ export class AuthService {
   setUserData()
   {
     //const token = ;
-    /*const userData:any = jwtDecode(JSON.stringify(localStorage.getItem('token')));
-    this.userDataG.next(userData);
+    /*const userData:any =localStorage.getItem('userData');
+    this.userType.next(userData.type);
     return userData ;*/
   }
   logOut()
   {
-   /* localStorage.removeItem('token')
-    this.userDataG.next("null");
-    this._Router.navigate(['login']);*/
+   localStorage.removeItem('userData')
+    this.userType.next("null");
+    this._Router.navigate(['auth/signin']);
   }
 }

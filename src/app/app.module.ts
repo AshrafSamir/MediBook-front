@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -19,10 +18,13 @@ import { GitstartedComponent } from './components/gitstarted/gitstarted.componen
 import { WhyusComponent } from './components/whyus/whyus.component';
 import { AppointmentComponent } from './components/appointment/appointment.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
+import { ServicesComponent } from './components/homePages/services/services.component';
+import { DoctorsComponent } from './components/homePages/doctors/doctors.component';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
 }
+
 
 @NgModule({
   declarations: [
@@ -34,6 +36,9 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     WhyusComponent,
     AppointmentComponent,
     GalleryComponent,
+    ServicesComponent,
+    DoctorsComponent
+    
   ],
   imports: [
     BrowserModule,
