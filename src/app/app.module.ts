@@ -17,6 +17,7 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { HttpClientModule } from '@angular/common/http';
 import { GitstartedComponent } from './components/gitstarted/gitstarted.component';
 import { WhyusComponent } from './components/whyus/whyus.component';
+import { AppointmentComponent } from './components/appointment/appointment.component';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -29,7 +30,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     HomeComponent,
     FooterComponent,
     GitstartedComponent,
-    WhyusComponent
+    WhyusComponent,
+    AppointmentComponent
   ],
   imports: [
     BrowserModule,
