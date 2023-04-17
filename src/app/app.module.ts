@@ -16,11 +16,13 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { HttpClientModule } from '@angular/common/http';
 import { GitstartedComponent } from './components/gitstarted/gitstarted.component';
 import { WhyusComponent } from './components/whyus/whyus.component';
-import { ServicesComponent } from './components/services/services.component';
+import { ServicesComponent } from './components/homePages/services/services.component';
+import { DoctorsComponent } from './components/homePages/doctors/doctors.component';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
 }
+
 
 @NgModule({
   declarations: [
@@ -31,6 +33,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     GitstartedComponent,
     WhyusComponent,
     ServicesComponent,
+    DoctorsComponent
     
   ],
   imports: [
