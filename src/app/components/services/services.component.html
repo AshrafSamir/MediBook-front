@@ -7,23 +7,26 @@
         </div>
 
         <div class="row">
-            <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-                <div class="icon-box">
-                    <div class="icon"><i class="fas fa-heartbeat"></i></div>
-                    <h4><a href="">{{"Cardiology" | translate}}</a></h4>
-                    <p>{{"subCardiology" | translate}}</p>
+
+            <div *ngFor="let dept of departmentsarray" class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                <div *ngIf="departmentsarray.indexOf(dept)<5" class="icon-box">
+                    <div class="icon"><i class={{dept.icon}}></i></div>
+                    <h4>
+                        <a href="">{{dept.deptName}} </a>
+                    </h4>
+                    <p>{{dept.desc}}</p>
+                </div>
+                <div *ngIf="departmentsarray.indexOf(dept)==5" class="icon-box">
+                    <div class="icon"><i class="fa-solid fa-plus"></i></div>
+                    <h4><a href="">+7 more <br/> Departments</a></h4>
+                    <p>there are more specializations ,click here to explore more departments <i class="fa-solid fa-arrow-right"></i></p>
                 </div>
             </div>
 
-            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
-                <div class="icon-box">
-                    <div class="icon"><i class="fa-solid fa-tooth"></i></div>
-                    <h4><a href="">{{"Dentistry" | translate}}</a></h4>
-                    <p>{{"subDentistry" |translate}}</p>
-                </div>
-            </div>
 
-            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
+
+
+            <!--  <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
                 <div class="icon-box">
                     <div class="icon"><i class="fa-solid fa-eye"></i></div>
                     <h4><a href="">{{"Ophthalmology" | translate}} </a></h4>
@@ -54,7 +57,7 @@
                     <h4><a href="">{{"Pediatrics" | translate}}</a></h4>
                     <p>{{"subPediatrics" | translate}}</p>
                 </div>
-            </div>
+            </div> -->
 
         </div>
 
