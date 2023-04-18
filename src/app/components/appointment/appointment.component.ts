@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
-
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-appointment',
   templateUrl: './appointment.component.html',
@@ -8,18 +8,22 @@ import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 })
 export class AppointmentComponent implements OnInit {
 appointmentForm:FormGroup;
-  constructor() { }
+departmentsarray:string[]=["General Medicine","Occupational Therapy","Radiology","Laboratory","Speech Therapy","Infectious Diseases","Physical Therapy","Psychiatry","Oncology","Rheumatology","Hematology","Endocrinology","Pediatrics","Obstetrics and Gynecology","Dermatology","Cardiology","Neurology","Ophthalmology","Pulmonary Medicine","Gastroenterology"]
+addressarray:string[]=["Cairo","Alexandria","El Arish","Damanhur","Kafr El Sheikh","Marsa Matruh","Hurghada","Sohag","Asyut","Zagazig","Damietta","Aswan","Tanta","Giza","Shubra El-Kheima","Port Said","Suez","Luxor","Mansoura","El-Mahalla El-Kubra"];
+
+  constructor(private http:HttpClient) { }
 
   ngOnInit(): void {
     this.appointmentForm=new FormGroup({
-      'name':new FormControl(null,Validators.required),
-      'email':new FormControl(null,[Validators.required,Validators.email]),
-      'phone':new FormControl(null,Validators.required),
-      'date':new FormControl(null,Validators.required),
-      'doctors':new FormControl(null,Validators.required),
-      'department':new FormControl(null,Validators.required),
-      'message':new FormControl(null)
+      'date':new FormControl(null),
+      'address':new FormControl(""),
+      'department':new FormControl(""),
+      'doctor':new FormControl(null)
     });
+  }
+
+  postAppointment(appointment){
+// this.http.post();
   }
 
   onBooking():void {
