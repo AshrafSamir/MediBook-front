@@ -7,7 +7,6 @@
   }
   
   .appointment .php-email-form .validate {
-    display: none;
     color: red;
     margin: 0 0 15px 0;
     font-weight: 400;
@@ -93,7 +92,14 @@
   }
 
 //   section general
-
+input.ng-invalid.ng-touched ,select.ng-invalid.ng-touched
+{
+  border:1px solid red;
+}
+input.ng-valid ,select.ng-valid
+{
+  border:1px solid green;
+}
 section {
     padding: 60px 0;
     overflow: hidden;

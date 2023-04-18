@@ -6,50 +6,49 @@
         <p>{{'We strive to make your appointment scheduling process as seamless as possible, so you can focus on your health and well-being.' | translate}}</p>
       </div>
 
-      <form action="forms/appointment.php" method="post" role="form" class="php-email-form">
+      <form (ngSubmit)="onBooking()"  [formGroup]="appointmentForm" class="php-email-form">
         <div class="row">
           <div class="col-md-4 form-group">
-            <input type="text" name="name" class="form-control" id="name" placeholder="{{'Your Name' | translate}}" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-            <div class="validate"></div>
+            <input ngModel type="text" name="name"  formControlName="name" class="form-control" id="name" placeholder="{{'Your Name' | translate}}" data-rule="minlen:4" data-msg="Please enter at least 4 chars" required>
+            <p class="validate mt-2" *ngIf="!appointmentForm.get('name').valid && appointmentForm.get('name').touched">Please enter your name</p>
           </div>
           <div class="col-md-4 form-group mt-3 mt-md-0">
-            <input type="email" class="form-control" name="email" id="email" placeholder="{{'Your Email' | translate}}" data-rule="email" data-msg="Please enter a valid email">
-            <div class="validate"></div>
+            <input ngModel type="email" formControlName="email" required email class="form-control" name="email" id="email" placeholder="{{'Your Email' | translate}}" data-rule="email" data-msg="Please enter a valid email">
+            <p class="validate mt-2" *ngIf="!appointmentForm.get('email').valid && appointmentForm.get('email').touched">Please enter a valid email</p>
           </div>
           <div class="col-md-4 form-group mt-3 mt-md-0">
-            <input type="tel" class="form-control" name="phone" id="phone" placeholder="{{'Your Phone' | translate}}" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-            <div class="validate"></div>
+            <input  required type="tel" formControlName="phone" class="form-control" name="phone" id="phone" placeholder="{{'Your Phone' | translate}}" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+            <p class="validate mt-2" *ngIf="!appointmentForm.get('phone').valid && appointmentForm.get('phone').touched" >Please enter a valid number</p>
           </div>
         </div>
         <div class="row">
           <div class="col-md-4 form-group mt-3">
-            <input type="datetime" name="date" class="form-control datepicker" id="date" placeholder="{{'Appointment Date' | translate}}"  data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-            <div class="validate"></div>
+            <input  required formControlName="date" type="datetime" name="date" class="form-control datepicker" id="date" placeholder="{{'Appointment Date' | translate}}"  data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+            <p class="validate mt-2" *ngIf="!appointmentForm.get('date').valid && appointmentForm.get('date').touched" >Please enter available date</p>
           </div>
           <div class="col-md-4 form-group mt-3">
-            <select name="department" id="department" class="form-select">
+            <select name="department" id="department"  formControlName="department" class="form-select">
               <option value="">{{'Select Department' | translate}}</option>
             </select>
-            <div class="validate"></div>
+            <p class="validate mt-2" *ngIf="!appointmentForm.get('department').valid && appointmentForm.get('department').touched" >Please select a department</p>
           </div>
           <div class="col-md-4 form-group mt-3">
-            <select name="doctor" id="doctor" class="form-select">
+            <select  formControlName="doctors" name="doctor" id="doctor" class="form-select">
               <option value="">{{'Select Doctor' | translate}}</option>
             </select>
-            <div class="validate"></div>
+            <p class="validate mt-2" *ngIf="!appointmentForm.get('doctors').valid && appointmentForm.get('doctors').touched" >Please select a doctor</p>
           </div>
         </div>
 
         <div class="form-group mt-3">
-          <textarea class="form-control" name="message" rows="5" placeholder= "{{'Message (Optional)' | translate}}"></textarea>
-          <div class="validate"></div>
+          <textarea class="form-control" formControlName="message" name="message" rows="5" placeholder= "{{'Message (Optional)' | translate}}"></textarea>
         </div>
         <div class="mb-3">
           <div class="loading">Loading</div>
           <div class="error-message"></div>
           <div class="sent-message">Your appointment request has been sent successfully. Thank you!</div>
         </div>
-        <div class="text-center"><button type="submit"> {{'Make an Appointment' | translate}}</button></div>
+        <div class="text-center"><button type="submit"  class="btn" [disabled]="!appointmentForm.valid"> {{'Make an Appointment' | translate}}</button></div>
       </form>
 
     </div>

@@ -18,8 +18,8 @@ import { GitstartedComponent } from './components/gitstarted/gitstarted.componen
 import { WhyusComponent } from './components/whyus/whyus.component';
 import { AppointmentComponent } from './components/appointment/appointment.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
-import { ServicesComponent } from './components/homePages/services/services.component';
-import { DoctorsComponent } from './components/homePages/doctors/doctors.component';
+import { ServicesComponent } from './components/services/services.component';
+import { DoctorsComponent } from './components/doctors/doctors.component';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
