@@ -10,6 +10,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HttpLoaderFactory } from '../app.module';
+import { BookingComponent } from '../components/booking/booking.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { HttpLoaderFactory } from '../app.module';
     AuthComponent,
     SigninComponent,
     SignupComponent,
+    BookingComponent,
   ],
   imports: [
     CommonModule,
