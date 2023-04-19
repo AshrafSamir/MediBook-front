@@ -13,7 +13,7 @@ export class AuthService {
   constructor(private _HttpClient:HttpClient 
     , private _Router:Router) 
     {
-      if(localStorage.getItem('token'))
+      if(localStorage.getItem('userData'))
       {
         this.setUserData();
       }
@@ -31,13 +31,15 @@ export class AuthService {
   setUserData()
   {
     //const token = ;
-    /*const userData:any =localStorage.getItem('userData');
+    const userData:any =JSON.parse(localStorage.getItem('userData'));
     this.userType.next(userData.type);
-    return userData ;*/
+    //return userData ;*/
   }
   logOut()
   {
    localStorage.removeItem('userData')
+   localStorage.removeItem('token')
+
     this.userType.next("null");
     this._Router.navigate(['auth/signin']);
   }

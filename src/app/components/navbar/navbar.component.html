@@ -93,7 +93,10 @@
                   <a class="nav-link" routerLinkActive="active" (click)="logout()" >{{'logout' | translate}}</a>
               </li>
               <li *ngIf="type == 'doctor'" class="nav-item">
-                <a class="nav-link" routerLinkActive="active">doctor home</a>
+                <a class="nav-link" routerLinkActive="active" routerLink="/doctor/addslot">{{'AddSlots' | translate}}</a>
+              </li>
+              <li *ngIf="type == 'doctor'" class="nav-item">
+                <a class="nav-link" routerLinkActive="active" routerLink="/doctor/getslots">{{'YourSlot' | translate}}</a>
               </li>
               <li *ngIf="type == 'patient'" class="nav-item">
                 <a class="nav-link" routerLinkActive="active" >patient home</a>

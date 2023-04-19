@@ -54,10 +54,14 @@ export class SignupComponent implements OnInit {
    formData.append('mobilePhone', this.signupForm.controls['mobilePhone'].value);
    formData.append('name', this.signupForm.controls['name'].value);
    formData.append('clinicAddress', this.signupForm.controls['clinicAddress'].value);
-   formData.append('doctorSpecification', {
+   formData.append('specification', this.signupForm.controls['specification'].value);
+   formData.append('role', this.signupForm.controls['role'].value);
+
+
+   /*formData.append('doctorSpecification', {
     specification:this.signupForm.controls['specification'].value ,
     role:this.signupForm.controls['role'].value
-  });
+  });*/
 
 
       //console.log(formData['profileImage'])

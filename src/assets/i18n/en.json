@@ -96,5 +96,29 @@
 "we are dedicated to providing the highest quality care to our patients in a compassionate and welcoming environment. Our team of experienced and skilled medical professionals is committed to working closely with each patient to develop a personalized treatment plan that addresses their unique needs.":"we are dedicated to providing the highest quality care to our patients in a compassionate and welcoming environment. Our team of experienced and skilled medical professionals is committed to working closely with each patient to develop a personalized treatment plan that addresses their unique needs.",
 "Learn More":"Learn More",
 
-"Get Started":"Get Started"
+"Get Started":"Get Started",
+"AddSlots":"Add Slots",
+"SelectDatesfromandto":"Select Dates from and to",
+"Selecthoursfromandto" :"Select Hours from and to",
+"TIMEPICKER":"TIMEPICKER",
+"Holidays":"Holidays",
+"AddHoliday":"Add Holiday",
+"HolidayDate":"Holiday Date",
+"Actions":"Actions",
+"Delete":"Delete",
+"maxReservations":"Max Reservations",
+"bookingPrice":"Booking Price",
+"maxReservationsisrequired":"Max Reservations is required",
+"bookingPriceisrequired":"Booking Price is required",
+"YourSlot":"Your Slot",
+"date":"Date",
+"from":"From",
+"To":"To",
+"fullyBooked": "Fully Booked ?",
+"isHoliday" : "Is Holiday",
+"reservations":"Reservations"
+
+
+
+
 }
