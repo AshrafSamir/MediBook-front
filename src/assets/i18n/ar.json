@@ -123,5 +123,12 @@
     "To": "الي",
     "fullyBooked": "تم الحجز بالكامل ؟",
     "isHoliday": "عطلة ؟",
-    "reservations": "عدد الحجوزات"
+    "reservations": "عدد الحجوزات",
+    "nameisrequired":"يجب ادخال إسم",
+    "mobilePhoneisrequired":"يجب إدخال رقم هاتف",
+    "typeisrequired":" يجب إاختيار نوع للمستخدم",
+    "name":"الإسم",
+    "mobilePhone":"رقم الهاتف",
+    "type":"نوع المستخدم"
+
 }

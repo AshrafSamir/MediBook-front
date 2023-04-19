@@ -103,7 +103,7 @@ export class AddslotComponent implements OnInit {
   date: { year: number; month: number };
   allHolidays: any[] = []
   handleHolidays() {
-    this.allHolidays.push(`${this.model.year}-${this.model.month}-${this.model.day}`)
+    this.allHolidays.push(`${this.model.year}-${this.changeNumber(this.model.month)}-${this.changeNumber(this.model.day)}`)
     this.slots.controls['holidays']?.setValue(this.allHolidays)
   }
   deleteHoliday(i: number) {
