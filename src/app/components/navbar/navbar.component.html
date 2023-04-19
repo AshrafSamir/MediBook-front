@@ -89,15 +89,19 @@
                 <li *ngIf="type == 'null'" class="nav-item">
                     <a class="nav-link" routerLinkActive="active" routerLink="/auth/signup">{{'Sign Up' | translate}}</a>
                 </li>
-                <li *ngIf="type == 'doctor' || type == 'patient'" class="nav-item">
-                    <a class="nav-link" routerLinkActive="active" (click)="logout()">{{'logout' | translate}}</a>
-                </li>
-                <li *ngIf="type == 'doctor'" class="nav-item">
-                    <a class="nav-link" routerLinkActive="active">doctor home</a>
-                </li>
-                <li *ngIf="type == 'patient'" class="nav-item">
-                    <a class="nav-link" routerLinkActive="active">patient home</a>
-                </li>
+
+                <li *ngIf="type == 'doctor' || type == 'patient'"  class="nav-item">
+                  <a class="nav-link" routerLinkActive="active" (click)="logout()" >{{'logout' | translate}}</a>
+              </li>
+              <li *ngIf="type == 'doctor'" class="nav-item">
+                <a class="nav-link" routerLinkActive="active" routerLink="/doctor/addslot">{{'AddSlots' | translate}}</a>
+              </li>
+              <li *ngIf="type == 'doctor'" class="nav-item">
+                <a class="nav-link" routerLinkActive="active" routerLink="/doctor/getslots">{{'YourSlot' | translate}}</a>
+              </li>
+              <li *ngIf="type == 'patient'" class="nav-item">
+                <a class="nav-link" routerLinkActive="active" >patient home</a>
+              </li>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav>

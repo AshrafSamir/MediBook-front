@@ -36,10 +36,11 @@ export class SigninComponent implements OnInit {
       {
         this.toastr.success('success', 'Sign in Successfully');
         localStorage.setItem('userData',JSON.stringify(res.user)) //JSON.stringify()
+        localStorage.setItem('token',res.user.token)
         if(res.user.type == 'doctor')
         {
           this.auth.userType.next('doctor');
-          this.router.navigate(['doctor'])
+          this.router.navigate(['doctor/addslot'])
           console.log(this.auth.userType.getValue())
 
         }

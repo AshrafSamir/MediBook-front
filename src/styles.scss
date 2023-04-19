@@ -4,6 +4,7 @@
 /* Importing Bootstrap SCSS file. */
 
 @import 'bootstrap/scss/bootstrap';
+
 section {
     padding: 60px 0;
     overflow: hidden;
@@ -25,6 +26,14 @@ section {
     padding-bottom: 20px;
     position: relative;
     color: #2c4964;
+}
+
+.cH2 {
+    font-size: 32px !important;
+    font-weight: bold !important;
+    color: #2c4964 !important;
+    margin-bottom: 20px !important;
+    padding-bottom: 20px !important;
 }
 
 .section-title h2::before {
@@ -53,8 +62,7 @@ section {
     margin-bottom: 0;
 }
 
-.btnCustomeStyle
-{
+.btnCustomeStyle {
     background: #1977cc;
     border: 0;
     padding: 10px 35px;
@@ -63,14 +71,12 @@ section {
     border-radius: 50px;
 }
 
-.btnCustomeStyle:hover
-{
+.btnCustomeStyle:hover {
     background: #1f94fb;
     cursor: pointer;
 }
 
-.btnCustomeStyle:disabled
-{
+.btnCustomeStyle:disabled {
     background: #85c4fb;
 }
 
@@ -83,15 +89,39 @@ body {
     //color: #444444;
 }
 
-h2
-{
+h2 {
     font-size: 32px;
     font-weight: bold;
     position: relative;
     color: #2c4964;
 }
-label
-{
+
+label {
     font-size: 1.3rem;
     color: #2c4964;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.customTH
+{
+    font-size: 1.1rem;
+}
+
+.spinnerCustomStyle
+{
+   
+   height: 50vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+    
 }
