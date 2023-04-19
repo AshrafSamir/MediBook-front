@@ -59,7 +59,7 @@
             <ul>
 
                 <li class="nav-item">
-                    <a class="nav-link " routerLinkActive="active" aria-current="page" routerLink="">{{'Home' | translate}}</a>
+                    <a class="nav-link " routerLinkActive="active" aria-current="page" [routerLinkActiveOptions]="{exact: true}" routerLink="/home">{{'Home' | translate}}</a>
                 </li>
 
                 <li><a class="nav-link scrollto" href="#about">About</a></li>
