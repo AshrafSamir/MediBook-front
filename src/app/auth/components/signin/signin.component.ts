@@ -50,6 +50,12 @@ export class SigninComponent implements OnInit {
           this.router.navigate(['patient'])
           console.log(this.auth.userType.getValue())
         }
+        else if(res.user.type == 'admin')
+        {
+          this.auth.userType.next('admin');
+          this.router.navigate(['admin'])
+          console.log(this.auth.userType.getValue())
+        }
       }
     })
   console.log(this.loginForm.value)

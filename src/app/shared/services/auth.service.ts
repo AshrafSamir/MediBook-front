@@ -9,6 +9,8 @@ import { environment } from '../../../../api';
 })
 export class AuthService {
   userType = new BehaviorSubject("null");
+  departmentsarray:string[]=["General Medicine","Occupational Therapy","Radiology","Laboratory","Speech Therapy","Infectious Diseases","Physical Therapy","Psychiatry","Oncology","Rheumatology","Hematology","Endocrinology","Pediatrics","Obstetrics and Gynecology","Dermatology","Cardiology","Neurology","Ophthalmology","Pulmonary Medicine","Gastroenterology"]
+  addressarray:string[]=["Cairo","Alexandria","El Arish","Damanhur","Kafr El Sheikh","Marsa Matruh","Hurghada","Sohag","Asyut","Zagazig","Damietta","Aswan","Tanta","Giza","Shubra El-Kheima","Port Said","Suez","Luxor","Mansoura","El-Mahalla El-Kubra"];
 
   constructor(private _HttpClient:HttpClient 
     , private _Router:Router) 

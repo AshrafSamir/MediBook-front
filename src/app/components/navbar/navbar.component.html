@@ -99,6 +99,9 @@
               <li *ngIf="type == 'doctor'" class="nav-item">
                 <a class="nav-link" routerLinkActive="active" routerLink="/doctor/getslots">{{'YourSlot' | translate}}</a>
               </li>
+              <li *ngIf="type == 'admin'" class="nav-item">
+                <a class="nav-link" routerLinkActive="active" routerLink="/admin">admin</a>
+              </li>
               <li *ngIf="type == 'patient'" class="nav-item">
                 <a class="nav-link" routerLinkActive="active" >patient home</a>
               </li>

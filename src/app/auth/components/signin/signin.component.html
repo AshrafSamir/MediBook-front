@@ -1,6 +1,6 @@
-<div class="section-bg-light " style="padding-bottom: 403px;">
+<div class="section-bg-light p-5" >
     <form (ngSubmit)="submitForm()" [formGroup]="loginForm" class="w-50 mx-auto py-5 ">
-        <h2 class="text-center">{{'Sign In' | translate}}</h2>
+        <h2 class="text-center cH2">{{'Sign In' | translate}}</h2>
         <label for="email" class="my-2">{{'Email' | translate}}</label>
         <input id="email" formControlName="credential" class="form-control" type="text">
         <div *ngIf="loginForm.get('credential')?.errors != null  && loginForm.get('credential')?.touched"

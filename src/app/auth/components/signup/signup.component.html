@@ -1,6 +1,6 @@
 <div class="section-bg-light ">
   <form [formGroup]="signupForm" (ngSubmit)="submitForm()" class="w-50 mx-auto py-5" enctype="multipart/form-data">
-    <h2 class="text-center">{{'Sign Up' | translate}}</h2>
+    <h2 class="text-center cH2">{{'Sign Up' | translate}}</h2>
   
       <div>
         <label class="my-2" for="email">{{'Email' | translate}}</label>
@@ -80,7 +80,11 @@
   
         <div *ngIf="signupForm.controls['type'].value == 'doctor'">
           <label class="my-2" for="clinicAddress">{{'clinicAddress' | translate}}</label>
-          <input type="clinicAddress" id="clinicAddress" formControlName="clinicAddress" class="form-control">
+          <!-- <input type="clinicAddress" id="clinicAddress" formControlName="clinicAddress" class="form-control"> -->
+          <select id="clinicAddress" formControlName="clinicAddress" class="form-control" >
+            <option value="">{{'Selectrole' | translate}}</option>
+            <option *ngFor="let address of addressarray" [value]="address">{{address}}</option>
+          </select>
           <div *ngIf="signupForm.get('clinicAddress')?.invalid && (signupForm.get('clinicAddress')?.dirty || signupForm.get('clinicAddress')?.touched)" class="alert alert-danger mt-2">
             <div *ngIf="signupForm.get('clinicAddress')?.errors?.['required']">{{'clinicAddressisrequired' | translate}}</div>
           </div>
@@ -88,7 +92,11 @@
   
          <div *ngIf="signupForm.controls['type'].value == 'doctor'">
           <label class="my-2" for="specification">{{'specification' | translate}}</label>
-          <input type="specification" id="specification" formControlName="specification" class="form-control">
+          <!-- <input type="specification" id="specification" formControlName="specification" class="form-control"> -->
+          <select id="specification" formControlName="specification" class="form-control" >
+            <option value="">{{'specification' | translate}}</option>
+            <option *ngFor="let dep of departmentsarray" [value]="dep">{{dep}}</option>
+          </select>
           <div *ngIf="signupForm.get('specification')?.invalid && (signupForm.get('specification')?.dirty || signupForm.get('specification')?.touched)" class="alert alert-danger mt-2">
             <div *ngIf="signupForm.get('specification')?.errors?.['required']">{{'specificationisrequired' | translate}}</div>
           </div>
