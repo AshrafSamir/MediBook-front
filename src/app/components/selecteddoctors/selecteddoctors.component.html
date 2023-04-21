@@ -1,0 +1,28 @@
+
+<section id="doctors" class="doctors" *ngIf="isLoaded" style="background-color: rgba(255, 255, 255, 0.79);">
+    <app-appointment></app-appointment>
+<div *ngIf="!isLoaded">Loading..
+</div>
+<div *ngIf="isLoaded" class="m-5 total">{{Doctorsinformations.length}} Total results
+</div>
+<div class="row my-4   justify-content-center" *ngFor="let doc of Doctorsinformations">
+
+        <div class="member bookingcard" >
+            <div class=" d-flex align-items-start " >
+            <div class="pic"><img src="assets/img/doctors/doctors-1.jpg" class="img-fluid" alt=""></div>
+            <div class="member-info">
+                <h4>{{doc.name}}</h4>
+                <span>Doctor specialized in {{doc.specification}}</span>
+                <p>Rating section</p>
+                <p class="bi bi-geo-alt">{{doc.clinicAddress}}</p>
+                <p class="bi bi-telephone">{{doc.mobilePhone}}</p>
+                
+            </div>
+        </div>
+            <button class="btn booknowbtn mt-2">Available times</button>
+        </div>
+        
+    
+
+</div>
+</section>

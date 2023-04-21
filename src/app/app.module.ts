@@ -21,6 +21,7 @@ import { GalleryComponent } from './components/gallery/gallery.component';
 import { ServicesComponent } from './components/services/services.component';
 import { DoctorsComponent } from './components/doctors/doctors.component';
 import { ContactusComponent } from './components/contactus/contactus.component';
+import { SelecteddoctorsComponent } from './components/selecteddoctors/selecteddoctors.component';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -39,7 +40,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     GalleryComponent,
     ServicesComponent,
     DoctorsComponent,
-    ContactusComponent
+    ContactusComponent,
+    SelecteddoctorsComponent
     
   ],
   imports: [

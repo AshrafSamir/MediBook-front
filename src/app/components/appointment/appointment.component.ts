@@ -26,7 +26,7 @@ addressarray:string[]=["Cairo","Alexandria","El Arish","Damanhur","Kafr El Sheik
  
 
   onBooking():void {
-    this.router.navigate(['/booking'],{queryParams:{address:this.appointmentForm.get('address').value,department:this.appointmentForm.get('department').value,doctor:this.appointmentForm.get('doctor').value}});
+    this.router.navigate(['/bookingdoc'],{queryParams:{address:this.appointmentForm.get('address').value,department:this.appointmentForm.get('department').value,doctor:this.appointmentForm.get('doctor').value}});
     
 
   }
