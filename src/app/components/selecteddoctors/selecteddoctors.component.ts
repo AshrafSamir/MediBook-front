@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {map} from 'rxjs/operators';
 @Component({
   selector: 'app-selecteddoctors',
@@ -13,8 +13,9 @@ export class SelecteddoctorsComponent implements OnInit {
   address:string;
   isLoaded:boolean;
   doctors:string;
+  doctorid:any;
   Doctorsinformations=[];
-    constructor(private route:ActivatedRoute , private http:HttpClient) { }
+    constructor(private route:ActivatedRoute , private http:HttpClient,private router:Router) { }
   
     ngOnInit(): void {
       
@@ -28,8 +29,8 @@ export class SelecteddoctorsComponent implements OnInit {
   
     postAppointment(appointment:{department:string,doctors:string,address:string}){
       this.isLoaded=false;
+      // http://localhost:3000/doctorTimeSlots/
       this.http.get('http://localhost:3000/alldoctors').pipe(map((res)=>{
-        console.log("jjj",res);
         this.Doctorsinformations=[];
         for(const key in res)
         {
@@ -44,6 +45,10 @@ export class SelecteddoctorsComponent implements OnInit {
                   this.Doctorsinformations.push(res[key][key2]);
                 }
             }
+            if(this.Doctorsinformations.length==0)
+            {
+              this.Doctorsinformations.push(...res[key]);
+            }
             break;
           }
           
@@ -51,8 +56,15 @@ export class SelecteddoctorsComponent implements OnInit {
         return this.Doctorsinformations;
       })).subscribe((res)=>{
         this.isLoaded=true;
-            console.log(res);
           });
+        }
+    
+
+        showTimeSlots(id:any)
+        {
+this.doctorid=id;
+this.router.navigate(['/Availabletimes'],{queryParams:{id:this.doctorid}});
+   
         }
 
 }

@@ -4,6 +4,7 @@ import { HomeComponent } from './components/home/home.component';
 import { DoctorGuard } from './shared/guards/doctor.guard';
 import { PatientGuard } from './shared/guards/patient.guard';
 import {BookingComponent} from './components/booking/booking.component';
+import { AvailabletimesComponent } from './components/availabletimes/availabletimes.component';
 import { SelecteddoctorsComponent } from './components/selecteddoctors/selecteddoctors.component';
 
 const routes: Routes = [
@@ -13,7 +14,8 @@ const routes: Routes = [
   { path: 'doctor',canActivate:[DoctorGuard], loadChildren: () => import('./doctor/doctor.module').then(m => m.DoctorModule) },
   { path: 'patient',canActivate:[PatientGuard], loadChildren: () => import('./patient/patient.module').then(m => m.PatientModule) },
   {path: 'booking',component:BookingComponent},
-  {path: 'bookingdoc',component:SelecteddoctorsComponent}
+  {path: 'bookingdoc',component:SelecteddoctorsComponent},
+  {path: 'Availabletimes',component:AvailabletimesComponent}
 ];
 
 @NgModule({
