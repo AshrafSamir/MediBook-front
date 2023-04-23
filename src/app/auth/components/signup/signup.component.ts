@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { DoctorserviceService } from 'src/app/doctor/services/doctorservice.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
@@ -13,7 +14,9 @@ export class SignupComponent implements OnInit {
 
   signupForm: FormGroup;
     test:any;
-  constructor(private fb: FormBuilder , private toastr: ToastrService , private auth:AuthService , private router:Router) {
+    departmentsarray:string[]=[]
+addressarray:string[]=[];
+  constructor(private fb: FormBuilder , private toastr: ToastrService , private auth:AuthService , private router:Router ) {
     this.signupForm = this.fb.group({
       email: ['', [Validators.required, /*Validators.email*/]],
       name: ['', Validators.required],
@@ -37,6 +40,8 @@ export class SignupComponent implements OnInit {
     });
   }
   ngOnInit(): void {
+    this.addressarray = this.auth.addressarray
+    this.departmentsarray = this.auth.departmentsarray
   }
 
   submitForm() {
