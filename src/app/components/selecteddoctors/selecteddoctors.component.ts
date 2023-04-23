@@ -39,7 +39,7 @@ export class SelecteddoctorsComponent implements OnInit {
             for(const key2 in res[key])
             {
               if(res[key][key2].specification==appointment.department||res[key][key2].clinicAddress
-                ==appointment.address)
+                ==appointment.address||this.doctors==res[key][key2].name)
                 {
                   
                   this.Doctorsinformations.push(res[key][key2]);
