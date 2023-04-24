@@ -2,23 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { DoctorserviceService } from 'src/app/doctor/services/doctorservice.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
-  selector: 'app-signup',
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.scss']
+  selector: 'app-add-user',
+  templateUrl: './add-user.component.html',
+  styleUrls: ['./add-user.component.scss']
 })
-export class SignupComponent implements OnInit {
-
-  signupForm: FormGroup;
-    test:any;
-    departmentsarray:string[]=[]
-addressarray:string[]=[];
+export class AddUserComponent implements OnInit {
+  addUserForm: FormGroup;
+  test:any;
+  departmentsarray:string[]=[]
+  addressarray:string[]=[];
   constructor(private fb: FormBuilder , private toastr: ToastrService , private auth:AuthService , private router:Router ) {
-    this.signupForm = this.fb.group({
-      email: ['', [Validators.required, /*Validators.email*/]],
+    this.addUserForm = this.fb.group({
+      email: [''],
       name: ['', Validators.required],
       mobilePhone: [ '', [Validators.required]],
       type: ['' , [Validators.required]],
@@ -33,43 +31,31 @@ addressarray:string[]=[];
       specification: [''],
       role: [''],
 
-      
-
-      
-
     });
   }
+
   ngOnInit(): void {
     this.addressarray = this.auth.addressarray
     this.departmentsarray = this.auth.departmentsarray
   }
-
   submitForm() {
 
-    console.log(this.signupForm.value)
+    console.log(this.addUserForm.value)
     const formData:any = new FormData();
     const fileInput:any = document.getElementById('image');
     console.log(this.test , 'teeeeeeeeeeeeeeeeeeesat')
    formData.append('profileImage',this.test , this.test.name);
-   formData.append('email', this.signupForm.controls['email'].value);
-   formData.append('username',this.signupForm.controls['username'].value);
-   formData.append('password', this.signupForm.controls['password'].value);
-   formData.append('gender', this.signupForm.controls['gender'].value);
-   formData.append('type', this.signupForm.controls['type'].value);
-   formData.append('mobilePhone', this.signupForm.controls['mobilePhone'].value);
-   formData.append('name', this.signupForm.controls['name'].value);
-   formData.append('clinicAddress', this.signupForm.controls['clinicAddress'].value);
-   formData.append('specification', this.signupForm.controls['specification'].value);
-   formData.append('role', this.signupForm.controls['role'].value);
+   formData.append('email', this.addUserForm.controls['email'].value);
+   formData.append('username',this.addUserForm.controls['username'].value);
+   formData.append('password', this.addUserForm.controls['password'].value);
+   formData.append('gender', this.addUserForm.controls['gender'].value);
+   formData.append('type', this.addUserForm.controls['type'].value);
+   formData.append('mobilePhone', this.addUserForm.controls['mobilePhone'].value);
+   formData.append('name', this.addUserForm.controls['name'].value);
+   formData.append('clinicAddress', this.addUserForm.controls['clinicAddress'].value);
+   formData.append('specification', this.addUserForm.controls['specification'].value);
+   formData.append('role', this.addUserForm.controls['role'].value);
 
-
-   /*formData.append('doctorSpecification', {
-    specification:this.signupForm.controls['specification'].value ,
-    role:this.signupForm.controls['role'].value
-  });*/
-
-
-      //console.log(formData['profileImage'])
 
    this.auth.register(formData).subscribe((res)=>{
         console.log(res)
@@ -82,16 +68,16 @@ addressarray:string[]=[];
         {
           this.toastr.success('success', 'Sign in Successfully');
 
-          this.router.navigate(['auth/signin'])
+          this.router.navigate(['admin'])
         }
    })
   }
 
   onFileSelected(event:any) {
-    this.signupForm.controls['profileImage']?.setValue('')
+    this.addUserForm.controls['profileImage']?.setValue('')
     if(event.target.files[0].type.includes('image/png') || event.target.files[0].type.includes('image/jpeg') ||  event.target.files[0].type.includes('image/jpeg'))
     {
-      this.signupForm.controls['profileImage']?.setValue(event.target.files[0])
+      this.addUserForm.controls['profileImage']?.setValue(event.target.files[0])
       this.test = event.target.files[0]
     }
     else
@@ -99,4 +85,5 @@ addressarray:string[]=[];
       this.toastr.error('error', 'Enter Valid Image!');
     }
   }
+
 }

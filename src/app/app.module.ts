@@ -24,6 +24,7 @@ import { ContactusComponent } from './components/contactus/contactus.component';
 import { SelecteddoctorsComponent } from './components/selecteddoctors/selecteddoctors.component';
 import { AvailabletimesComponent } from './components/availabletimes/availabletimes.component';
 
+
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
 }
@@ -43,7 +44,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     DoctorsComponent,
     ContactusComponent,
     SelecteddoctorsComponent,
-    AvailabletimesComponent
+    AvailabletimesComponent,
+   
     
   ],
   imports: [

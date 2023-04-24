@@ -90,21 +90,27 @@
                     <a class="nav-link" routerLinkActive="active" routerLink="/auth/signup">{{'Sign Up' | translate}}</a>
                 </li>
 
-                <li *ngIf="type == 'doctor' || type == 'patient'"  class="nav-item">
-                  <a class="nav-link" routerLinkActive="active" (click)="logout()" >{{'logout' | translate}}</a>
-              </li>
-              <li *ngIf="type == 'doctor'" class="nav-item">
-                <a class="nav-link" routerLinkActive="active" routerLink="/doctor/addslot">{{'AddSlots' | translate}}</a>
-              </li>
-              <li *ngIf="type == 'doctor'" class="nav-item">
-                <a class="nav-link" routerLinkActive="active" routerLink="/doctor/getslots">{{'YourSlot' | translate}}</a>
-              </li>
-              <li *ngIf="type == 'admin'" class="nav-item">
-                <a class="nav-link" routerLinkActive="active" routerLink="/admin">admin</a>
-              </li>
-              <li *ngIf="type == 'patient'" class="nav-item">
-                <a class="nav-link" routerLinkActive="active" >patient home</a>
-              </li>
+                <li *ngIf="type == 'doctor' || type == 'patient' || type== 'admin'" class="nav-item">
+                    <a class="nav-link" routerLinkActive="active" (click)="logout()">{{'logout' | translate}}</a>
+                </li>
+                <li *ngIf="type == 'doctor'" class="nav-item">
+                    <a class="nav-link" routerLinkActive="active" routerLink="/doctor/addslot">{{'AddSlots' | translate}}</a>
+                </li>
+                <li *ngIf="type == 'doctor'" class="nav-item">
+                    <a class="nav-link" routerLinkActive="active" routerLink="/doctor/getslots">{{'YourSlot' | translate}}</a>
+                </li>
+
+                <li *ngIf="type == 'admin'" class="nav-item">
+                    <a class="nav-link" routerLinkActive="active" routerLink="/admin/addUser">Add User</a>
+                </li>
+                <li *ngIf="type == 'admin'" class="nav-item">
+                    <a class="nav-link" routerLinkActive="active" routerLink="/admin/viewUsers">view Users</a>
+                </li>
+
+
+                <li *ngIf="type == 'patient'" class="nav-item">
+                    <a class="nav-link" routerLinkActive="active">patient home</a>
+                </li>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav>
