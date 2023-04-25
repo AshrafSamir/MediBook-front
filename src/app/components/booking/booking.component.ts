@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ActivatedRoute,Router } from '@angular/router';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { ToastrService } from 'ngx-toastr';
 import {map} from 'rxjs/operators';
 @Component({
   selector: 'app-booking',
@@ -19,7 +20,7 @@ export class BookingComponent implements OnInit {
  month:any;
     year:any;
   timeId:any;
-  constructor(private route:ActivatedRoute , private http:HttpClient,private router:Router ,private auth:AuthService) { }
+  constructor(private route:ActivatedRoute ,private toastr: ToastrService , private http:HttpClient,private router:Router ,private auth:AuthService) { }
 
   ngOnInit(): void {
   
@@ -49,7 +50,7 @@ export class BookingComponent implements OnInit {
     this.http.get(`http://localhost:3000/getTimeSlot/${this.timeId}`,httpOptions).pipe(map((res:any)=>{
       console.log(res);
      
-      let {from,to,fullyBooked,bookingPrice,doctorId}=res;
+      let {from,to,fullyBooked,bookingPrice,doctorId,_id}=res;
       to=new Date(to);
       from=new Date(from);
       this.dayname=from.toLocaleString('en-US',{weekday:'long'});
@@ -77,7 +78,7 @@ export class BookingComponent implements OnInit {
     this.http.get(`http://localhost:3000/getdoctor/${id}`,httpOptions).pipe(map((res:any)=>{
       console.log(res);
       const {name,specification,clinicAddress,mobilePhone}=res;
-    this.DoctorsInfo={name,specification,clinicAddress,mobilePhone};
+    this.DoctorsInfo={name,specification,clinicAddress,mobilePhone,id};
     })).subscribe((res)=>{
       this.isLoaded=true;
         });
@@ -90,8 +91,13 @@ export class BookingComponent implements OnInit {
         'auth':localStorage.getItem('token')
       })
     };
-
-    // this.http.post(`http://localhost:3000/book/${this.timeId}`,httpOptions)
+    const bookingobj={username:this.bookingForm.get('name').value};
+    // const bookingobj={timeslotId:this.timeId,doctorMobilePhone:this.DoctorsInfo.mobilePhone,clinicAddress:this.DoctorsInfo.clinicAddress,Date:this.DoctorsTimeSlot.date,from:this.DoctorsTimeSlot.from,to:this.DoctorsTimeSlot.to,bookingPrice:this.DoctorsTimeSlot.bookingPrice,doctorId:this.DoctorsInfo.id,useremail:this.bookingForm.get('email').value,username:this.bookingForm.get('name').value,usermobile:this.bookingForm.get('mobile').value}
+console.log("fiiin",bookingobj);
+    this.http.post(`http://localhost:3000/book/${this.timeId}`,bookingobj,httpOptions).subscribe(value=>{
+      this.toastr.success('success', 'Booked Successfully');
+      this.router.navigate(['/']);
+    })
   }
 
   
