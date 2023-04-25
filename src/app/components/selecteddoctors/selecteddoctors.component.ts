@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import {map} from 'rxjs/operators';
@@ -30,7 +30,13 @@ export class SelecteddoctorsComponent implements OnInit {
     postAppointment(appointment:{department:string,doctors:string,address:string}){
       this.isLoaded=false;
       // http://localhost:3000/doctorTimeSlots/
-      this.http.get('http://localhost:3000/alldoctors').pipe(map((res)=>{
+      const httpOptions = {
+        headers: new HttpHeaders({      
+          'auth':localStorage.getItem('token')
+        })
+      };
+      this.http.get('http://localhost:3000/alldoctors',httpOptions).pipe(map((res)=>{
+        console.log("jjj");
         this.Doctorsinformations=[];
         for(const key in res)
         {

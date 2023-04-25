@@ -225,10 +225,12 @@ body {
     margin-left: 8px;
 }
 .bookingcard{
-    
         cursor: pointer;
         width: calc(960px);
         max-width: calc(-270px + 100vw);
+    }
+    .card{
+        cursor: pointer;
     }
     .booknowbtn {
         background: #1977cc;

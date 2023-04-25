@@ -7,6 +7,7 @@ import { AvailabletimesComponent } from './components/availabletimes/availableti
 import { SelecteddoctorsComponent } from './components/selecteddoctors/selecteddoctors.component';
 import { AppointmentComponent } from './components/appointment/appointment.component';
 import { AdminGuard } from './shared/guards/admin.guard';
+import { BookingComponent } from './components/booking/booking.component';
 
 const routes: Routes = [
   { path: 'home', component :HomeComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: 'bookingdoc',component:SelecteddoctorsComponent},
   {path: 'Availabletimes',component:AvailabletimesComponent},
   { path: 'appointment',component:AppointmentComponent },
+  { path: 'booking',component:BookingComponent},
   { path: 'admin',canActivate:[AdminGuard],  loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) }
 ];
 
