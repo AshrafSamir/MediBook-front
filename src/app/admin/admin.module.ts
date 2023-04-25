@@ -9,14 +9,15 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HttpLoaderFactory } from '../app.module';
-
-
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @NgModule({
   declarations: [
     AdminComponent,
     AddUserComponent,
-    ViewUsersComponent
+    ViewUsersComponent,
+    DashboardComponent,
   ],
   imports: [
     CommonModule,
@@ -24,6 +25,7 @@ import { HttpLoaderFactory } from '../app.module';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    NgxChartsModule,
     TranslateModule.forChild({
       loader: {
         provide: TranslateLoader,
@@ -31,6 +33,6 @@ import { HttpLoaderFactory } from '../app.module';
         deps: [HttpClient],
       },
     }),
-  ]
+  ],
 })
-export class AdminModule { }
+export class AdminModule {}
