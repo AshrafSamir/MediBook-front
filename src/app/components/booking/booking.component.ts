@@ -47,7 +47,7 @@ export class BookingComponent implements OnInit {
         'auth':localStorage.getItem('token')
       })
     };
-    this.http.get(`http://localhost:3000/getTimeSlot/${this.timeId}`,httpOptions).pipe(map((res:any)=>{
+    this.http.get(`http://localhost:3000/gettimeslot/${this.timeId}`).pipe(map((res:any)=>{
       console.log(res);
      
       let {from,to,fullyBooked,bookingPrice,doctorId,_id}=res;
@@ -60,29 +60,18 @@ export class BookingComponent implements OnInit {
       from=from.toLocaleTimeString();
       
       to=to.toLocaleTimeString();
+      const {name,specification,clinicAddress,mobilePhone}=res;
+    this.DoctorsInfo={name,specification,clinicAddress,mobilePhone};
       this.DoctorsTimeSlot={date,from,to,fullyBooked,bookingPrice};
-      this.getdoctorInfo(doctorId);
+      // this.getdoctorInfo(doctorId);
+
       return this.DoctorsTimeSlot;
     })).subscribe((res)=>{
       this.isLoaded=true;
         });
   }
 
-  getdoctorInfo(id)
-  {
-    const httpOptions = {
-      headers: new HttpHeaders({      
-        'auth':localStorage.getItem('token')
-      })
-    };
-    this.http.get(`http://localhost:3000/getdoctor/${id}`,httpOptions).pipe(map((res:any)=>{
-      console.log(res);
-      const {name,specification,clinicAddress,mobilePhone}=res;
-    this.DoctorsInfo={name,specification,clinicAddress,mobilePhone,id};
-    })).subscribe((res)=>{
-      this.isLoaded=true;
-        });
-  }
+
 
   senddata()
   {
