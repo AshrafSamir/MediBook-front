@@ -96,7 +96,7 @@ export class BookingComponent implements OnInit {
 console.log("fiiin",bookingobj);
     this.http.post(`http://localhost:3000/book/${this.timeId}`,bookingobj,httpOptions).subscribe(value=>{
       this.toastr.success('success', 'Booked Successfully');
-      this.router.navigate(['/']);
+      this.router.navigate(['/Thankyou']);
     })
   }
 

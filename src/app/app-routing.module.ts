@@ -8,7 +8,7 @@ import { SelecteddoctorsComponent } from './components/selecteddoctors/selectedd
 import { AppointmentComponent } from './components/appointment/appointment.component';
 import { AdminGuard } from './shared/guards/admin.guard';
 import { BookingComponent } from './components/booking/booking.component';
-
+import { ThankyouComponent } from './components/thankyou/thankyou.component';
 const routes: Routes = [
   { path: 'home', component :HomeComponent },
   { path: '',   redirectTo: 'home', pathMatch: 'full' },
@@ -20,6 +20,7 @@ const routes: Routes = [
   {path: 'Availabletimes',component:AvailabletimesComponent},
   { path: 'appointment',component:AppointmentComponent },
   { path: 'booking',component:BookingComponent},
+  { path: 'Thankyou',component:ThankyouComponent},
   { path: 'admin',canActivate:[AdminGuard],  loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) }
 ];
 

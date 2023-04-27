@@ -24,6 +24,7 @@ import { ContactusComponent } from './components/contactus/contactus.component';
 import { SelecteddoctorsComponent } from './components/selecteddoctors/selecteddoctors.component';
 import { AvailabletimesComponent } from './components/availabletimes/availabletimes.component';
 import { BookingComponent } from './components/booking/booking.component';
+import { ThankyouComponent } from './components/thankyou/thankyou.component';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -45,7 +46,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     ContactusComponent,
     SelecteddoctorsComponent,
     AvailabletimesComponent,
-    BookingComponent
+    BookingComponent,
+    ThankyouComponent
     
   ],
   imports: [
