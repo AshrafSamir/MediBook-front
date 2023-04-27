@@ -11,8 +11,8 @@ import { HomeComponent } from './components/home/home.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FooterComponent } from './components/footer/footer.component';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import {HttpClient} from '@angular/common/http'
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { HttpClient } from '@angular/common/http';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClientModule } from '@angular/common/http';
 import { GitstartedComponent } from './components/gitstarted/gitstarted.component';
 import { WhyusComponent } from './components/whyus/whyus.component';
@@ -29,7 +29,6 @@ import { ThankyouComponent } from './components/thankyou/thankyou.component';
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
 }
-
 
 @NgModule({
   declarations: [
@@ -68,6 +67,6 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     }),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

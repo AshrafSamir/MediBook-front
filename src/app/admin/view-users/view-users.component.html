@@ -1,0 +1,39 @@
+<div class="spinnerCustomStyle " *ngIf="!checkLoader">
+    <mat-spinner></mat-spinner>
+</div>
+
+<div class="container" *ngIf="checkLoader">
+    <div class="row d-flex justify-content-center my-2 py-3">
+        <h3 class="col-md-3">Filter Users:</h3>
+        <select class="form-select col-md-3 w-25" aria-label="Default select example" (change)="getData($event)"
+            [(ngModel)]="selected">
+            <option *ngFor="let type of types" [value]="type">{{type}}
+            </option>
+        </select>
+    </div>
+    <div class="row">
+        <table class="table ">
+            <thead>
+                <tr>
+                    <th scope="col ">Name</th>
+                    <th scope="col ">Email</th>
+                    <th scope="col ">Gender</th>
+                    <th scope="col ">Mobile Phone</th>
+                    <th scope="col ">Type</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of usersArray ">
+                    <th scope="row ">{{user.name}}</th>
+                    <td>{{user.email}}</td>
+                    <td>{{user.gender}}</td>
+                    <td>{{user.mobilePhone}}</td>
+                    <td>{{user.type}}</td>
+
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>

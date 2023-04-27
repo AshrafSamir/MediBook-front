@@ -42,7 +42,6 @@
             <a class="nav-link" routerLink="/patient">patient</a>
           </li> -->
 
-
 <!-- </ul>
         <div class="d-flex" role="search">
           <button *ngIf="type == 'doctor' || type == 'patient'" class="btn btn-outline-success" (click)="logout()" >{{'logout' | translate}}</button>
@@ -50,22 +49,28 @@
     </div>
 </div> -->
 
-<header id="header" class=" sticky-top">
-    <div class="container d-flex align-items-center">
+<header id="header" class="sticky-top">
+  <div class="container d-flex align-items-center">
+    <a routerLink="/" class="logo me-auto navbar-brand" style="color: #1977cc"
+      >Medilab</a
+    >
+    <nav id="navbar" class="navbar order-last order-lg-0">
+      <ul>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLinkActive="active"
+            aria-current="page"
+            [routerLinkActiveOptions]="{ exact: true }"
+            routerLink="/home"
+            >{{ "Home" | translate }}</a
+          >
+        </li>
 
+        <li><a class="nav-link scrollto" href="#about">About</a></li>
 
-        <a routerLink="/" class="logo me-auto navbar-brand " style="color: #1977cc;">Medilab</a>
-        <nav id="navbar" class="navbar order-last order-lg-0 ">
-            <ul>
-
-                <li class="nav-item">
-                    <a class="nav-link " routerLinkActive="active" aria-current="page" [routerLinkActiveOptions]="{exact: true}" routerLink="/home">{{'Home' | translate}}</a>
-                </li>
-
-                <li><a class="nav-link scrollto" href="#about">About</a></li>
-
-                <li><a class="nav-link scrollto" href="#doctors">Doctors</a></li>
-                <!-- <li class="dropdown"><a href="#">Dropdown<i class="fa-solid fa-caret-down"></i></a>
+        <li><a class="nav-link scrollto" href="#doctors">Doctors</a></li>
+        <!-- <li class="dropdown"><a href="#">Dropdown<i class="fa-solid fa-caret-down"></i></a>
                     <ul>
                         <li><a href="#">Drop Down 1</a></li>
                         <li class="dropdown"><a href="#">Deep Drop Down <i class="fa-solid fa-caret-left"></i></a>
@@ -83,34 +88,84 @@
                     </ul>
                 </li> -->
 
-                <li *ngIf="type == 'null'" class="nav-item">
-                    <a class="nav-link" routerLinkActive="active" routerLink="/auth/signin">{{'Sign In' | translate}}</a>
-                </li>
-                <li *ngIf="type == 'null'" class="nav-item">
-                    <a class="nav-link" routerLinkActive="active" routerLink="/auth/signup">{{'Sign Up' | translate}}</a>
-                </li>
+        <li *ngIf="type == 'null'" class="nav-item">
+          <a
+            class="nav-link"
+            routerLinkActive="active"
+            routerLink="/auth/signin"
+            >{{ "Sign In" | translate }}</a
+          >
+        </li>
+        <li *ngIf="type == 'null'" class="nav-item">
+          <a
+            class="nav-link"
+            routerLinkActive="active"
+            routerLink="/auth/signup"
+            >{{ "Sign Up" | translate }}</a
+          >
+        </li>
 
-                <li *ngIf="type == 'doctor' || type == 'patient'"  class="nav-item">
-                  <a class="nav-link" routerLinkActive="active" (click)="logout()" >{{'logout' | translate}}</a>
-              </li>
-              <li *ngIf="type == 'doctor'" class="nav-item">
-                <a class="nav-link" routerLinkActive="active" routerLink="/doctor/addslot">{{'AddSlots' | translate}}</a>
-              </li>
-              <li *ngIf="type == 'doctor'" class="nav-item">
-                <a class="nav-link" routerLinkActive="active" routerLink="/doctor/getslots">{{'YourSlot' | translate}}</a>
-              </li>
-              <li *ngIf="type == 'admin'" class="nav-item">
-                <a class="nav-link" routerLinkActive="active" routerLink="/admin">admin</a>
-              </li>
-              <li *ngIf="type == 'patient'" class="nav-item">
-                <a class="nav-link" routerLinkActive="active" >patient home</a>
-              </li>
-            </ul>
-            <i class="bi bi-list mobile-nav-toggle"></i>
-        </nav>
-        <!-- .navbar -->
+        <li
+          *ngIf="type == 'doctor' || type == 'patient' || type == 'admin'"
+          class="nav-item"
+        >
+          <a class="nav-link" routerLinkActive="active" (click)="logout()">{{
+            "logout" | translate
+          }}</a>
+        </li>
+        <li *ngIf="type == 'admin'" class="nav">
+          <a
+            class="nav-link"
+            routerLinkActive="active"
+            routerLink="/admin/dashboard"
+            >{{ "Dashboard" | translate }}</a
+          >
+        </li>
+        <li *ngIf="type == 'doctor'" class="nav-item">
+          <a
+            class="nav-link"
+            routerLinkActive="active"
+            routerLink="/doctor/addslot"
+            >{{ "AddSlots" | translate }}</a
+          >
+        </li>
+        <li *ngIf="type == 'doctor'" class="nav-item">
+          <a
+            class="nav-link"
+            routerLinkActive="active"
+            routerLink="/doctor/getslots"
+            >{{ "YourSlot" | translate }}</a
+          >
+        </li>
 
-        <a href="#appointment" class="appointment-btn scrollto"><span class="d-none d-md-inline">{{'Make an' | translate}}</span> {{'Appointment' | translate}}</a>
+        <li *ngIf="type == 'admin'" class="nav-item">
+          <a
+            class="nav-link"
+            routerLinkActive="active"
+            routerLink="/admin/addUser"
+            >Add User</a
+          >
+        </li>
+        <li *ngIf="type == 'admin'" class="nav-item">
+          <a
+            class="nav-link"
+            routerLinkActive="active"
+            routerLink="/admin/viewUsers"
+            >view Users</a
+          >
+        </li>
 
-    </div>
+        <li *ngIf="type == 'patient'" class="nav-item">
+          <a class="nav-link" routerLinkActive="active">patient home</a>
+        </li>
+      </ul>
+      <i class="bi bi-list mobile-nav-toggle"></i>
+    </nav>
+    <!-- .navbar -->
+
+    <a href="#appointment" class="appointment-btn scrollto"
+      ><span class="d-none d-md-inline">{{ "Make an" | translate }}</span>
+      {{ "Appointment" | translate }}</a
+    >
+  </div>
 </header>
