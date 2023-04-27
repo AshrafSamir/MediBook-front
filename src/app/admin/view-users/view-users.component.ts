@@ -13,22 +13,19 @@ usersArray:any[];
 types:string[]=['Users','Doctors','Clients','Admins']
 filteredData:string=this.selected.toLowerCase()
 
+checkLoader:boolean=false
 
   constructor(private _adminService:AdminserviceService) { }
 
   ngOnInit (): void {
     this.getFilteredData()
   }
-  
   getData(e:any) {
     this.filteredData = e.target.value.toLowerCase()
+    this.checkLoader = false 
     this.getFilteredData()
-  
   }
-
-
    getFilteredData(){
-  
     console.log('before',this.filteredData)
     this._adminService.getUsers(this.filteredData).subscribe((users) =>{
       if(this.filteredData=='doctors'){
@@ -36,6 +33,7 @@ filteredData:string=this.selected.toLowerCase()
       this.usersArray= users[this.filteredData]
       }
       this.usersArray= users[this.filteredData]
+        this.checkLoader = true 
     }
     )
   }
