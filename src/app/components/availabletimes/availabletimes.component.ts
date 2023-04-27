@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute,Router } from '@angular/router';
 import {map} from 'rxjs/operators';
+import { AuthService } from 'src/app/shared/services/auth.service';
 @Component({
   selector: 'app-availabletimes',
   templateUrl: './availabletimes.component.html',
@@ -14,10 +15,18 @@ export class AvailabletimesComponent implements OnInit {
     year:any;
   doctorId:any;
   DoctorsTimeSlots:any;
-  constructor(private route:ActivatedRoute , private http:HttpClient,private router:Router) { }
-
+  constructor(private route:ActivatedRoute , private http:HttpClient,private router:Router , private _auth : AuthService) { }
+  type:string = ''
   ngOnInit(): void {
     this.isLoaded=false;
+
+    this._auth.userType.subscribe((res)=>{
+      
+      this.type = res ;
+      console.log(this.type);      
+    })
+
+
     this.route.queryParams.subscribe(params =>{
       this.doctorId=params['id'];
       this.getAllTimeSlots();
@@ -49,7 +58,16 @@ export class AvailabletimesComponent implements OnInit {
 
   book(id:any)
   {
-this.router.navigate(['/booking'],{queryParams:{id}});
+    if(this.type == 'null')
+    {
+      this.router.navigate(['auth/signin']);
+
+    }
+    else
+    {
+      this.router.navigate(['/booking'],{queryParams:{id}});
+
+    }
    
   }
 }

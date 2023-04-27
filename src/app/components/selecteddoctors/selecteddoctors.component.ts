@@ -35,8 +35,7 @@ export class SelecteddoctorsComponent implements OnInit {
           'auth':localStorage.getItem('token')
         })
       };
-      this.http.get('http://localhost:3000/alldoctors',httpOptions).pipe(map((res)=>{
-        console.log("jjj");
+      this.http.get('http://localhost:3000/alldoctors').pipe(map((res)=>{
         this.Doctorsinformations=[];
         for(const key in res)
         {
@@ -59,7 +58,7 @@ export class SelecteddoctorsComponent implements OnInit {
           }
           
         }
-        return this.Doctorsinformations;
+        return this.Doctorsinformations;  
       })).subscribe((res)=>{
         this.isLoaded=true;
           });
