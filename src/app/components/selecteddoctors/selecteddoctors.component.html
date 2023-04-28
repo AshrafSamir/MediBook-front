@@ -1,9 +1,12 @@
 
-<section id="doctors" class="doctors" *ngIf="isLoaded" style="background-color: rgba(255, 255, 255, 0.79);">
-    <app-appointment></app-appointment>
-<div *ngIf="!isLoaded">Loading..
+<div class="spinnerCustomStyle " *ngIf="!isLoaded">
+    <mat-spinner  ></mat-spinner>
 </div>
-<div *ngIf="isLoaded" class="m-5 total">{{Doctorsinformations.length}} Total results
+
+<section *ngIf="isLoaded" id="doctors" class="doctors"  style="background-color: rgba(255, 255, 255, 0.79);">
+    <app-appointment></app-appointment>
+
+<div class="m-5 total">{{Doctorsinformations.length}} Total results
 </div>
 <div class="row my-4   justify-content-center" *ngFor="let doc of Doctorsinformations">
 
