@@ -17,8 +17,12 @@ export class AllappointmentsComponent implements OnInit ,AfterViewInit {
   
     ngOnInit(): void {
       this.auth.userdata.subscribe((value:any)=>{
-        this.userId = value._id;
+        
+        this.userId=value._id
+        
+        
     })
+
         this.getuserBookingsInfo();
     }
   
@@ -33,6 +37,7 @@ export class AllappointmentsComponent implements OnInit ,AfterViewInit {
   }
     getuserBookingsInfo()
     {
+      if(!this.userId)this.router.navigate(['auth/signin']);
       let bookingItem;
         this.http.get(`http://localhost:3000/userbookings/${this.userId}`).pipe(map((res)=>{
         for(let key in res)
