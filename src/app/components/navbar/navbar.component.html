@@ -99,6 +99,22 @@
             >{{ "Dashboard" | translate }}</a
           >
         </li>
+        <li *ngIf="type == 'doctor'" class="nav">
+          <a
+            class="nav-link"
+            routerLinkActive="active"
+            routerLink="/doctor/dashboard"
+            >{{ "Dashboard" | translate }}</a
+          >
+        </li>
+        <li *ngIf="type == 'patient'" class="nav">
+          <a
+            class="nav-link"
+            routerLinkActive="active"
+            routerLink="/patient/dashboard"
+            >{{ "Dashboard" | translate }}</a
+          >
+        </li>
         <li *ngIf="type == 'doctor'" class="nav-item">
           <a
             class="nav-link"

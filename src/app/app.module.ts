@@ -26,6 +26,8 @@ import { AvailabletimesComponent } from './components/availabletimes/availableti
 import { BookingComponent } from './components/booking/booking.component';
 import { ThankyouComponent } from './components/thankyou/thankyou.component';
 import { AllappointmentsComponent } from './components/allappointments/allappointments.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -60,6 +62,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     ToastrModule.forRoot(),
     ReactiveFormsModule,
     FormsModule,
+    NgxChartsModule,
+    MatProgressSpinnerModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
