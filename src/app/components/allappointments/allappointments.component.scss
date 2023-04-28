@@ -1,44 +1,4 @@
-
-.reshead {
-    background-color: rgb(0, 112, 205);
-    color: rgb(255, 255, 255);
-    text-align: center;
-    line-height: 31px;
-    margin: 0px;
-    border-radius: 10px 10px 0px 0px;
-    font-size: 14.6px;
-  }
-  .resform {
-    display: flex;
-    flex-direction: column;
-    -moz-box-pack: center;
-    justify-content: center;
-    -moz-box-align: center;
-    align-items: center;
-    background-color: white;
-    padding: 40px 55px 0px;
-    border-radius: 10px;
-  }
-  .personicon {
-    // font-size: 20px;
-    position: absolute;
-    // top: 200px;
-    z-index: 1;
-  }
-  .phoneicon
-  {
-    font-size: 20px;
-    position: absolute;
-    top: 52px;
-    z-index: 1;
-  }
-  .emailicon
-  {
-    font-size: 20px;
-    position: absolute;
-    z-index: 1;
-  }
-  .timesection{
+.timesection{
     padding: 15px 15px 15px 45px;
 background-color: rgb(245, 245, 245);
 margin-top: 40px;
@@ -53,6 +13,7 @@ line-height: 24px;
   }
   .timesection h5 span
   {
+    padding: 0px;
     color: rgb(136, 136, 136);
 font-size: 16px;
 font-weight: 500;
@@ -81,6 +42,15 @@ margin: 10px 0px 35px;
     padding-left: 30px;
     border-color: inherit;
   }
-//   .container{
-//     width: 50%;
+//   .total{
+//     margin:6px 130px;
 //   }
+  p{
+    padding: 2px;
+  }
+  .card{
+transition: ease-in-out 0.3s;
+  }
+  .card:hover{
+    transform: scale(1.1);
+  }
