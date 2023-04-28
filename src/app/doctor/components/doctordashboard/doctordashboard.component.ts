@@ -8,9 +8,24 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class DoctordashboardComponent implements OnInit {
 
-  productSales:any[]
+  productSales:any[]=[ {
+    "name": "General Medicine",
+    "value": 3
+  }, {
+    "name": "Occupational Therapy",
+    "value": 5
+  }, {
+    "name": "Radiology",
+    "value": 7
+  }, {
+    "name": "Laboratory",
+    "value": 9
+  }, {
+    "name": "Speech Therapy",
+    "value": 10
+  }]
   productSalesMulti: any[]=[{
-    "name": "book",
+    "name": "General Medicine",
     "series": [
       {
         "name": "January",
@@ -24,7 +39,7 @@ export class DoctordashboardComponent implements OnInit {
       }
     ]
   }, {
-    "name": "graphic card",
+    "name": "Occupational Therapy",
     "series": [
       {
         "name": "January",
@@ -38,7 +53,7 @@ export class DoctordashboardComponent implements OnInit {
       }
     ]
   }, {
-    "name": "desk",
+    "name": "Radiology",
     "series": [
       {
         "name": "January",
@@ -52,7 +67,7 @@ export class DoctordashboardComponent implements OnInit {
       }
     ]
   }, {
-    "name": "laptop",
+    "name": "Laboratory",
     "series": [
       {
         "name": "January",
@@ -66,7 +81,7 @@ export class DoctordashboardComponent implements OnInit {
       }
     ]
   }, {
-    "name": "monitor",
+    "name": "Speech Therapy",
     "series": [
       {
         "name": "January",
@@ -79,6 +94,7 @@ export class DoctordashboardComponent implements OnInit {
         "value": 133
       }
     ]
+    
   }
   
 ]
@@ -95,8 +111,8 @@ export class DoctordashboardComponent implements OnInit {
   xAxis: boolean = true;
   yAxis: boolean = true;
 
-  yAxisLabel: string = 'Reservations';
-  xAxisLabel: string = 'Money';
+  yAxisLabel: string = 'Money Earned';
+  xAxisLabel: string = 'Month';
   showXAxisLabel: boolean = true;
   showYAxisLabel: boolean = true;
 
@@ -133,5 +149,23 @@ export class DoctordashboardComponent implements OnInit {
   constructor() { Object.assign(this, this.productSales ); }
   ngOnInit(): void {
   
+  }
+
+
+
+  showLegend: boolean = true;
+  showLabels: boolean = true;
+  isDoughnut: boolean = true;
+
+  onActivate(data): void {
+    console.log('Activate', JSON.parse(JSON.stringify(data)));
+  }
+
+  onDeactivate(data): void {
+    console.log('Deactivate', JSON.parse(JSON.stringify(data)));
+  }
+
+  onSelect(data): void {
+    console.log('Item clicked', JSON.parse(JSON.stringify(data)));
   }
 }

@@ -7,9 +7,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PatientdashboardComponent implements OnInit {
 
-  productSales:any[]
+  docNums:any[]=[ {
+    "name": "ahmed16",
+    "value": 25
+  }, {
+    "name": "7oda",
+    "value": 5
+  }, {
+    "name": "ashraf",
+    "value": 7
+  }, {
+    "name": "fayrouz",
+    "value": 9
+  }, {
+    "name": "menna",
+    "value": 10
+  }]
+  productSales:any[]=[ {
+    "name": "General Medicine",
+    "value": 3
+  }, {
+    "name": "Occupational Therapy",
+    "value": 5
+  }, {
+    "name": "Radiology",
+    "value": 7
+  }, {
+    "name": "Laboratory",
+    "value": 9
+  }, {
+    "name": "Speech Therapy",
+    "value": 10
+  }]
   productSalesMulti: any[]=[{
-    "name": "book",
+    "name": "General Medicine",
     "series": [
       {
         "name": "January",
@@ -23,7 +54,7 @@ export class PatientdashboardComponent implements OnInit {
       }
     ]
   }, {
-    "name": "graphic card",
+    "name": "Occupational Therapy",
     "series": [
       {
         "name": "January",
@@ -37,7 +68,7 @@ export class PatientdashboardComponent implements OnInit {
       }
     ]
   }, {
-    "name": "desk",
+    "name": "Radiology",
     "series": [
       {
         "name": "January",
@@ -51,7 +82,7 @@ export class PatientdashboardComponent implements OnInit {
       }
     ]
   }, {
-    "name": "laptop",
+    "name": "Laboratory",
     "series": [
       {
         "name": "January",
@@ -65,7 +96,7 @@ export class PatientdashboardComponent implements OnInit {
       }
     ]
   }, {
-    "name": "monitor",
+    "name": "Speech Therapy",
     "series": [
       {
         "name": "January",
@@ -78,24 +109,26 @@ export class PatientdashboardComponent implements OnInit {
         "value": 133
       }
     ]
+    
   }
   
 ]
 //ww:number=700
+ cardColor: string = '#deaff0';
 
   view: [number , number] = [600, 370];
 
   // options
   legendTitle: string = 'Reservations';
   legendTitleMulti: string = 'Money';
-  legendPosition: any = 'below'; // ['right', 'below']
+  legendPosition: any = 'below'; // ['right', 'below'] 
   legend: boolean = true;
 
   xAxis: boolean = true;
   yAxis: boolean = true;
 
-  yAxisLabel: string = 'Reservations';
-  xAxisLabel: string = 'Money';
+  yAxisLabel: string = 'Money Paid';
+  xAxisLabel: string = 'Month';
   showXAxisLabel: boolean = true;
   showYAxisLabel: boolean = true;
 
@@ -130,8 +163,28 @@ export class PatientdashboardComponent implements OnInit {
   timeline: boolean = true;
 
   constructor() { Object.assign(this, this.productSales ); }
-
   ngOnInit(): void {
+  
   }
 
+
+
+  showLegend: boolean = true;
+  showLabels: boolean = true;
+  isDoughnut: boolean = true;
+
+  onActivate(data): void {
+    console.log('Activate', JSON.parse(JSON.stringify(data)));
+  }
+
+  onDeactivate(data): void {
+    console.log('Deactivate', JSON.parse(JSON.stringify(data)));
+  }
+
+  onSelect(data): void {
+    console.log('Item clicked', JSON.parse(JSON.stringify(data)));
+  }
+  colorScheme2:any = {
+    domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5']
+  };
 }
