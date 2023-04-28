@@ -17,12 +17,15 @@ import { MatCardModule } from '@angular/material/card';
 import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { DoctordashboardComponent } from './components/doctordashboard/doctordashboard.component';
 
 @NgModule({
   declarations: [
     DoctorComponent,
     AddslotComponent,
-    GetslotsComponent
+    GetslotsComponent,
+    DoctordashboardComponent
   ],
   imports: [
     CommonModule,
@@ -31,6 +34,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     ToastrModule.forRoot(),
     ReactiveFormsModule,
     FormsModule,
+    NgxChartsModule,
     TranslateModule.forChild({
       loader: {
         provide: TranslateLoader,
@@ -46,7 +50,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatNativeDateModule,
     // MatTimepickerModule,
     NgxMatTimepickerModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
   ]
 })
 export class DoctorModule { }

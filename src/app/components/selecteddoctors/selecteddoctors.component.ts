@@ -15,6 +15,7 @@ export class SelecteddoctorsComponent implements OnInit {
   doctors:string;
   doctorid:any;
   Doctorsinformations=[];
+  checkLoader:boolean=false
     constructor(private route:ActivatedRoute , private http:HttpClient,private router:Router) { }
   
     ngOnInit(): void {

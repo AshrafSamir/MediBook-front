@@ -1,0 +1,52 @@
+
+    <div class="container">
+    <div class="row justify-content-center ">
+        <section id="doctors" class="doctors col-10 "  >
+            <div  class=" total col-12">{{bookingInfo.length}} Available appointments
+            </div>
+            <div class="row my-4   justify-content-center" >
+                
+                <div class="member card col-9 my-3 " *ngFor="let Bookingitem of bookingInfo" >
+                    <div class=" d-flex align-items-start " >
+                    <div class="pic"><img src="assets/img/doctors/doctors-1.jpg" class="img-fluid" alt=""></div>
+                    <div class="member-info">
+                        <h4>{{Bookingitem.name}}</h4>
+                        <span>Doctor specialized in {{Bookingitem.specification}}</span>
+                        <p class="bi bi-geo-alt">{{Bookingitem.clinicAddress}}</p>
+                        <p class="bi bi-cash">{{Bookingitem.fees}}EGP</p>
+                        
+                        <div >
+                            <p class="bi bi-telephone">{{Bookingitem.mobilePhone}}</p>
+                           
+                        </div>
+                        
+                    </div>
+                   
+                </div>
+                <div class="timesection ">
+                    <h5>{{Bookingitem.date}}</h5>
+                </div>
+                </div>
+        </div>
+            <!-- <div class="row  card-slider  justify-content-center" >
+                <div class="member card col-10 col-md-8" style="padding: 30px 0px ;">
+                    <div class=" row align-items-start " >
+                    <div class="member-info  col-8">
+                        <h4>Clinic Dr {{Bookingitem.name}}</h4>
+                        <p class="bi bi-geo-alt">{{Bookingitem.clinicAddress}}</p>
+                        <div >
+                            <p class="bi bi-telephone">{{Bookingitem.mobilePhone}}</p>
+                        </div>
+                        <div >
+                            <p class="bi bi-cash">{{Bookingitem.fees}}EGP</p>
+                        </div>
+                    </div>
+                </div>
+                    <div class="timesection">
+                        <h5>{{Bookingitem.date}}</h5>
+                    </div>
+                </div>
+        </div> -->
+        </section>
+        </div>
+    </div>

@@ -88,36 +88,30 @@
                     </ul>
                 </li> -->
 
-        <li *ngIf="type == 'null'" class="nav-item">
-          <a
-            class="nav-link"
-            routerLinkActive="active"
-            routerLink="/auth/signin"
-            >{{ "Sign In" | translate }}</a
-          >
-        </li>
-        <li *ngIf="type == 'null'" class="nav-item">
-          <a
-            class="nav-link"
-            routerLinkActive="active"
-            routerLink="/auth/signup"
-            >{{ "Sign Up" | translate }}</a
-          >
-        </li>
+        
 
-        <li
-          *ngIf="type == 'doctor' || type == 'patient' || type == 'admin'"
-          class="nav-item"
-        >
-          <a class="nav-link" routerLinkActive="active" (click)="logout()">{{
-            "logout" | translate
-          }}</a>
-        </li>
+        
         <li *ngIf="type == 'admin'" class="nav">
           <a
             class="nav-link"
             routerLinkActive="active"
             routerLink="/admin/dashboard"
+            >{{ "Dashboard" | translate }}</a
+          >
+        </li>
+        <li *ngIf="type == 'doctor'" class="nav">
+          <a
+            class="nav-link"
+            routerLinkActive="active"
+            routerLink="/doctor/dashboard"
+            >{{ "Dashboard" | translate }}</a
+          >
+        </li>
+        <li *ngIf="type == 'patient'" class="nav">
+          <a
+            class="nav-link"
+            routerLinkActive="active"
+            routerLink="/patient/dashboard"
             >{{ "Dashboard" | translate }}</a
           >
         </li>
@@ -154,7 +148,38 @@
             >view Users</a
           >
         </li>
-
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLinkActive="active"
+            routerLink="/All-appointments"
+            >All Appointments</a
+          >
+        </li>
+        <li
+        *ngIf="type == 'doctor' || type == 'patient' || type == 'admin'"
+        class="nav-item"
+      >
+        <a class="nav-link" routerLinkActive="active" (click)="logout()">{{
+          "logout" | translate
+        }}</a>
+      </li>
+      <li *ngIf="type == 'null'" class="nav-item">
+        <a
+          class="nav-link"
+          routerLinkActive="active"
+          routerLink="/auth/signin"
+          >{{ "Sign In" | translate }}</a
+        >
+      </li>
+      <li *ngIf="type == 'null'" class="nav-item">
+        <a
+          class="nav-link"
+          routerLinkActive="active"
+          routerLink="/auth/signup"
+          >{{ "Sign Up" | translate }}</a
+        >
+      </li>
         <li *ngIf="type == 'patient'" class="nav-item">
           <a class="nav-link" routerLinkActive="active">patient home</a>
         </li>

@@ -1,7 +1,7 @@
-<section id="doctors" class="doctors" *ngIf="isLoaded" style="background-color: rgba(255, 255, 255, 0.79);">
-<div *ngIf="!isLoaded">Loading..
+<div class="spinnerCustomStyle " *ngIf="!isLoaded">
+    <mat-spinner  ></mat-spinner>
 </div>
-
+<section id="doctors" class="doctors" *ngIf="isLoaded" style="background-color: rgba(255, 255, 255, 0.79);">
 <div class="row my-4   justify-content-center" *ngFor="let doc of DoctorsTimeSlots">
 
         <div class="member card col-md-8" >
@@ -16,13 +16,12 @@
                 <h4 style="color: rgba(1, 1, 1, 0.57);">No Available Appointment</h4>
             </div>
             <button class="btn btn-danger" [disabled]="doc.fullyBooked" (click)="book(doc._id)">Book</button>
+        </div>      
         </div>
-      
             
         </div>
         
     
 
-</div>
 </section>
 
