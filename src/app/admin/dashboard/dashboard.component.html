@@ -134,7 +134,7 @@
               </div>
               <div class="col-md-8 mt-2">
                 <p class="h6 d-bloc">{{doctor.name }}</p>
-                <i class="bi bi-star-fill d-block text-warning"></i>
+                <i class="bi bi-star-fill  text-warning me-1" *ngFor="let star of doctor.ratesValues"></i>
               </div>
             <!-- <ng-template #noDoctorsBlock>
               <div class="col-md-12">
