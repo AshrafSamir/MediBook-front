@@ -25,6 +25,7 @@ import { SelecteddoctorsComponent } from './components/selecteddoctors/selectedd
 import { AvailabletimesComponent } from './components/availabletimes/availabletimes.component';
 import { BookingComponent } from './components/booking/booking.component';
 import { ThankyouComponent } from './components/thankyou/thankyou.component';
+import { AllappointmentsComponent } from './components/allappointments/allappointments.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
@@ -48,7 +49,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     SelecteddoctorsComponent,
     AvailabletimesComponent,
     BookingComponent,
-    ThankyouComponent
+    ThankyouComponent,
+    AllappointmentsComponent
     
   ],
   imports: [

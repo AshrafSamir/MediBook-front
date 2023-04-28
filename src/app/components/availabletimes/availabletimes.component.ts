@@ -22,8 +22,7 @@ export class AvailabletimesComponent implements OnInit {
 
     this._auth.userType.subscribe((res)=>{
       
-      this.type = res ;
-      console.log(this.type);      
+      this.type = res ;    
     })
 
 
