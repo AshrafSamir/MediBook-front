@@ -9,35 +9,27 @@ import Swiper from 'swiper';
   templateUrl: './allappointments.component.html',
   styleUrls: ['./allappointments.component.scss']
 })
-export class AllappointmentsComponent implements OnInit ,AfterViewInit {
+export class AllappointmentsComponent implements OnInit  {
 
-  userId:any;
+  userId:any='null';
   bookingInfo:any=[];
     constructor(private route:ActivatedRoute , private http:HttpClient,private router:Router,private auth:AuthService) { }
   
-    ngOnInit(): void {
-      this.auth.userdata.subscribe((value:any)=>{
-        
+    async ngOnInit(): Promise<void> {
+     await this.auth.userdata.subscribe((value:any)=>{
         this.userId=value._id
-        
-        
-    })
-
         this.getuserBookingsInfo();
+    })
+    
+        
     }
   
-  ngAfterViewInit(): void {
-    const swiper = new Swiper('.swiper', {
-     loop:true,
-     slidesPerView:3,
-     spaceBetween:30,
-     centeredSlides:true
-    });
-
-  }
+  
     getuserBookingsInfo()
     {
-      if(!this.userId)this.router.navigate(['auth/signin']);
+      if(!this.userId){
+        this.router.navigate(['auth/signin'])
+      };
       let bookingItem;
         this.http.get(`http://localhost:3000/userbookings/${this.userId}`).pipe(map((res)=>{
         for(let key in res)
