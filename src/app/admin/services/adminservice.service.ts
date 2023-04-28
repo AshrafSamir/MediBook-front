@@ -13,4 +13,10 @@ export class AdminserviceService {
     if (type) return this._httpClient.get(`${environment.ApiUrl}/all${type}`);
     else return this._httpClient.get(`${environment.ApiUrl}/allusers`);
   }
+  getUsersCount():Observable<any>{
+    return this._httpClient.get(`${environment.ApiUrl}/usercount`);
+    }
+  getDoctorsMostRated():Observable<any>{
+    return this._httpClient.get(`${environment.ApiUrl}/mostrated`);
+  }
 }

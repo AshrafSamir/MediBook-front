@@ -2,21 +2,44 @@ import { Component, OnInit } from '@angular/core';
 // import { single } from './data';
 import { AdminserviceService } from '../services/adminservice.service';
 import { Observable } from 'rxjs/internal/Observable';
-
+import { Color, ScaleType } from '@swimlane/ngx-charts';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+    this._adminService.getUsersCount().subscribe((res)=>{
+      // console.log(res);
+      this.usersCount=res;
+      // console.log(this.usersCount.numberOfClients);
+    })
+    this._adminService.getDoctorsMostRated().subscribe((res)=>{
+      console.log(res.doctors[0]);
+      
+      this.doctorsMostRated=res.doctors;
+      console.log(this.doctorsMostRated);
+      
+    })
+    
+  }
+  usersCount:any;
+  doctorsMostRated:any[];
   single: any[];
   view: [number, number] = [700, 400];
-
-  colorScheme = {
-    domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5'],
+  gradient: boolean = true;
+  // colorScheme = {
+  //   domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5'],
+  // };
+  colorScheme: Color = { 
+    domain: ['#5691e4', '#A10A28', '#5AA454'], 
+    group: ScaleType.Ordinal, 
+    selectable: true, 
+    name: 'Customer Usage', 
   };
-  cardColor: string = '#232837';
+  cardColor: string = 'rgba(0, 0, 0,1)';
 
   constructor(private _adminService: AdminserviceService) {
     _adminService.getUsers('').subscribe((data: any) => {
@@ -42,6 +65,6 @@ export class DashboardComponent implements OnInit {
   }
 
   onSelect(event) {
-    console.log(event);
+    // console.log(event);
   }
 }

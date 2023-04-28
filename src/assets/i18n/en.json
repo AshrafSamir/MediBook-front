@@ -123,6 +123,7 @@
 "typeisrequired":"type is required",
 "name":"name",
 "mobilePhone":"mobile phone",
-"type":"type"
+"type":"type",
+"Total Users":"Total Users"
 
 }

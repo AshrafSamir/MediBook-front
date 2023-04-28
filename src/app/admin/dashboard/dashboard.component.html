@@ -1,4 +1,188 @@
-<div class="w-50 mx-auto">
+<div class="container my-5  py-2 px-4 bg-light">
+  <div class="row  py-3 mt-5 icon-container">
+    <div class="col-md-12  d-flex justify-content-center">
+      <div class="row d-flex justify-content-center" >
+
+        <div class=" col-lg-2 col-md-3 col-sm-4 ">
+          <div class="row d-flex justify-content-start">
+            <div class="col-lg-4 col-md-6 d-flex justify-content-start align-items-center">
+              <span class="bi bi-people p-2 h4 bg-warning rounded-circle text-center text-light">
+              </span>
+            </div>
+            <div class="col-md-8 d-flex align-items-center">
+              <div class="row">
+                <div class="col-md-12 ">
+                  <p class="text-muted "> {{ "Total Users" | translate }}</p>
+                </div>
+                <div class="col-md-12 ">
+                  <p class="fw-bold h4"> {{usersCount?.numberOfUsers}}</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="col-lg-2 col-md-3 col-sm-4 ">
+          <div class="row d-flex justify-content-start">
+            <div class="col-lg-4 col-md-6 d-flex justify-content-start align-items-center">
+              <span class="bi bi-person-lock p-2 h4 bg-info rounded-circle text-center text-light">
+              </span>
+            </div>
+            <div class="col-md-8 d-flex align-items-center">
+              <div class="row">
+                <div class="col-md-12 ">
+                  <p class="text-muted "> Total Admins</p>
+                </div>
+                <div class="col-md-12 ">
+                  <p class="fw-bold h4"> {{usersCount?.numberOfAdmins}}</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="col-lg-2 col-md-3 col-sm-4 ">
+          <div class="row d-flex justify-content-start">
+            <div class="col-lg-4 col-md-6 d-flex justify-content-start align-items-center">
+              <span class="bi bi-person-plus p-2 h4 bg-success rounded-circle text-center text-light">
+              </span>
+            </div>
+            <div class="col-md-8 d-flex align-items-center">
+              <div class="row">
+                <div class="col-md-12 ">
+                  <p class="text-muted  "> Total Doctors</p>
+                </div>
+                <div class="col-md-12 ">
+                  <p class="fw-bold h4"> {{usersCount?.numberOfDoctors}}</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="col-lg-2 col-md-3 col-sm-4 ">
+          <div class="row d-flex justify-content-start">
+            <div class="col-lg-4 col-md-6 d-flex justify-content-start align-items-center">
+              <span class="bi bi-people p-2 h4 bg-danger rounded-circle text-center text-light">
+              </span>
+            </div>
+            <div class="col-md-8 d-flex align-items-center">
+              <div class="row">
+                <div class="col-md-12 ">
+                  <p class="text-muted "> Total Patients</p>
+                </div>
+                <div class="col-md-12 ">
+                  <p class="fw-bold h4"> {{usersCount?.numberOfClients}}</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+        
+        <div class="col-lg-2 col-md-3 col-sm-4 ">
+          <div class="row d-flex justify-content-start">
+            <div class="col-lg-4 col-md-6 d-flex justify-content-start align-items-center">
+              <span class="bi bi-calendar-check-fill p-2 h4 bg-primary rounded-circle text-center text-light">
+              </span>
+            </div>
+            <div class="col-md-8 d-flex align-items-center">
+              <div class="row">
+                <div class="col-md-12 ">
+                  <p class="text-muted "> Total Bookings</p>
+                </div>
+                <div class="col-md-12 ">
+                  <p class="fw-bold h4"> 2040</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+               
+
+      </div>
+    </div>
+
+  </div>
+  <div class="row mt-4 ">
+    <div class="col-md-8"></div>
+    <div class="col-md-4">
+      <div class="row reviews-container">
+        <div class="col-md-6 text-start">
+          <p class="h5 fw-bolder mt-2">
+            Reviews
+          </p>
+        </div>
+        <div class="col-md-6 text-end ">
+          <p class="text-decoration-underline mt-2">
+            view All
+          </p>
+        </div>
+        <div class="col-md-12" *ngIf="doctorsMostRated ;else noDoctorsPart">
+          <div class="row " *ngFor="let doctor of doctorsMostRated; index as i">
+              <div class="col-md-4  d-flex justify-content-end ">
+                <img [src]="doctor.imageUrl" class="w-100 h-50  img-rounded" alt="">
+              </div>
+              <div class="col-md-8 mt-2">
+                <p class="h6 d-bloc">{{doctor.name }}</p>
+                <i class="bi bi-star-fill d-block text-warning"></i>
+              </div>
+            <!-- <ng-template #noDoctorsBlock>
+              <div class="col-md-12">
+                Loading
+              </div>
+            </ng-template> -->
+          </div>
+        </div>
+        <ng-template #noDoctorsPart>
+          <div class="col-md-12">
+            Loading
+          </div>
+        </ng-template>
+       
+      </div>
+    </div>
+  </div>
+  <!-- <div class="row mt-3 mb-4 d-flex px-2 justify-content-center">
+    <div class="col-md-12">
+      <p class="h3 text-center "> <span class="border-bottom border-3 text-dark border-primary rounded">User distribution</span></p>
+    </div>
+     <div class="col-md-4 graph-container me-4">
+      <ngx-charts-advanced-pie-chart class="my-2 bg-transparent w-100 overflow-none" [results]="single" [scheme]="colorScheme" 
+      [gradient]="gradient" (select)="onSelect($event)" >
+      </ngx-charts-advanced-pie-chart>    
+    </div> 
+    <div class="col-md-4 graph-container">
+      <div class="w-100">
+
+        <ngx-charts-number-card
+        
+        [results]="single"
+        [scheme]="colorScheme"
+        [cardColor]="cardColor"
+        (select)="onSelect($event)"
+      >
+      </ngx-charts-number-card>
+      </div>
+      
+    </div>
+
+  </div> -->
+</div>
+
+
+
+
+<!-- <div class="w-50 mx-auto">
   <ngx-charts-number-card
     [view]="view"
     [results]="single"
@@ -6,4 +190,4 @@
     (select)="onSelect($event)"
   >
   </ngx-charts-number-card>
-</div>
+</div> -->
