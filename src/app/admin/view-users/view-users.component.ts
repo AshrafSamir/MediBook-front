@@ -35,7 +35,7 @@ productSales = [
     "value": 705
   }
 ];
-view: [number, number] = [500, 300];
+view: [number, number] = [800, 400];
 cardColor: string = '#232837';
 // colorScheme:{domain:any} = {
 //   domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
