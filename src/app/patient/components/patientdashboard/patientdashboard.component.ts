@@ -23,7 +23,7 @@ export class PatientdashboardComponent implements OnInit {
     "name": "menna",
     "value": 10
   }]
-  productSales:any[]=[ {
+  depReservations:any[]=[ {
     "name": "General Medicine",
     "value": 3
   }, {
@@ -39,7 +39,7 @@ export class PatientdashboardComponent implements OnInit {
     "name": "Speech Therapy",
     "value": 10
   }]
-  productSalesMulti: any[]=[{
+  depEarned: any[]=[{
     "name": "General Medicine",
     "series": [
       {
@@ -108,10 +108,8 @@ export class PatientdashboardComponent implements OnInit {
         "name": "March",
         "value": 133
       }
-    ]
-    
+    ] 
   }
-  
 ]
 //ww:number=700
  cardColor: string = '#deaff0';
@@ -162,7 +160,7 @@ export class PatientdashboardComponent implements OnInit {
   roundEdges: boolean = false;
   timeline: boolean = true;
 
-  constructor() { Object.assign(this, this.productSales ); }
+  constructor() { Object.assign(this, this.depReservations ); }
   ngOnInit(): void {
   
   }
