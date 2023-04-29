@@ -13,7 +13,6 @@ export class SelecteddoctorsComponent implements OnInit {
   address:string;
   isLoaded:boolean;
   doctors:string;
-  doctorid:any;
   Doctorsinformations=[];
   checkLoader:boolean=false
     constructor(private route:ActivatedRoute , private http:HttpClient,private router:Router) { }
@@ -61,6 +60,7 @@ export class SelecteddoctorsComponent implements OnInit {
         }
         return this.Doctorsinformations;  
       })).subscribe((res)=>{
+        console.log("all",res);
         this.isLoaded=true;
           });
         }
@@ -68,10 +68,12 @@ export class SelecteddoctorsComponent implements OnInit {
 
         showTimeSlots(id:any)
         {
-this.doctorid=id;
-this.router.navigate(['/Availabletimes'],{queryParams:{id:this.doctorid}});
+this.router.navigate(['/Availabletimes'],{queryParams:{id}});
    
         }
-
+        goToDoctorDetails(id)
+        {
+          this.router.navigate(['/about-doctor'],{queryParams:{id}});
+        }
 }
 
