@@ -11,36 +11,36 @@
         </div>
             <div class="card-body">
                 <span class="bi bi-envelope icon" >
-                    <span class="card-parag">We notified Clinic Prof Dr {{bookingInfo.name}} of your booking</span>
+                    <span class="card-parag">We notified Clinic Prof Dr {{bookingInfo?.name}} of your booking</span>
             </span>
             <br>
-            <span class="bi bi-cash my-3 icon"><span class="card-parag">Examination Fees: {{bookingInfo.fees}}
+            <span class="bi bi-cash my-3 icon"><span class="card-parag">Examination Fees: {{bookingInfo?.fees}}
                 EGP</span></span>
                 <div class="hline mt-5"></div>
-                <span class="bi bi-telephone my-1 icon"><span class="card-parag">Clinic number: <span>{{bookingInfo.mobilePhone}}</span></span></span>
+                <span class="bi bi-telephone my-1 icon"><span class="card-parag">Clinic number: <span>{{bookingInfo?.mobilePhone}}</span></span></span>
                 <span class="bi bi-calendar3 mt-5 icon" style="border-bottom: 1px solid rgb(224, 224, 224); width: 97%;"><span class="card-parag">Booking details</span></span>
                 
                 <div class="sp my-5"></div>
                 <div class="c-parent">
                     <h5 class="c-title">Patient name</h5>
-                    <div class="c-parag">{{bookingInfo.username}}</div>
+                    <div class="c-parag">{{bookingInfo?.username}}</div>
                 </div>
                 <div class="hline mt-5"></div>
                 <div class="c-parent">
                     <h5 class="c-title">Booking date</h5>
                     <div class="c-parag">
-                        {{bookingInfo.date}}
+                        {{bookingInfo?.date}}
                     </div>
                 </div>
                 <div class="hline mt-5"></div>
                 <div class="c-parent">
                     <h5 class="c-title">Doctor Name</h5>
-                    <div class="c-parag" >Clinic Prof Dr {{bookingInfo.name}}</div>
+                    <div class="c-parag" >Clinic Prof Dr {{bookingInfo?.name}}</div>
                 </div>
                 <div class="hline mt-5"></div>
                 <div class="c-parent">
                     <h5 class="c-title" >Clinic address</h5>
-                    <div class="c-parag">{{bookingInfo.clinicAddress}} </div>
+                    <div class="c-parag">{{bookingInfo?.clinicAddress}} </div>
                 </div>
             </div>
           </div>

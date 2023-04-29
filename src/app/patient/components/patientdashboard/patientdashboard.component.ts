@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PatientserviceService } from '../../service/patientservice.service';
 
 @Component({
   selector: 'app-patientdashboard',
@@ -160,12 +161,26 @@ export class PatientdashboardComponent implements OnInit {
   roundEdges: boolean = false;
   timeline: boolean = true;
 
-  constructor() { Object.assign(this, this.depReservations ); }
+  constructor(private _patientSer:PatientserviceService) { Object.assign(this, this.depReservations ); }
   ngOnInit(): void {
-  
+  this.UserDoctorFrequency();
+  this.UserDepartmentFrequency()
   }
 
-
+  UserDoctorFrequency()
+  {
+    this._patientSer.getUserDoctorFrequency().subscribe((res)=>{
+      console.log(res)
+      //this.docNums=res.userFrequency
+    })
+  }
+  UserDepartmentFrequency()
+  {
+    this._patientSer.getUserDepartmentFrequency().subscribe((res)=>{
+      console.log(res)
+      //this.depReservations=res.userFrequency
+    })
+  }
 
   showLegend: boolean = true;
   showLabels: boolean = true;
