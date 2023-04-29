@@ -14,6 +14,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 export class AboutDoctorComponent implements OnInit {
 doctorId:any;
 doctorInfo:any;
+isLoaded:any;
 userId:any;
 username:any;
 rateFormControll=new FormControl('',Validators.required);
@@ -22,6 +23,7 @@ message=new FormControl('');
  
   
   ngOnInit(): void {
+    this.isLoaded=false;
     this.route.queryParams.subscribe((params)=>{
 this.doctorId=params['id'];
  this.auth.userdata.subscribe((value:any)=>{
@@ -39,7 +41,7 @@ this.getDoctorInfo()
       if(!imageUrl)imageUrl='assets/img/doctors/doctors-1.jpg';
 this.doctorInfo={name,mobilePhone,clinicAddress,imageUrl,specification,doctorRate};
 return res;
-    })).subscribe(res=>console.log("kkk",res));
+    })).subscribe(res=>this.isLoaded=true);
   }
   showTimeSlots()
   {
