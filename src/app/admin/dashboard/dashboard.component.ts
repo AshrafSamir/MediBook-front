@@ -12,21 +12,34 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
 
     this._adminService.getUsersCount().subscribe((res)=>{
-      // console.log(res);
       this.usersCount=res;
+      // console.log(res);
       // console.log(this.usersCount.numberOfClients);
     })
     this._adminService.getDoctorsMostRated().subscribe((res)=>{
       console.log(res.doctors[0]);
+      if(res.doctors){
+        for (let i = 0; i < res.doctors.length; i++) {
+          let ratesValues = new Array(res.doctors[i].doctorRate)
+          res.doctors[i].ratesValues=ratesValues;
+          
+        }
+        this.doctorsMostRated=res.doctors;
+      }
+      else{
+
+      }
       
-      this.doctorsMostRated=res.doctors;
-      console.log(this.doctorsMostRated);
-      
+    })
+    this._adminService.getAllBookings().subscribe((res)=>{
+      console.log(res.bookings);
+      this.allBookings=res.bookings
     })
     
   }
   usersCount:any;
   doctorsMostRated:any[];
+  allBookings:any[]
   single: any[];
   view: [number, number] = [700, 400];
   gradient: boolean = true;
