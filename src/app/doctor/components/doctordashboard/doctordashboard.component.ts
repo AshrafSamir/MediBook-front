@@ -148,6 +148,7 @@ export class DoctordashboardComponent implements OnInit {
 
   constructor() { Object.assign(this, this.productSales ); }
   ngOnInit(): void {
+    console.log(this.productSales)
   
   }
 

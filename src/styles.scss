@@ -255,3 +255,19 @@ body {
     }
 
 
+    button.pagination-item {
+        background-color: white;
+        border: 1px solid #ddd;
+        color: #333;
+        padding: 6px 12px;
+        text-decoration: none;
+        margin-right: 5px;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+
+      button.pagination-item.active {
+        background-color: #1977cc;
+        color: white;
+        border-color: #1977cc;
+      }

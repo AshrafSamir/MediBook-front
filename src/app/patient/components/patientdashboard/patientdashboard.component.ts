@@ -163,7 +163,7 @@ checkLoader:boolean = false
   roundEdges: boolean = false;
   timeline: boolean = true;
 
-  constructor(private _patientSer:PatientserviceService) { Object.assign(this, this.depReservations ); }
+  constructor(private _patientSer:PatientserviceService) { }
   ngOnInit(): void {
    
     forkJoin([this._patientSer.getUserDepartmentFrequency(), this._patientSer.getUserDoctorFrequency()]).subscribe((res:any)=>{
