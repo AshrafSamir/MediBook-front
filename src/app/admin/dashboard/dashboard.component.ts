@@ -31,10 +31,15 @@ export class DashboardComponent implements OnInit {
       }
       
     })
+    this._adminService.getAllBookings().subscribe((res)=>{
+      console.log(res.bookings);
+      this.allBookings=res.bookings
+    })
     
   }
   usersCount:any;
   doctorsMostRated:any[];
+  allBookings:any[]
   single: any[];
   view: [number, number] = [700, 400];
   gradient: boolean = true;
