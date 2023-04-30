@@ -138,9 +138,15 @@ export class DashboardComponent implements OnInit {
     // console.log(event);
   }
   formatString(input: string): string {
-    return input.toUpperCase()
+    if(input){
+      return input.toUpperCase()
+    }
+    return "";
   }
   formatNumber(input: number): number {
-    return input
+    if(input){
+      return input
+    }
+    return 0;
   }
 }
