@@ -42,6 +42,7 @@ export class SigninComponent implements OnInit {
           this.auth.userType.next('doctor');
           this.router.navigate(['doctor/addslot'])
           console.log(this.auth.userType.getValue())
+          
 
         }
         else if(res.user.type == 'patient')

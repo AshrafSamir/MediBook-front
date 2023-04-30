@@ -26,4 +26,5 @@ export class GetslotsComponent implements OnInit {
     })
   }
 
+
 }

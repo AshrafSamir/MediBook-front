@@ -72,6 +72,7 @@ onDeactivate(data): void {
     this.getFilteredData()
     this._adminService.getUsers(null).subscribe((users)=>{
       console.log(users.users);
+
       
       users.users.forEach((user) => {
         this.counts[user.type] = (this.counts[user.type] || 0) + 1;

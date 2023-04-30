@@ -15,9 +15,22 @@ export class DoctorserviceService {
       const userData:any =JSON.parse(localStorage.getItem('userData'));
       this.id=userData._id
 
-      console.log(this.id )
+      console.log("id:",this.id )
+
+
 
     }
+
+    // getDoctorInfo():Observable<any>{
+    //   const httpOptions = {
+    //     headers: new HttpHeaders({      
+    //       'auth':localStorage.getItem('token')
+    //     })
+    //   };
+    //   console.log( this._HttpClient.get(`${environment.ApiUrl}/doctortimeslots/${this.id}`,httpOptions));
+    //   return this._HttpClient.get(`${environment.ApiUrl}/doctortimeslots/${this.id}`,httpOptions);
+    // }
+
     addSlot(slots:any):Observable<any>
     {
       const httpOptions = {
@@ -35,6 +48,24 @@ export class DoctorserviceService {
         })
       };
       return this._HttpClient.get(`${environment.ApiUrl}/doctortimeslots/${this.id}`,httpOptions);
+    }
+    getTimeSlots():Observable<any>
+    {
+      const httpOptions = {
+        headers: new HttpHeaders({      
+          'auth':localStorage.getItem('token')
+        })
+      };
+      return this._HttpClient.get(`${environment.ApiUrl}/doctorTimeSlots/${this.id}`,httpOptions)
+    }
+    getDoctorIncomes():Observable<any>
+    {
+      const httpOptions = {
+        headers: new HttpHeaders({      
+          'auth':localStorage.getItem('token')
+        })
+      };
+      return this._HttpClient.get(`${environment.ApiUrl}/getdoctorincomes/${this.id}`,httpOptions)
     }
 
     
