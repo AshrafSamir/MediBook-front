@@ -113,28 +113,168 @@
     </div>
 
   </div>
-  <div class="row mt-4 ">
-    <div class="col-md-8"></div>
+  <div class="row d-flex justify-content-between mt-4 ">
+
+    <div class="col-md-5 appointments-container rounded-3 mt-2">
+      <ngx-charts-bar-vertical [results]="deptFrequency" [view]="viewVertical" [scheme]="colorScheme"  [gradient]="gradient" [xAxis]="xAxis" [yAxis]="yAxis" [legend]="legend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
+      [xAxisLabel]="xAxisLabelDepartment" [yAxisLabel]="yAxisLabelDepartment" [legendTitle]="legendTitleDepartment" [animations]="animations" [showGridLines]="showGridLines" [trimXAxisTicks]="trimXAxisTicks" [trimYAxisTicks]="trimYAxisTicks"
+      [rotateXAxisTicks]="rotateXAxisTicks" [maxXAxisTickLength]="maxXAxisTickLength" [maxYAxisTickLength]="maxYAxisTickLength" [xAxisTickFormatting]="formatString" [yAxisTickFormatting]="formatNumber" [yAxisTicks]="yAxisTicks" [showDataLabel]="showDataLabel"
+      [barPadding]="barPadding" [tooltipDisabled]="tooltipDisabled" [roundEdges]="roundEdges">
+      </ngx-charts-bar-vertical>
+    </div>
+    <div class="col-md-5 appointments-container rounded-3 mt-2">
+      <!-- <ngx-charts-bar-vertical [results]="doctorFrequency" [view]="viewVertical" [scheme]="colorScheme"  [gradient]="gradient" [xAxis]="xAxis" [yAxis]="yAxis" [legend]="legend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
+      [xAxisLabel]="xAxisLabelDoctors" [yAxisLabel]="yAxisLabelDoctors" [legendTitle]="legendTitleDoctors" [animations]="animations" [showGridLines]="showGridLines" [trimXAxisTicks]="trimXAxisTicks" [trimYAxisTicks]="trimYAxisTicks"
+      [rotateXAxisTicks]="rotateXAxisTicks" [maxXAxisTickLength]="maxXAxisTickLength" [maxYAxisTickLength]="maxYAxisTickLength" [xAxisTickFormatting]="formatString" [yAxisTickFormatting]="formatNumber" [yAxisTicks]="yAxisTicks" [showDataLabel]="showDataLabel"
+      [barPadding]="barPadding" [tooltipDisabled]="tooltipDisabled" [roundEdges]="roundEdges">
+     </ngx-charts-bar-vertical> -->
+     <ngx-charts-bar-horizontal
+     [view]="viewVertical"
+     [scheme]="colorScheme"
+     [results]="doctorFrequency"
+     [gradient]="gradient"
+     [xAxis]="showXAxisLabel"
+     [yAxis]="showYAxisLabel"
+     [legend]="legend"
+     [showXAxisLabel]="showXAxisLabel"
+     [showYAxisLabel]="showYAxisLabel"
+     [xAxisLabel]="xAxisLabelDoctors"
+     [yAxisLabel]="yAxisLabelDoctors"
+     (select)="onSelect($event)"
+   
+     >
+   </ngx-charts-bar-horizontal>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col-md-8  ">
+      <div class="row me-1 appointments-container rounded-3">
+        <div class="col-md-12">
+          <p class="h5 fw-bolder mt-2">Appointments</p>
+        </div>
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="row">
+                <div class="col-md-3 col-sm-3 col-3">
+                  <p class="h6 fw-bold">
+                    Patient 
+                  </p>
+                </div>
+                <div class="col-md-2 col-sm-2 col-2">
+                  <p class="h6 fw-bold">
+                    Date
+                  </p>
+                </div>
+                <div class="col-md-2 col-sm-2 col-2">
+                  <p class="h6 fw-bold">
+                    Time
+                  </p>
+                </div>
+                <div class="col-md-2 col-sm-2 col-2">
+                  <p class="h6 fw-bold">
+                    Doctor name
+                  </p>
+                </div>
+                <div class="col-md-2 col-sm-2 col-2">
+                  <p class="h6 fw-bold">
+                    test
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12" *ngIf="allBookings ; else noBookingsPart ">
+              <div class="row mb-3" *ngFor="let booking of allBookings; index as i">
+                <div class="col-md-3 col-sm-3 col-3 ">
+                  <div class="row">
+                    <div class="col-md-5 col-sm-5 col-5 ">
+                      <img [src]="booking.doctor.imageUrl"
+                      class=" h-100  img-rounded"
+                      alt="">
+                    </div>
+                    <div class="col-md-7 col-sm-7 col-7 d-flex align-items-center" >
+                      <p>
+                        {{booking.user.name}}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-2 col-sm-2 col-2 d-flex align-items-center">
+                  {{booking.timeSlot.date | date}}
+                </div>
+                <div class="col-md-2 col-sm-2 col-2 d-flex align-items-center">
+                  {{booking.timeSlot.from | date:'shortTime'}}
+                </div>
+                <div class="col-md-2 col-sm-2 col-2 d-flex align-items-center">
+                  {{booking.doctor.name}}
+                </div>
+                <div class="col-md-2 col-sm-2 col-2 d-flex align-items-center">
+                  Test
+                </div>
+              </div>
+            </div>
+
+            <ng-template #noBookingsPart>
+              <div class="col-md-12">
+                Loading
+              </div>
+            </ng-template>
+
+          </div>
+        </div>
+      </div>
+      <!-- <table class="table table-borderless appointments-container">
+        <thead>
+          <tr>
+            <th>Patient Name</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Doctor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="">
+                name
+            </td>
+            <td>22April</td>
+            <td>10Pm</td>
+            <td>ahmed</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+          </tr>
+        </tbody>
+      </table> -->
+    </div>
     <div class="col-md-4">
-      <div class="row reviews-container">
-        <div class="col-md-6 text-start">
+      <div class="row reviews-container rounded-3">
+        <div class="col-6 text-start">
           <p class="h5 fw-bolder mt-2">
             Reviews
           </p>
         </div>
-        <div class="col-md-6 text-end ">
+        <div class="col-6 text-end ">
           <p class="text-decoration-underline mt-2">
             view All
           </p>
         </div>
-        <div class="col-md-12" *ngIf="doctorsMostRated ;else noDoctorsPart">
+        <div class="col-12" *ngIf="doctorsMostRated ;else noDoctorsPart">
           <div class="row " *ngFor="let doctor of doctorsMostRated; index as i">
-              <div class="col-md-4  d-flex justify-content-end ">
+              <div class="col-4  d-flex justify-content-end ">
                 <img [src]="doctor.imageUrl" class="w-100 h-50  img-rounded" alt="">
               </div>
-              <div class="col-md-8 mt-2">
-                <p class="h6 d-bloc">{{doctor.name }}</p>
-                <i class="bi bi-star-fill d-block text-warning"></i>
+              <div class="col-8 mt-2">
+                <p class="h6 d-block">{{doctor.name }}</p>
+                <i class="bi bi-star-fill  text-warning me-1" *ngFor="let star of doctor.ratesValues"></i>
               </div>
             <!-- <ng-template #noDoctorsBlock>
               <div class="col-md-12">
@@ -191,3 +331,21 @@
   >
   </ngx-charts-number-card>
 </div> -->
+
+
+<!-- <ngx-charts-bar-horizontal
+  [view]="view"
+  [scheme]="colorScheme"
+  [results]="deptFrequency"
+  [gradient]="gradient"
+  [xAxis]="showXAxisLabel"
+  [yAxis]="showYAxisLabel"
+  [legend]="legend"
+  [showXAxisLabel]="showXAxisLabel"
+  [showYAxisLabel]="showYAxisLabel"
+  [xAxisLabel]="xAxisLabelDepartment"
+  [yAxisLabel]="yAxisLabelDepartment"
+  (select)="onSelect($event)"
+
+  >
+</ngx-charts-bar-horizontal> -->

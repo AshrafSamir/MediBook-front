@@ -8,7 +8,7 @@
 
 <div class="m-5 total">{{Doctorsinformations.length}} Total results
 </div>
-<div class="row my-4   justify-content-center" *ngFor="let doc of Doctorsinformations">
+<div class="row my-4   justify-content-center" *ngFor="let doc of pagedItems">
 
         <div class="member card col-md-8" >
             <div class=" d-flex align-items-start " >
@@ -30,4 +30,11 @@
             
         </div>
 </div>
+
+<div class="pagination d-flex justify-content-center  align-items-center py-4">
+    <button class="pagination-item text-center" *ngFor="let page of length" [class.active]="currentPage === page"
+      (click)="setPage(page)">
+      {{ page }}
+    </button>
+  </div>
 </section>

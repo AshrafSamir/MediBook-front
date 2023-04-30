@@ -225,6 +225,13 @@ patientGenders:any=[
   yScaleMax: number = 9000;
   roundEdges: boolean = false;
   timeline: boolean = true;
+
+
+
+
+
+
+
   showLegend: boolean = true;
   showLabels: boolean = true;
   isDoughnut: boolean = true;

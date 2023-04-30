@@ -19,4 +19,13 @@ export class AdminserviceService {
   getDoctorsMostRated():Observable<any>{
     return this._httpClient.get(`${environment.ApiUrl}/mostrated`);
   }
+  getAllBookings():Observable<any>{
+    return this._httpClient.get(`${environment.ApiUrl}/allbookings`);
+  }
+  getDepartmentFrequency():Observable<any>{
+    return this._httpClient.get(`${environment.ApiUrl}/departmentsFrequency`)
+  }
+  getDoctorFrequency():Observable<any>{
+    return this._httpClient.get(`${environment.ApiUrl}/doctorsFrequency`)
+  }
 }

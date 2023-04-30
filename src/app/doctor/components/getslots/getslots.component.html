@@ -2,35 +2,46 @@
     <mat-spinner  ></mat-spinner>
 </div>
 
-<table class="table" *ngIf="checkLoader">
-    <thead>
-      <tr>
-        							
-        <th scope="col">#</th>
-        <th scope="col">{{'date' | translate}}</th>
-        <th scope="col">{{'from' | translate}}</th>
-        <th scope="col">{{'to' | translate}}</th>
-        <th scope="col">{{'fullyBooked' | translate}}</th>
-        <th scope="col">{{'isHoliday' | translate}}</th>
-        <th scope="col">{{'maxReservations' | translate}}</th>
-        <th scope="col">{{'bookingPrice' | translate}}</th>
-        <th scope="col">{{'reservations' | translate}}</th>
 
-        
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let slot of allSlots ; let i =index">
-            <th scope="row">{{i}}</th>
-            <td>{{slot.date | date:"yyyy/MM/dd"}}</td>
-            <td>{{slot.from | date :"h:mm a"}}</td>
-            <td>{{slot.to | date :"h:mm a"}}</td>
-            <td>{{slot.fullyBooked}}</td>
-            <td>{{slot.isHoliday}}</td>
-            <td>{{slot.maxReservations }}</td>
-            <td>{{slot.bookingPrice | currency}}</td>
-            <td>{{slot.reservations}}</td>
-       
-      </tr>
-    </tbody>
-  </table>
+
+  <div  *ngIf="checkLoader">
+
+    <table class="table">
+      <thead>
+        <tr>
+                        
+          <th scope="col">{{'date' | translate}}</th>
+          <th scope="col">{{'from' | translate}}</th>
+          <th scope="col">{{'to' | translate}}</th>
+          <th scope="col">{{'fullyBooked' | translate}}</th>
+          <th scope="col">{{'isHoliday' | translate}}</th>
+          <th scope="col">{{'maxReservations' | translate}}</th>
+          <th scope="col">{{'bookingPrice' | translate}}</th>
+          <th scope="col">{{'reservations' | translate}}</th>
+  
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let slot of pagedItems ; let i =index">
+              <td>{{slot.date | date:"yyyy/MM/dd"}}</td>
+              <td>{{slot.from | date :"h:mm a"}}</td>
+              <td>{{slot.to | date :"h:mm a"}}</td>
+              <td>{{slot.fullyBooked}}</td>
+              <td>{{slot.isHoliday}}</td>
+              <td>{{slot.maxReservations }}</td>
+              <td>{{slot.bookingPrice | currency}}</td>
+              <td>{{slot.reservations}}</td>
+         
+        </tr>
+      </tbody>
+    </table>
+    <div class="pagination d-flex justify-content-center  align-items-center py-4">
+      <button class="pagination-item text-center" *ngFor="let page of length" [class.active]="currentPage === page"
+        (click)="setPage(page)">
+        {{ page }}
+      </button>
+    </div>
+  </div>
+
+

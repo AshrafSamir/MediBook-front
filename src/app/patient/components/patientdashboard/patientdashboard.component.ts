@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PatientserviceService } from '../../service/patientservice.service';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-patientdashboard',
@@ -21,7 +22,7 @@ export class PatientdashboardComponent implements OnInit {
     "name": "fayrouz",
     "value": 9
   }, {
-    "name": "menna",
+    "name": "mennaa",
     "value": 10
   }]
   depReservations:any[]=[ {
@@ -112,6 +113,7 @@ export class PatientdashboardComponent implements OnInit {
     ] 
   }
 ]
+checkLoader:boolean = false
 //ww:number=700
  cardColor: string = '#deaff0';
 
@@ -161,26 +163,34 @@ export class PatientdashboardComponent implements OnInit {
   roundEdges: boolean = false;
   timeline: boolean = true;
 
-  constructor(private _patientSer:PatientserviceService) { Object.assign(this, this.depReservations ); }
+  constructor(private _patientSer:PatientserviceService) { }
   ngOnInit(): void {
-  this.UserDoctorFrequency();
-  this.UserDepartmentFrequency()
+   
+    forkJoin([this._patientSer.getUserDepartmentFrequency(), this._patientSer.getUserDoctorFrequency()]).subscribe((res:any)=>{
+      console.log(res[0].userDeptFrequency)
+      this.docNums=res[1].userFrequency
+      this.depReservations=res[0].userDeptFrequency
+      this.checkLoader=true
+    })
+  //this.UserDoctorFrequency();
+  //this.UserDepartmentFrequency()
   }
 
-  UserDoctorFrequency()
+  /*UserDoctorFrequency()
   {
     this._patientSer.getUserDoctorFrequency().subscribe((res)=>{
       console.log(res)
-      //this.docNums=res.userFrequency
+      this.docNums=res.userFrequency
     })
   }
   UserDepartmentFrequency()
   {
     this._patientSer.getUserDepartmentFrequency().subscribe((res)=>{
       console.log(res)
-      //this.depReservations=res.userFrequency
+      this.depReservations=res.userDeptFrequency
+      this.checkLoader=true
     })
-  }
+  }*/
 
   showLegend: boolean = true;
   showLabels: boolean = true;
