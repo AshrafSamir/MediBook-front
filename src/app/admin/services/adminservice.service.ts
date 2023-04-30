@@ -22,4 +22,10 @@ export class AdminserviceService {
   getAllBookings():Observable<any>{
     return this._httpClient.get(`${environment.ApiUrl}/allbookings`);
   }
+  getDepartmentFrequency():Observable<any>{
+    return this._httpClient.get(`${environment.ApiUrl}/departmentsFrequency`)
+  }
+  getDoctorFrequency():Observable<any>{
+    return this._httpClient.get(`${environment.ApiUrl}/doctorsFrequency`)
+  }
 }
