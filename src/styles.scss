@@ -9,6 +9,14 @@ section {
     padding: 60px 0;
     overflow: hidden;
 }
+ngb-rating{
+    color: #FFC107;
+    text-decoration: none;
+    font-size: 40px;
+}
+.docrate{
+    font-size: 20px;
+}
 
 .section-bg {
     background-color: #f1f7fd;
@@ -167,7 +175,7 @@ body {
 
 .doctors .member span {
     display: block;
-    font-size: 15px;
+    // font-size: 15px;
     padding-bottom: 10px;
     position: relative;
     font-weight: 500;
@@ -240,7 +248,21 @@ body {
         transition: 0.4s;
         border-radius: 50px;
     }
-    
+    .booknowbtn:disabled{
+        opacity: 0.5;
+    }
+    .ratebtn
+    {
+        background-color: rgb(255, 200, 0);
+        border: 0;
+        padding: 10px 35px;
+        color: #fff;
+        transition: 0.4s;
+        border-radius: 50px; 
+    }
+    .ratebtn:hover{
+        background-color: rgba(255, 200, 0, 0.761);
+    }
     .booknowbtn:hover {
         background: #1c84e3;
     }

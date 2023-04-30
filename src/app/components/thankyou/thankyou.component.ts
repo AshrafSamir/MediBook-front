@@ -10,9 +10,11 @@ import {map} from 'rxjs/operators';
 export class ThankyouComponent implements OnInit {
 userId:any;
 bookingInfo:any;
+isLoaded:any;
   constructor(private route:ActivatedRoute , private http:HttpClient,private router:Router) { }
 
   ngOnInit(): void {
+    this.isLoaded=false;
     this.route.queryParams.subscribe(params =>{
       this.userId=params['id'];
       console.log(this.userId);
@@ -53,7 +55,7 @@ bookingInfo:any;
       }
    return lastBooking; 
     })).subscribe((res)=>{
-      console.log("jju",res);
+      this.isLoaded=true
         });
         
   }

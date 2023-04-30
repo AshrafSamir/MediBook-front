@@ -10,13 +10,14 @@
 </div>
 <div class="row my-4   justify-content-center" *ngFor="let doc of pagedItems">
 
-        <div class="member card col-md-8" >
+        <div class="member card col-md-8" (click)="goToDoctorDetails(doc.doctorId)">
             <div class=" d-flex align-items-start " >
             <div class="pic"><img src="assets/img/doctors/doctors-1.jpg" class="img-fluid" alt=""></div>
             <div class="member-info">
                 <h4>{{doc.name}}</h4>
-                <span>Doctor specialized in {{doc.specification}}</span>
-                <p>Rating section</p>
+                <div>Doctor specialized in {{doc.specification}}
+                    <p><ngb-rating class="docrate" [max]="5" [readonly]="true" [rate]="doc.doctorRate" ></ngb-rating></p>
+                </div>
                 <p class="bi bi-geo-alt">{{doc.clinicAddress}}</p>
                 
                 <div >

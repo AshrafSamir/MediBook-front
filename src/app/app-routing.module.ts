@@ -10,6 +10,7 @@ import { AdminGuard } from './shared/guards/admin.guard';
 import { BookingComponent } from './components/booking/booking.component';
 import { ThankyouComponent } from './components/thankyou/thankyou.component';
 import { AllappointmentsComponent } from './components/allappointments/allappointments.component';
+import { AboutDoctorComponent } from './components/about-doctor/about-doctor.component';
 const routes: Routes = [
   { path: 'home', component :HomeComponent },
   { path: '',   redirectTo: 'home', pathMatch: 'full' },
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'booking',component:BookingComponent},
   {path: 'All-appointments',component:AllappointmentsComponent },
   { path: 'Thankyou',component:ThankyouComponent},
+  { path: 'about-doctor',component:AboutDoctorComponent},
   { path: 'admin',canActivate:[AdminGuard],  loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) }
 ];
 

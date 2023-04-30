@@ -1,21 +1,21 @@
 import { HttpClient } from '@angular/common/http';
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import {  Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map } from 'rxjs';
 import { AuthService } from 'src/app/shared/services/auth.service';
-import Swiper from 'swiper';
 @Component({
   selector: 'app-allappointments',
   templateUrl: './allappointments.component.html',
   styleUrls: ['./allappointments.component.scss']
 })
 export class AllappointmentsComponent implements OnInit  {
-
+  isLoaded:any;
   userId:any='null';
   bookingInfo:any=[];
     constructor(private route:ActivatedRoute , private http:HttpClient,private router:Router,private auth:AuthService) { }
   
     async ngOnInit(): Promise<void> {
+      this.isLoaded=false;
      await this.auth.userdata.subscribe((value:any)=>{
         this.userId=value._id
         this.getuserBookingsInfo();
@@ -39,7 +39,7 @@ export class AllappointmentsComponent implements OnInit  {
             for(let key2 in res[key])
             {
               bookingItem=res[key][key2]; 
-              let {name,mobilePhone ,clinicAddress,specification}=bookingItem.doctor;
+              let {name,mobilePhone ,clinicAddress,specification,doctorId,doctorRate}=bookingItem.doctor;
               let {fees}=bookingItem.booking;
               let {username}=bookingItem.user;
               let {from,to}=bookingItem.timeSlot;
@@ -51,16 +51,22 @@ export class AllappointmentsComponent implements OnInit  {
           from=from.toLocaleTimeString();
           to=to.toLocaleTimeString();
           let date=`${dayname}.${month}.${year} From ${from} to ${to}`; 
-          this.bookingInfo.push({name,fees ,mobilePhone,date,clinicAddress,specification});
+          this.bookingInfo.push({name,fees ,mobilePhone,date,clinicAddress,specification,doctorId,doctorRate});
             }
           
           }
         }
      return res; 
       })).subscribe((res)=>{
-        console.log("kkk",res);
+        this.isLoaded=true;
+        console.log("success");
           });
           
+    }
+
+    goToDoctorDetails(id)
+    {
+      this.router.navigate(['/about-doctor'],{queryParams:{id}});
     }
 
 }

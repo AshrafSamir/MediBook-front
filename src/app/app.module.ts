@@ -28,6 +28,7 @@ import { ThankyouComponent } from './components/thankyou/thankyou.component';
 import { AllappointmentsComponent } from './components/allappointments/allappointments.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { AboutDoctorComponent } from './components/about-doctor/about-doctor.component';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -50,7 +51,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     AvailabletimesComponent,
     BookingComponent,
     ThankyouComponent,
-    AllappointmentsComponent
+    AllappointmentsComponent,
+    AboutDoctorComponent
     
   ],
   imports: [

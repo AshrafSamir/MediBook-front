@@ -81,6 +81,10 @@ get pagedItems() {
   const startIndex = (this.currentPage - 1) * this.pageSize;
   return this.Doctorsinformations.slice(startIndex, startIndex + this.pageSize);
 }
+goToDoctorDetails(id)
+{
+  this.router.navigate(['/about-doctor'],{queryParams:{id}});
+}
 setPage(pageNumber: number) {
   this.currentPage = pageNumber;
 }
