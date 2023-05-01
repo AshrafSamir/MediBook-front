@@ -67,6 +67,15 @@ export class DoctorserviceService {
       };
       return this._HttpClient.get(`${environment.ApiUrl}/getdoctorincomes/${this.id}`,httpOptions)
     }
+    getAppointmets(timeId,docId):Observable<any>
+    {
+      const httpOptions = {
+        headers: new HttpHeaders({      
+          'auth':localStorage.getItem('token')
+        })
+      };
+      return this._HttpClient.get(`${environment.ApiUrl}/getTimeSlotBookings/${docId}/${timeId}`,httpOptions);
+    }
 
     
 }

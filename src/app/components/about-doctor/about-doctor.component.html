@@ -30,21 +30,28 @@
             
         </div>
 
-        <div class="member card col-md-8 my-3" >
+        <div class="member card col-8 mt-3" >
+            
+            <div class="member-info row justify-content-center" >
+                <h4 class="col-lg-3 col-7">Your opinion matters to us!</h4>
+                <div class="row justify-content-center">
+                    <ngb-rating class="col-lg-2 mt-3 col-6" [max]="5" [formControl]="rateFormControll" ></ngb-rating>
+                </div>
+                  <button class=" col-lg-4 col-8 booknowbtn mt-3" [disabled]="!rateFormControll.valid" (click)="submitRating()">Submit</button>
+                
+            </div>
+        
+      
+            
+        </div>
+
+
+        
+
+        <div class="member card col-8 my-1" >
             
             <div class="member-info row justify-content-center">
-                <h4 class="col-4">Your opinion matters to us!</h4>
-                <div class="row justify-content-center">
-                    <ngb-rating class="col-3 mt-3" [max]="5" [formControl]="rateFormControll" ></ngb-rating>
-                </div>
-                <div class="form-floating my-3">
-                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-                    <label for="floatingTextarea2">Comments</label>
-                  </div>
-                  <button class=" col-2 booknowbtn" [disabled]="!rateFormControll.valid" (click)="submitRating()">Submit</button>
-                <!-- <div class="col-12">
-                    <button class="btn ratebtn mt-2 ms-2"  >Rate doctor</button>
-                </div> -->
+                <h4 class="col-lg-3 col-7" >Notification from doctor</h4>
                 
             </div>
         

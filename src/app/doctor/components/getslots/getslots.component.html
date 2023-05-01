@@ -18,7 +18,7 @@
           <th scope="col">{{'maxReservations' | translate}}</th>
           <th scope="col">{{'bookingPrice' | translate}}</th>
           <th scope="col">{{'reservations' | translate}}</th>
-  
+  <th>appointments</th>
           
         </tr>
       </thead>
@@ -32,6 +32,7 @@
               <td>{{slot.maxReservations }}</td>
               <td>{{slot.bookingPrice | currency}}</td>
               <td>{{slot.reservations}}</td>
+              <td><button class=" booknowbtn" (click)="getTimeSlot(slot._id,slot.doctorId)">View all</button></td>
          
         </tr>
       </tbody>

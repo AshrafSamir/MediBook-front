@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DoctorserviceService } from '../../services/doctorservice.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-getslots',
@@ -8,7 +9,7 @@ import { DoctorserviceService } from '../../services/doctorservice.service';
 })
 export class GetslotsComponent implements OnInit {
 
-  constructor(private doctorSer: DoctorserviceService) { }
+  constructor(private doctorSer: DoctorserviceService,private router: Router) { }
   allSlots:any[]=[]
   checkLoader:boolean=false
   length:number[]=[]
@@ -40,6 +41,8 @@ setPage(pageNumber: number) {
     })
   }
 
-
+  getTimeSlot(timeSlotId,doctorId){
+  this.router.navigate(['/doctor/slotappointments'],{queryParams:{id:timeSlotId,docId:doctorId}});
+}
 
 }

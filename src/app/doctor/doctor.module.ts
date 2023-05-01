@@ -19,13 +19,17 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { DoctordashboardComponent } from './components/doctordashboard/doctordashboard.component';
+import { TimeslotappointmentComponent } from './components/timeslotappointment/timeslotappointment.component';
+import { SendNotificationComponent } from './components/send-notification/send-notification.component';
 
 @NgModule({
   declarations: [
     DoctorComponent,
     AddslotComponent,
     GetslotsComponent,
-    DoctordashboardComponent
+    DoctordashboardComponent,
+    TimeslotappointmentComponent,
+    SendNotificationComponent
   ],
   imports: [
     CommonModule,

@@ -17,7 +17,7 @@ export class AllappointmentsComponent implements OnInit  {
     async ngOnInit(): Promise<void> {
       this.isLoaded=false;
      await this.auth.userdata.subscribe((value:any)=>{
-        this.userId=value._id
+        this.userId=value._id;
         this.getuserBookingsInfo();
     })
     
@@ -59,7 +59,7 @@ export class AllappointmentsComponent implements OnInit  {
      return res; 
       })).subscribe((res)=>{
         this.isLoaded=true;
-        console.log("success");
+        console.log("success",res);
           });
           
     }
