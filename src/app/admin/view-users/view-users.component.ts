@@ -13,7 +13,7 @@ export class ViewUsersComponent implements OnInit {
 usersArray:any[];
 types:string[]=['Users','Doctors','Clients','Admins']
 filteredData:string=this.selected.toLowerCase()
-productSales = [
+/*productSales = [
   {
     "name": "book",
     "value": 5001
@@ -34,7 +34,7 @@ productSales = [
     "name": "moooooob",
     "value": 705
   }
-];
+];*/
 view: [number, number] = [600, 400];
 cardColor: string = '#232837';
 // colorScheme:{domain:any} = {
@@ -108,11 +108,26 @@ onDeactivate(data): void {
       this.usersArray= users[this.filteredData]
       }
       this.usersArray= users[this.filteredData]
+      this.length = Array(Math.ceil(this.usersArray.length/10)).fill(0).map((_, i) => i+1);
         this.checkLoader = true 
     }
     
     )
   }
+
+
+  length:number[]=[]
+
+  currentPage: number = 1;
+pageSize: number = 10;
+totalItems: number;
+get pagedItems() {
+  const startIndex = (this.currentPage - 1) * this.pageSize;
+  return this.usersArray.slice(startIndex, startIndex + this.pageSize);
+}
+setPage(pageNumber: number) {
+  this.currentPage = pageNumber;
+}
   
 
 }

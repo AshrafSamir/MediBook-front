@@ -150,7 +150,9 @@ checkLoader:boolean = false
 
   gradient: boolean = false;
   colorScheme:any = {
-    domain: ['#704FC4', '#4B852C', '#B67A3D', '#5B6FC8', '#25706F']
+     domain: ['#704FC4', '#4B852C', '#B67A3D', '#5B6FC8', '#25706F'],
+    //domain: ['#6B8E23', '#8B4513', '#808080', '#696969', '#4DB76B'],
+    //domain: ['#0074D9', '#1ECC40', '#FF4136', '#FF851B', '#B10DC9']
   };
   schemeType: any = 'ordinal'; // 'ordinal' or 'linear'
 

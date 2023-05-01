@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AdminserviceService } from '../services/adminservice.service';
 import { Observable } from 'rxjs/internal/Observable';
 import { Color, ScaleType } from '@swimlane/ngx-charts';
+import { forkJoin } from 'rxjs';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -54,48 +55,78 @@ export class DashboardComponent implements OnInit {
   yScaleMax: number = 9000;
 
   roundEdges: boolean = false;
+  checkLoader: boolean = false;
+
+  
 
   ngOnInit(): void {
 
-    this._adminService.getUsersCount().subscribe((res)=>{
-      this.usersCount=res;
+    /*this._adminService.getUsersCount().subscribe((res) => {
+      this.usersCount = res;
       // console.log(res);
       // console.log(this.usersCount.numberOfClients);
     })
-    this._adminService.getDoctorsMostRated().subscribe((res)=>{
+    this._adminService.getDoctorsMostRated().subscribe((res) => {
       console.log(res.doctors[0]);
-      if(res.doctors){
+      if (res.doctors) {
         for (let i = 0; i < res.doctors.length; i++) {
           let ratesValues = new Array(res.doctors[i].doctorRate)
-          res.doctors[i].ratesValues=ratesValues;
-          
+          res.doctors[i].ratesValues = ratesValues;
+
         }
-        this.doctorsMostRated=res.doctors;
+        this.doctorsMostRated = res.doctors;
       }
-      else{
+      else {
 
       }
-      
+
     })
-    this._adminService.getAllBookings().subscribe((res)=>{
+    this._adminService.getAllBookings().subscribe((res) => {
       console.log(res.bookings);
-      this.allBookings=res.bookings
+      this.allBookings = res.bookings
     })
-    this._adminService.getDepartmentFrequency().subscribe((res)=>{
+    this._adminService.getDepartmentFrequency().subscribe((res) => {
       // console.log(res);
-      this.deptFrequency=res.deptFrequency;
-      console.log(this.deptFrequency);      
+      this.deptFrequency = res.deptFrequency;
+      console.log(this.deptFrequency);
     })
-    this._adminService.getDoctorFrequency().subscribe((res)=>{
-      this.doctorFrequency=res.doctorFrequency
-    })
-    
+    this._adminService.getDoctorFrequency().subscribe((res) => {
+      this.doctorFrequency = res.doctorFrequency
+    })*/
+
+      this.getAllData();
   }
-  usersCount:any;
-  deptFrequency:any[];
-  doctorsMostRated:any[];
-  doctorFrequency:any[];
-  allBookings:any[]
+
+  getAllData() {
+    forkJoin([
+      this._adminService.getUsersCount(),
+      this._adminService.getDoctorsMostRated(),
+      this._adminService.getAllBookings(),
+      this._adminService.getDepartmentFrequency(),
+      this._adminService.getDoctorFrequency()
+    ]).subscribe((res: any) => {
+        this.usersCount = res[0];
+        if (res[1].doctors) {
+          for (let i = 0; i < res[1].doctors.length; i++) {
+            let ratesValues = new Array(res[1].doctors[i].doctorRate)
+            res[1].doctors[i].ratesValues = ratesValues;
+  
+          }
+          this.doctorsMostRated = res[1].doctors;
+        }
+        this.allBookings = res[2].bookings
+        this.deptFrequency = res[3].deptFrequency;
+        this.doctorFrequency = res[4].doctorFrequency
+        this.checkLoader=true
+
+
+    })
+  }
+  usersCount: any;
+  deptFrequency: any[];
+  doctorsMostRated: any[];
+  doctorFrequency: any[];
+  allBookings: any[]
   single: any[];
   view: [number, number] = [700, 400];
   viewVertical: [number, number] = [600, 400];
@@ -103,11 +134,11 @@ export class DashboardComponent implements OnInit {
   // colorScheme = {
   //   domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5'],
   // };
-  colorScheme: Color = { 
-    domain: ['#5691e4', '#A10A28', '#5AA454'], 
-    group: ScaleType.Ordinal, 
-    selectable: true, 
-    name: 'Customer Usage', 
+  colorScheme: Color = {
+    domain: ['#5691e4', '#A10A28', '#5AA454'],
+    group: ScaleType.Ordinal,
+    selectable: true,
+    name: 'Customer Usage',
   };
   cardColor: string = 'rgba(0, 0, 0,1)';
 
@@ -138,13 +169,13 @@ export class DashboardComponent implements OnInit {
     // console.log(event);
   }
   formatString(input: string): string {
-    if(input){
+    if (input) {
       return input.toUpperCase()
     }
     return "";
   }
   formatNumber(input: number): number {
-    if(input){
+    if (input) {
       return input
     }
     return 0;

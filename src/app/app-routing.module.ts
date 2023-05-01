@@ -12,24 +12,26 @@ import { ThankyouComponent } from './components/thankyou/thankyou.component';
 import { AllappointmentsComponent } from './components/allappointments/allappointments.component';
 import { AboutDoctorComponent } from './components/about-doctor/about-doctor.component';
 const routes: Routes = [
-  { path: 'home', component :HomeComponent },
-  { path: '',   redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
-  { path: 'doctor',canActivate:[DoctorGuard], loadChildren: () => import('./doctor/doctor.module').then(m => m.DoctorModule) },
-  { path: 'patient',canActivate:[PatientGuard], loadChildren: () => import('./patient/patient.module').then(m => m.PatientModule) },
-  
-  {path: 'bookingdoc',component:SelecteddoctorsComponent},
-  {path: 'Availabletimes',component:AvailabletimesComponent},
-  { path: 'appointment',component:AppointmentComponent },
-  { path: 'booking',component:BookingComponent},
-  {path: 'All-appointments',component:AllappointmentsComponent },
-  { path: 'Thankyou',component:ThankyouComponent},
-  { path: 'about-doctor',component:AboutDoctorComponent},
-  { path: 'admin',canActivate:[AdminGuard],  loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) }
+  { path: 'doctor', canActivate: [DoctorGuard], loadChildren: () => import('./doctor/doctor.module').then(m => m.DoctorModule) },
+  { path: 'patient', canActivate: [PatientGuard], loadChildren: () => import('./patient/patient.module').then(m => m.PatientModule) },
+
+  { path: 'bookingdoc', component: SelecteddoctorsComponent },
+  { path: 'Availabletimes', component: AvailabletimesComponent },
+  { path: 'appointment', component: AppointmentComponent },
+  { path: 'booking', component: BookingComponent },
+  { path: 'All-appointments', component: AllappointmentsComponent },
+  { path: 'Thankyou', component: ThankyouComponent },
+  { path: 'about-doctor', component: AboutDoctorComponent },
+  { path: 'admin', canActivate: [AdminGuard], loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes),
+  RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled', })
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
