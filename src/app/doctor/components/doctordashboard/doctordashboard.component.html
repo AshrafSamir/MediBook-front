@@ -34,37 +34,33 @@
                     </ngx-charts-linear-gauge>
                 </div>
             </div>
-            <div *ngIf="timeSlots" class="col-xl-6 cm ">
+            <div class="col-xl-6 cm " *ngIf="timeSlots.length">
                 <div class="shadow ">
 
                     <h3 class="text-light bg-primary p-1 ">Reservations</h3>
-                    <span class="d-none">{{timeSlots[0]?.name}}</span>
+
                     <ngx-charts-bar-vertical-2d [view]="view " [scheme]="colorScheme " [results]="timeSlots " [gradient]="gradient " [xAxis]="xAxis " [yAxis]="yAxis " [legend]="showLegend " [showXAxisLabel]="showXAxisLabel " [showYAxisLabel]="showYAxisLabel
                     " [xAxisLabel]="xAxisLabel " yAxisLabel="Reservations " [legendTitle]="legendTitle " (select)="onSelect($event) " (activate)="onActivate($event) " (deactivate)="onDeactivate($event) ">
                     </ngx-charts-bar-vertical-2d>
                 </div>
             </div>
-            <div class="col-xl-6 cmm ">
+            <div class="col-xl-6 cmm " *ngIf="patientGenders.length">
                 <div class="shadow ">
                     <h3 class="text-light bg-primary p-1 ">Avg Visits by Gender</h3>
-                    <span class="d-none">{{patientGenders[0].name}}</span>
-
                     <ngx-charts-pie-chart [view]="view" [scheme]="colorScheme" [results]="patientGenders" [gradient]="gradient" [legend]="showLegend" [legendPosition]="legendPosition" [labels]="showLabels" [doughnut]="isDoughnut" (select)="onSelect($event)" (activate)="onActivate($event)"
                         (deactivate)="onDeactivate($event)">
                     </ngx-charts-pie-chart>
                 </div>
             </div>
 
-            <div class="col-xl-6 cmm">
+            <div class="col-xl-6 cmm" *ngIf="doctorIncomes.length">
                 <div class="shadow">
                     <h3 class="text-light bg-primary p-1"> Incomes</h3>
-                    <span class="d-none">{{doctorIncomes[0].name}}</span>
                     <ngx-charts-bar-vertical [view]="view" [scheme]="colorScheme" [results]="doctorIncomes" [gradient]=" gradient " [xAxis]="xAxis " [yAxis]="yAxis " [legend]="showLegend " [showXAxisLabel]="showXAxisLabel " [showYAxisLabel]="showYAxisLabel " [xAxisLabel]="xAxisLabel "
                         [yAxisLabel]="yAxisLabel " (select)="onSelect($event) ">
                     </ngx-charts-bar-vertical>
                 </div>
             </div>
-
 
         </div>
 

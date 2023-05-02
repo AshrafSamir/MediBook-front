@@ -67,6 +67,7 @@ doctorIncomes:any=[]
   this.getDoctorIncomes()
   this.getDoctorByID()
   this.getDoctorBookings()
+  // console.log("ss",this.doctorIncomes)
   }
 
 getDoctorTimeSlots(){
@@ -106,6 +107,7 @@ getDoctorIncomes(){
       //   }
       // }
     }
+    // console.log(this.doctorIncomes)
   })
 }
 getDoctorByID(){

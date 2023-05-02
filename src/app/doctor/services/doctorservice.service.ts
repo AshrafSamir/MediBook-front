@@ -56,7 +56,9 @@ export class DoctorserviceService {
           'auth':localStorage.getItem('token')
         })
       };
+      // return this._HttpClient.get(`${environment.ApiUrl}/doctorTimeSlots/${this.id}`,httpOptions)
       return this._HttpClient.get(`${environment.ApiUrl}/doctorTimeSlots/${this.id}`,httpOptions)
+
     }
     getDoctorIncomes():Observable<any>
     {
