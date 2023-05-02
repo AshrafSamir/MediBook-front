@@ -32,10 +32,9 @@ addressarray:string[]=[];
       clinicAddress: [''],
       specification: [''],
       role: [''],
+      certificate: [ ],
 
-      
 
-      
 
     });
   }
@@ -50,7 +49,8 @@ addressarray:string[]=[];
     const formData:any = new FormData();
     const fileInput:any = document.getElementById('image');
     console.log(this.test , 'teeeeeeeeeeeeeeeeeeesat')
-   formData.append('profileImage',this.test , this.test.name);
+   formData.append('profileImage',this.signupForm.controls['profileImage'].value , this.signupForm.controls['profileImage'].value.name);
+   formData.append('certificate',this.signupForm.controls['certificate'].value , this.signupForm.controls['certificate'].value.name);
    formData.append('email', this.signupForm.controls['email'].value);
    formData.append('username',this.signupForm.controls['username'].value);
    formData.append('password', this.signupForm.controls['password'].value);
@@ -60,7 +60,7 @@ addressarray:string[]=[];
    formData.append('name', this.signupForm.controls['name'].value);
    formData.append('clinicAddress', this.signupForm.controls['clinicAddress'].value);
    formData.append('specification', this.signupForm.controls['specification'].value);
-   formData.append('role', this.signupForm.controls['role'].value);
+   formData.append('role', this.signupForm.controls['role'].value );
 
 
    /*formData.append('doctorSpecification', {
@@ -73,16 +73,25 @@ addressarray:string[]=[];
 
    this.auth.register(formData).subscribe((res)=>{
         console.log(res)
-        if(res.message == 'already logged')
+        /*if(res.message == 'already logged')
         {
           this.toastr.error('error', 'This mail used already');
 
         }
         else
         {
-          this.toastr.success('success', 'Sign in Successfully');
-
+          this.toastr.success('success', 'Data sent successfully , wait to review your certificate');
           this.router.navigate(['auth/signin'])
+        }*/
+
+        if(res.message == "User create succesfully")
+        {
+          this.toastr.success('success', 'Data sent successfully , wait to review your certificate');
+          this.router.navigate(['auth/signin'])
+        }
+        else
+        {
+          this.toastr.error('error', `Can't signup with this data`);
         }
    })
   }
@@ -92,6 +101,19 @@ addressarray:string[]=[];
     if(event.target.files[0].type.includes('image/png') || event.target.files[0].type.includes('image/jpeg') ||  event.target.files[0].type.includes('image/jpeg'))
     {
       this.signupForm.controls['profileImage']?.setValue(event.target.files[0])
+      this.test = event.target.files[0]
+    }
+    else
+    {
+      this.toastr.error('error', 'Enter Valid Image!');
+    }
+  }
+
+  onFileSelectedCer(event:any) {
+    this.signupForm.controls['certificate']?.setValue('')
+    if(event.target.files[0].type.includes('image/png') || event.target.files[0].type.includes('image/jpeg') ||  event.target.files[0].type.includes('image/jpeg'))
+    {
+      this.signupForm.controls['certificate']?.setValue(event.target.files[0])
       this.test = event.target.files[0]
     }
     else
