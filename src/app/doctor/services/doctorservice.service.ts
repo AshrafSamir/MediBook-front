@@ -49,7 +49,7 @@ export class DoctorserviceService {
       };
       return this._HttpClient.get(`${environment.ApiUrl}/doctortimeslots/${this.id}`,httpOptions);
     }
-    getTimeSlots():Observable<any>
+    getDoctorTimeSlots():Observable<any>
     {
       const httpOptions = {
         headers: new HttpHeaders({      
@@ -75,6 +75,24 @@ export class DoctorserviceService {
         })
       };
       return this._HttpClient.get(`${environment.ApiUrl}/getTimeSlotBookings/${docId}/${timeId}`,httpOptions);
+    }
+    getDoctorBookings():Observable<any>
+    {
+      const httpOptions = {
+        headers: new HttpHeaders({      
+          'auth':localStorage.getItem('token')
+        })
+      };
+      return this._HttpClient.get(`${environment.ApiUrl}/getdoctorbookings/${this.id}`,httpOptions)
+    }
+    getDoctorByID():Observable<any>
+    {
+      const httpOptions = {
+        headers: new HttpHeaders({      
+          'auth':localStorage.getItem('token')
+        })
+      };
+      return this._HttpClient.get(`${environment.ApiUrl}/doctor/${this.id}`,httpOptions)
     }
 
     
