@@ -1,233 +1,278 @@
 <div class="spinnerCustomStyle " *ngIf="!checkLoader">
-  <mat-spinner  ></mat-spinner>
+    <mat-spinner></mat-spinner>
 </div>
 
-<div class="container-fluid my-5  py-2 px-5 bg-light"  *ngIf="checkLoader">
-  <div class="row  py-3 mt-5 icon-container">
-    <div class="col-md-12  d-flex justify-content-center">
-      <div class="row d-flex justify-content-center" >
+<div class="container-fluid my-5  py-2 px-5 bg-light" *ngIf="checkLoader">
+    <div class="row  py-3 mt-5 icon-container">
+        <div class="col-md-12  d-flex justify-content-center">
+            <div class="row d-flex justify-content-center">
 
-        <div class=" col-lg-2 col-md-3 col-sm-4 ">
-          <div class="row d-flex justify-content-start">
-            <div class="col-lg-4 col-md-6 d-flex justify-content-start align-items-center">
-              <span class="bi bi-people p-2 h4 bg-warning rounded-circle text-center text-light">
+                <div class=" col-lg-2 col-md-3 col-sm-4 ">
+                    <div class="row d-flex justify-content-start">
+                        <div class="col-lg-4 col-md-6 d-flex justify-content-start align-items-center">
+                            <span class="bi bi-people p-2 h4 bg-warning rounded-circle text-center text-light">
               </span>
-            </div>
-            <div class="col-md-8 d-flex align-items-center">
-              <div class="row">
-                <div class="col-md-12 ">
-                  <p class="text-muted "> {{ "Total Users" | translate }}</p>
-                </div>
-                <div class="col-md-12 ">
-                  <p class="fw-bold h4"> {{usersCount?.numberOfUsers}}</p>
-                </div>
-              </div>
-            </div>
+                        </div>
+                        <div class="col-md-8 d-flex align-items-center">
+                            <div class="row">
+                                <div class="col-md-12 ">
+                                    <p class="text-muted "> {{ "Total Users" | translate }}</p>
+                                </div>
+                                <div class="col-md-12 ">
+                                    <p class="fw-bold h4"> {{usersCount?.numberOfUsers}}</p>
+                                </div>
+                            </div>
+                        </div>
 
-          </div>
+                    </div>
 
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-4 ">
+                    <div class="row d-flex justify-content-start">
+                        <div class="col-lg-4 col-md-6 d-flex justify-content-start align-items-center">
+                            <span class="bi bi-person-lock p-2 h4 bg-info rounded-circle text-center text-light">
+              </span>
+                        </div>
+                        <div class="col-md-8 d-flex align-items-center">
+                            <div class="row">
+                                <div class="col-md-12 ">
+                                    <p class="text-muted "> Total Admins</p>
+                                </div>
+                                <div class="col-md-12 ">
+                                    <p class="fw-bold h4"> {{usersCount?.numberOfAdmins}}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-4 ">
+                    <div class="row d-flex justify-content-start">
+                        <div class="col-lg-4 col-md-6 d-flex justify-content-start align-items-center">
+                            <span class="bi bi-person-plus p-2 h4 bg-success rounded-circle text-center text-light">
+              </span>
+                        </div>
+                        <div class="col-md-8 d-flex align-items-center">
+                            <div class="row">
+                                <div class="col-md-12 ">
+                                    <p class="text-muted  "> Total Doctors</p>
+                                </div>
+                                <div class="col-md-12 ">
+                                    <p class="fw-bold h4"> {{usersCount?.numberOfDoctors}}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-4 ">
+                    <div class="row d-flex justify-content-start">
+                        <div class="col-lg-4 col-md-6 d-flex justify-content-start align-items-center">
+                            <span class="bi bi-people p-2 h4 bg-danger rounded-circle text-center text-light">
+              </span>
+                        </div>
+                        <div class="col-md-8 d-flex align-items-center">
+                            <div class="row">
+                                <div class="col-md-12 ">
+                                    <p class="text-muted "> Total Patients</p>
+                                </div>
+                                <div class="col-md-12 ">
+                                    <p class="fw-bold h4"> {{usersCount?.numberOfClients}}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-4 ">
+                    <div class="row d-flex justify-content-start">
+                        <div class="col-lg-4 col-md-6 d-flex justify-content-start align-items-center">
+                            <span class="bi bi-calendar-check-fill p-2 h4 bg-primary rounded-circle text-center text-light">
+              </span>
+                        </div>
+                        <div class="col-md-8 d-flex align-items-center">
+                            <div class="row">
+                                <div class="col-md-12 ">
+                                    <p class="text-muted "> Total Bookings</p>
+                                </div>
+                                <div class="col-md-12 ">
+                                    <p class="fw-bold h4"> {{usersCount?.numberOfBookings}}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
         </div>
 
-        <div class="col-lg-2 col-md-3 col-sm-4 ">
-          <div class="row d-flex justify-content-start">
-            <div class="col-lg-4 col-md-6 d-flex justify-content-start align-items-center">
-              <span class="bi bi-person-lock p-2 h4 bg-info rounded-circle text-center text-light">
-              </span>
-            </div>
-            <div class="col-md-8 d-flex align-items-center">
-              <div class="row">
-                <div class="col-md-12 ">
-                  <p class="text-muted "> Total Admins</p>
-                </div>
-                <div class="col-md-12 ">
-                  <p class="fw-bold h4"> {{usersCount?.numberOfAdmins}}</p>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-
-        <div class="col-lg-2 col-md-3 col-sm-4 ">
-          <div class="row d-flex justify-content-start">
-            <div class="col-lg-4 col-md-6 d-flex justify-content-start align-items-center">
-              <span class="bi bi-person-plus p-2 h4 bg-success rounded-circle text-center text-light">
-              </span>
-            </div>
-            <div class="col-md-8 d-flex align-items-center">
-              <div class="row">
-                <div class="col-md-12 ">
-                  <p class="text-muted  "> Total Doctors</p>
-                </div>
-                <div class="col-md-12 ">
-                  <p class="fw-bold h4"> {{usersCount?.numberOfDoctors}}</p>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-
-        <div class="col-lg-2 col-md-3 col-sm-4 ">
-          <div class="row d-flex justify-content-start">
-            <div class="col-lg-4 col-md-6 d-flex justify-content-start align-items-center">
-              <span class="bi bi-people p-2 h4 bg-danger rounded-circle text-center text-light">
-              </span>
-            </div>
-            <div class="col-md-8 d-flex align-items-center">
-              <div class="row">
-                <div class="col-md-12 ">
-                  <p class="text-muted "> Total Patients</p>
-                </div>
-                <div class="col-md-12 ">
-                  <p class="fw-bold h4"> {{usersCount?.numberOfClients}}</p>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-        
-        <div class="col-lg-2 col-md-3 col-sm-4 ">
-          <div class="row d-flex justify-content-start">
-            <div class="col-lg-4 col-md-6 d-flex justify-content-start align-items-center">
-              <span class="bi bi-calendar-check-fill p-2 h4 bg-primary rounded-circle text-center text-light">
-              </span>
-            </div>
-            <div class="col-md-8 d-flex align-items-center">
-              <div class="row">
-                <div class="col-md-12 ">
-                  <p class="text-muted "> Total Bookings</p>
-                </div>
-                <div class="col-md-12 ">
-                  <p class="fw-bold h4"> {{usersCount?.numberOfBookings}}</p>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-               
-
-      </div>
     </div>
+    <div class="row d-flex justify-content-between mt-4 ">
 
-  </div>
-  <div class="row d-flex justify-content-between mt-4 ">
-
-    <div class="col-md-5 appointments-container rounded-3 mt-2">
-      <ngx-charts-bar-vertical [results]="deptFrequency" [view]="viewVertical" [scheme]="colorScheme"  [gradient]="gradient" [xAxis]="xAxis" [yAxis]="yAxis" [legend]="legend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
-      [xAxisLabel]="xAxisLabelDepartment" [yAxisLabel]="yAxisLabelDepartment" [legendTitle]="legendTitleDepartment" [animations]="animations" [showGridLines]="showGridLines" [trimXAxisTicks]="trimXAxisTicks" [trimYAxisTicks]="trimYAxisTicks"
-      [rotateXAxisTicks]="rotateXAxisTicks" [maxXAxisTickLength]="maxXAxisTickLength" [maxYAxisTickLength]="maxYAxisTickLength" [xAxisTickFormatting]="formatString" [yAxisTickFormatting]="formatNumber" [yAxisTicks]="yAxisTicks" [showDataLabel]="showDataLabel"
-      [barPadding]="barPadding" [tooltipDisabled]="tooltipDisabled" [roundEdges]="roundEdges">
-      </ngx-charts-bar-vertical>
-    </div>
-    <div class="col-md-5 appointments-container rounded-3 mt-2">
-      <!-- <ngx-charts-bar-vertical [results]="doctorFrequency" [view]="viewVertical" [scheme]="colorScheme"  [gradient]="gradient" [xAxis]="xAxis" [yAxis]="yAxis" [legend]="legend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
+        <div class="col-md-5 appointments-container rounded-3 mt-2">
+            <ngx-charts-bar-vertical [results]="deptFrequency" [view]="viewVertical" [scheme]="colorScheme" [gradient]="gradient" [xAxis]="xAxis" [yAxis]="yAxis" [legend]="legend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabelDepartment"
+                [yAxisLabel]="yAxisLabelDepartment" [legendTitle]="legendTitleDepartment" [animations]="animations" [showGridLines]="showGridLines" [trimXAxisTicks]="trimXAxisTicks" [trimYAxisTicks]="trimYAxisTicks" [rotateXAxisTicks]="rotateXAxisTicks" [maxXAxisTickLength]="maxXAxisTickLength"
+                [maxYAxisTickLength]="maxYAxisTickLength" [xAxisTickFormatting]="formatString" [yAxisTickFormatting]="formatNumber" [yAxisTicks]="yAxisTicks" [showDataLabel]="showDataLabel" [barPadding]="barPadding" [tooltipDisabled]="tooltipDisabled" [roundEdges]="roundEdges">
+            </ngx-charts-bar-vertical>
+        </div>
+        <div class="col-md-5 appointments-container rounded-3 mt-2">
+            <!-- <ngx-charts-bar-vertical [results]="doctorFrequency" [view]="viewVertical" [scheme]="colorScheme"  [gradient]="gradient" [xAxis]="xAxis" [yAxis]="yAxis" [legend]="legend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
       [xAxisLabel]="xAxisLabelDoctors" [yAxisLabel]="yAxisLabelDoctors" [legendTitle]="legendTitleDoctors" [animations]="animations" [showGridLines]="showGridLines" [trimXAxisTicks]="trimXAxisTicks" [trimYAxisTicks]="trimYAxisTicks"
       [rotateXAxisTicks]="rotateXAxisTicks" [maxXAxisTickLength]="maxXAxisTickLength" [maxYAxisTickLength]="maxYAxisTickLength" [xAxisTickFormatting]="formatString" [yAxisTickFormatting]="formatNumber" [yAxisTicks]="yAxisTicks" [showDataLabel]="showDataLabel"
       [barPadding]="barPadding" [tooltipDisabled]="tooltipDisabled" [roundEdges]="roundEdges">
      </ngx-charts-bar-vertical> -->
-     <ngx-charts-bar-horizontal
-     [view]="viewVertical"
-     [scheme]="colorScheme"
-     [results]="doctorFrequency"
-     [gradient]="gradient"
-     [xAxis]="showXAxisLabel"
-     [yAxis]="showYAxisLabel"
-     [legend]="legend"
-     [showXAxisLabel]="showXAxisLabel"
-     [showYAxisLabel]="showYAxisLabel"
-     [xAxisLabel]="xAxisLabelDoctors"
-     [yAxisLabel]="yAxisLabelDoctors"
-     (select)="onSelect($event)"
-   
-     >
-   </ngx-charts-bar-horizontal>
+            <ngx-charts-bar-horizontal [view]="viewVertical" [scheme]="colorScheme" [results]="doctorFrequency" [gradient]="gradient" [xAxis]="showXAxisLabel" [yAxis]="showYAxisLabel" [legend]="legend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
+                [xAxisLabel]="xAxisLabelDoctors" [yAxisLabel]="yAxisLabelDoctors" (select)="onSelect($event)">
+            </ngx-charts-bar-horizontal>
+        </div>
     </div>
-  </div>
-  <div class="row mt-4">
-    <div class="col-md-8  ">
-      <div class="row me-1 appointments-container rounded-3">
-        <div class="col-md-12">
-          <p class="h5 fw-bolder mt-2">Appointments</p>
-        </div>
-        <div class="col-md-12">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="row">
-                <div class="col-md-3 col-sm-3 col-3">
-                  <p class="h6 fw-bold">
-                    Patient 
-                  </p>
-                </div>
-                <div class="col-md-2 col-sm-2 col-2">
-                  <p class="h6 fw-bold">
-                    Date
-                  </p>
-                </div>
-                <div class="col-md-2 col-sm-2 col-2">
-                  <p class="h6 fw-bold">
-                    Time
-                  </p>
-                </div>
-                <div class="col-md-2 col-sm-2 col-2">
-                  <p class="h6 fw-bold">
-                    Doctor name
-                  </p>
-                </div>
-                <div class="col-md-2 col-sm-2 col-2">
-                  <p class="h6 fw-bold">
-                    test
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-12" *ngIf="allBookings ; else noBookingsPart ">
-              <div class="row mb-3" *ngFor="let booking of allBookings; index as i">
-                <div class="col-md-3 col-sm-3 col-3 ">
-                  <div class="row">
-                    <div class="col-md-5 col-sm-5 col-5 ">
-                      <img [src]="booking.doctor.imageUrl"
-                      class=" h-100  img-rounded"
-                      alt="">
-                    </div>
-                    <div class="col-md-7 col-sm-7 col-7 d-flex align-items-center" >
-                      <p>
-                        {{booking.user.name}}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-2 col-sm-2 col-2 d-flex align-items-center">
-                  {{booking.timeSlot.date | date}}
-                </div>
-                <div class="col-md-2 col-sm-2 col-2 d-flex align-items-center">
-                  {{booking.timeSlot.from | date:'shortTime'}}
-                </div>
-                <div class="col-md-2 col-sm-2 col-2 d-flex align-items-center">
-                  {{booking.doctor.name}}
-                </div>
-                <div class="col-md-2 col-sm-2 col-2 d-flex align-items-center">
-                  Test
-                </div>
-              </div>
-            </div>
+    <div class="row mt-4">
+        <div class="col-md-8 ">
+            <div class="col-md-12 my-3 rounded-3 shadow p-3">
+                <h2 class=" my-2 fw-bolder p-1">Doctor Requests</h2>
+                <hr>
+                <div>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Doctor</th>
+                                <th scope="col">Role</th>
+                                <th scope="col">Specification</th>
+                                <th scope="col">Certificate</th>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">##</th>
+                                <td>Doctor</td>
+                                <td>Human</td>
+                                <td>General</td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    View Paper
+                                  </button>
+                                </td>
+                                <td><button class="btn btn-outline-success">Accept</button></td>
+                                <td><button class="btn btn-outline-danger">Reject</button></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">##</th>
+                                <td>Doctor</td>
+                                <td>Human</td>
+                                <td>General</td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                  View Paper
+                                </button>
+                                </td>
+                                <td><button class="btn btn-outline-success">Accept</button></td>
+                                <td><button class="btn btn-outline-danger">Reject</button></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">##</th>
+                                <td>Doctor</td>
+                                <td>Human</td>
+                                <td>General</td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                View Paper
+                              </button>
+                                </td>
+                                <td><button class="btn btn-outline-success">Accept</button></td>
+                                <td><button class="btn btn-outline-danger">Reject</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
 
-            <ng-template #noBookingsPart>
-              <div class="col-md-12">
-                Loading
-              </div>
-            </ng-template>
+                </div>
+            </div>
+            <div class="row me-1 appointments-container rounded-3">
+                <div class="col-md-12">
+                    <p class="h5 fw-bolder mt-2">Appointments</p>
+                </div>
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-3 col-sm-3 col-3">
+                                    <p class="h6 fw-bold">
+                                        Patient
+                                    </p>
+                                </div>
+                                <div class="col-md-2 col-sm-2 col-2">
+                                    <p class="h6 fw-bold">
+                                        Date
+                                    </p>
+                                </div>
+                                <div class="col-md-2 col-sm-2 col-2">
+                                    <p class="h6 fw-bold">
+                                        Time
+                                    </p>
+                                </div>
+                                <div class="col-md-2 col-sm-2 col-2">
+                                    <p class="h6 fw-bold">
+                                        Doctor name
+                                    </p>
+                                </div>
+                                <div class="col-md-2 col-sm-2 col-2">
+                                    <p class="h6 fw-bold">
+                                        test
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12" *ngIf="allBookings ; else noBookingsPart ">
+                            <div class="row mb-3" *ngFor="let booking of allBookings; index as i">
+                                <div class="col-md-3 col-sm-3 col-3 ">
+                                    <div class="row">
+                                        <div class="col-md-5 col-sm-5 col-5 ">
+                                            <img [src]="booking.doctor.imageUrl" class=" h-100  img-rounded" alt="">
+                                        </div>
+                                        <div class="col-md-7 col-sm-7 col-7 d-flex align-items-center">
+                                            <p>
+                                                {{booking.user.name}}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-sm-2 col-2 d-flex align-items-center">
+                                    {{booking.timeSlot.date | date}}
+                                </div>
+                                <div class="col-md-2 col-sm-2 col-2 d-flex align-items-center">
+                                    {{booking.timeSlot.from | date:'shortTime'}}
+                                </div>
+                                <div class="col-md-2 col-sm-2 col-2 d-flex align-items-center">
+                                    {{booking.doctor.name}}
+                                </div>
+                                <div class="col-md-2 col-sm-2 col-2 d-flex align-items-center">
+                                    Test
+                                </div>
+                            </div>
+                        </div>
 
-          </div>
-        </div>
-      </div>
-      <!-- <table class="table table-borderless appointments-container">
+                        <ng-template #noBookingsPart>
+                            <div class="col-md-12">
+                                Loading
+                            </div>
+                        </ng-template>
+
+                    </div>
+                </div>
+            </div>
+            <!-- <table class="table table-borderless appointments-container">
         <thead>
           <tr>
             <th>Patient Name</th>
@@ -258,45 +303,47 @@
           </tr>
         </tbody>
       </table> -->
-    </div>
-    <div class="col-md-4">
-      <div class="row reviews-container rounded-3">
-        <div class="col-6 text-start">
-          <p class="h5 fw-bolder mt-2">
-            Reviews
-          </p>
         </div>
-        <div class="col-6 text-end ">
-          <p class="text-decoration-underline mt-2">
-            view All
-          </p>
-        </div>
-        <div class="col-12" *ngIf="doctorsMostRated ;else noDoctorsPart">
-          <div class="row " *ngFor="let doctor of doctorsMostRated; index as i">
-              <div class="col-4  d-flex justify-content-end ">
-                <img [src]="doctor.imageUrl" class="w-100 h-50  img-rounded" alt="">
-              </div>
-              <div class="col-8 mt-2">
-                <p class="h6 d-block">{{doctor.name }}</p>
-                <i class="bi bi-star-fill  text-warning me-1" *ngFor="let star of doctor.ratesValues"></i>
-              </div>
-            <!-- <ng-template #noDoctorsBlock>
+        <div class="col-md-4">
+            <div class="row reviews-container rounded-3">
+                <div class="col-6 text-start">
+                    <p class="h5 fw-bolder mt-2">
+                        Reviews
+                    </p>
+                </div>
+                <div class="col-6 text-end ">
+                    <p class="text-decoration-underline mt-2">
+                        view All
+                    </p>
+                </div>
+                <div class="col-12" *ngIf="doctorsMostRated ;else noDoctorsPart">
+                    <div class="row " *ngFor="let doctor of doctorsMostRated; index as i">
+                        <div class="col-4  d-flex justify-content-end ">
+                            <img [src]="doctor.imageUrl" class="w-100 h-50  img-rounded" alt="">
+                        </div>
+                        <div class="col-8 mt-2">
+                            <p class="h6 d-block">{{doctor.name }}</p>
+                            <i class="bi bi-star-fill  text-warning me-1" *ngFor="let star of doctor.ratesValues"></i>
+                        </div>
+                        <!-- <ng-template #noDoctorsBlock>
               <div class="col-md-12">
                 Loading
               </div>
             </ng-template> -->
-          </div>
+                    </div>
+                </div>
+                <ng-template #noDoctorsPart>
+                    <div class="col-md-12">
+                        Loading
+                    </div>
+                </ng-template>
+
+            </div>
         </div>
-        <ng-template #noDoctorsPart>
-          <div class="col-md-12">
-            Loading
-          </div>
-        </ng-template>
-       
-      </div>
     </div>
-  </div>
-  <!-- <div class="row mt-3 mb-4 d-flex px-2 justify-content-center">
+
+
+    <!-- <div class="row mt-3 mb-4 d-flex px-2 justify-content-center">
     <div class="col-md-12">
       <p class="h3 text-center "> <span class="border-bottom border-3 text-dark border-primary rounded">User distribution</span></p>
     </div>
@@ -323,7 +370,23 @@
   </div> -->
 </div>
 
-
+<!---------------- Modal---------------- -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Doctor Paper</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img src="../../../assets/img/about.jpg" class="img-thumbnail">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 <!-- <div class="w-50 mx-auto">
