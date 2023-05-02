@@ -125,6 +125,11 @@
 "name":"name",
 "mobilePhone":"mobile phone",
 "type":"type",
-"Total Users":"Total Users"
+"Total Users":"Total Users",
+"Certificate":"Certificate",
+"Last3MonthsReservationsperDepartment":"Last 3 Months Reservations per Department",
+"ReservationsnumberperDepartment":"Reservations number per Department",
+"ReservationsnumberperDoctor":"Reservations number per Doctor"
+
 
 }

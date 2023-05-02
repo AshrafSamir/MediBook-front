@@ -132,6 +132,11 @@
     "name":"الإسم",
     "mobilePhone":"رقم الهاتف",
     "type":"نوع المستخدم",
-    "Total Users":"عدد المستخدمين"
+    "Total Users":"عدد المستخدمين",
+    "Certificate":"شهادة مزاولة المهنة",
+    "Last3MonthsReservationsperDepartment":"حجوزات 3 شهور سابقة",
+"ReservationsnumberperDepartment":"الحجوزات لكل قسم",
+"ReservationsnumberperDoctor":"الحجوزات لكل دكتور"
+
 
 }
