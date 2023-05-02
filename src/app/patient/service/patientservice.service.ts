@@ -16,5 +16,8 @@ export class PatientserviceService {
   getUserDepartmentFrequency(): Observable<any> {
     return this._HttpClient.get(`${environment.ApiUrl}/userDepartmentFrequency/${this.id}`);
   }
+  getLast3MonthsRes(): Observable<any> {
+    return this._HttpClient.get(`${environment.ApiUrl}/userdeptoutcomes/${this.id}`);
+  }
 }
 
