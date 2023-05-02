@@ -5,18 +5,23 @@
 <div class="container-fluid mt-5" *ngIf="checkLoader">
     <div class="row mt-5">
         <div class="col-xl-6  ">
-            <div class="shadow p-1">
+            <div class="shadow px-1 pt-3">
+                <h2>{{"Last3MonthsReservationsperDepartment" | translate}}</h2>
+                <ngx-charts-bar-vertical-2d [results]="depEarned" [view]="view" [scheme]="colorScheme" [schemeType]="schemeType" [gradient]="gradient" [xAxis]="xAxis" [yAxis]="yAxis" [legend]="legend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
+                [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [legendTitle]="legendTitleMulti" [legendPosition]="legendPosition" [animations]="animations" [showGridLines]="showGridLines" [barPadding]="barPadding" [tooltipDisabled]="tooltipDisabled"></ngx-charts-bar-vertical-2d>
+<!--        
                 <ngx-charts-bar-vertical-normalized [results]="depEarned" [view]="view" [scheme]="colorScheme"
                     [schemeType]="schemeType" [gradient]="gradient" [xAxis]="xAxis" [yAxis]="yAxis" [legend]="legend"
                     [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel"
                     [yAxisLabel]="yAxisLabel" [legendTitle]="legendTitleMulti" [legendPosition]="legendPosition"
                     [animations]="animations" [showGridLines]="showGridLines" [barPadding]="barPadding"
                     [tooltipDisabled]="tooltipDisabled">
-                </ngx-charts-bar-vertical-normalized>
+                </ngx-charts-bar-vertical-normalized> -->
             </div>
         </div>
         <div class="col-xl-6 cm ">
-            <div class="shadow p-1">
+            <div class="shadow px-1 pt-3">
+                <h2>{{"Last3MonthsReservationsperDepartment" | translate}}</h2>
                 <ngx-charts-line-chart [results]="depEarned" [view]="view" [scheme]="colorScheme"
                     [legend]="legend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
                     [xAxis]="xAxis" [yAxis]="yAxis" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel"
@@ -25,7 +30,8 @@
             </div>
         </div>
         <div class="col-xl-6 cmm ">
-            <div class="shadow p-1">
+            <div class="shadow px-1 pt-3">
+                <h2>{{"ReservationsnumberperDepartment" | translate}}</h2>
                 <ngx-charts-pie-chart [results]="depReservations" [view]="view" [scheme]="colorScheme"
                     [gradient]="gradient" [legend]="showLegend" [legendPosition]="legendPosition" [labels]="showLabels"
                     [doughnut]="isDoughnut" (select)="onSelect($event)" (activate)="onActivate($event)"
@@ -34,7 +40,8 @@
             </div>
         </div>
         <div class="col-xl-6 cmm ">
-            <div class="shadow p-1">
+            <div class="shadow px-1 pt-3">
+                <h2>{{"ReservationsnumberperDoctor" | translate}}</h2>
                 <ngx-charts-number-card [results]="docNums" [view]="view" [scheme]="colorScheme2" [cardColor]="cardColor" (select)="onSelect($event)">
                 </ngx-charts-number-card>
             </div>
