@@ -95,6 +95,7 @@ export class DashboardComponent implements OnInit {
     })*/
 
       this.getAllData();
+      this.getAllDoctors()
   }
 
   getAllData() {
@@ -122,11 +123,39 @@ export class DashboardComponent implements OnInit {
 
     })
   }
+
+
+getAllDoctors(){
+  this._adminService.getAllDoctors().subscribe(res =>{
+    this.allDoctors=[]
+    for(let dr of res.allDoctorsData) {
+      if(dr.status==='pending'){
+        this.allDoctors.push(dr)
+      }
+    // console.log(res.allDoctorsData)
+    }
+})
+}
+openModal(certificate){
+  this.certificate=certificate
+}
+
+
+updateDoctor(id:any,status:any){
+this._adminService.updateDoctorDate(id,{status}).subscribe(res =>{
+console.log('success',res.doctor.status)
+this.getAllDoctors()
+})
+}
+
+
+certificate:string=''
   usersCount: any;
   deptFrequency: any[];
   doctorsMostRated: any[];
   doctorFrequency: any[];
-  allBookings: any[]
+  allBookings: any[];
+  allDoctors: any[]=[];
   single: any[];
   view: [number, number] = [700, 400];
   viewVertical: [number, number] = [600, 400];
