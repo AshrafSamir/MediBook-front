@@ -8,14 +8,16 @@ import { Observable } from 'rxjs';
 })
 export class DoctorserviceService {
   id:string=''
+  username:string=''
   header:any =new HttpHeaders().set("auth",localStorage.getItem('token'));
 
   constructor(private _HttpClient:HttpClient 
     , private _Router:Router) { 
       const userData:any =JSON.parse(localStorage.getItem('userData'));
       this.id=userData._id
+      this.username=userData.username;
 
-      console.log("id:",this.id )
+      console.log("id:",this.id ,this.username );
 
 
 
@@ -95,6 +97,16 @@ export class DoctorserviceService {
         })
       };
       return this._HttpClient.get(`${environment.ApiUrl}/doctor/${this.id}`,httpOptions)
+    }
+
+    setNotification(id,body):Observable<any>
+    {
+      const httpOptions = {
+        headers: new HttpHeaders({      
+          'auth':localStorage.getItem('token')
+        })
+      };
+      return this._HttpClient.patch(`${environment.ApiUrl}/endBooking/${id}`,body,httpOptions)
     }
 
     
