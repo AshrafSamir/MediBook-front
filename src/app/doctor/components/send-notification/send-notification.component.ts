@@ -26,8 +26,12 @@ export class SendNotificationComponent implements OnInit {
 e.preventDefault();
 const notification={
 username:this.doctorSer.username,
-instruction:this.comments.value
+doctorInstructions:this.comments.value
 }
+this.doctorSer.setinstruction(this.timeId,notification).subscribe((res)=>{
+ console.log(res);
+});
+
 this.doctorSer.setNotification(this.timeId,notification).subscribe((res)=>{
   this.toastr.success('success', 'Prescription Sended Successfully');
   this.router.navigate(['/doctor/getslots']);

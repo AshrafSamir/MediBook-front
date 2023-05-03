@@ -40,7 +40,7 @@ export class AllappointmentsComponent implements OnInit  {
             {
               bookingItem=res[key][key2]; 
               let {name,mobilePhone ,clinicAddress,specification,doctorId,doctorRate}=bookingItem.doctor;
-              let {fees}=bookingItem.booking;
+              let {fees,_id}=bookingItem.booking;
               let {username}=bookingItem.user;
               let {from,to}=bookingItem.timeSlot;
           to=new Date(to);
@@ -51,12 +51,12 @@ export class AllappointmentsComponent implements OnInit  {
           from=from.toLocaleTimeString();
           to=to.toLocaleTimeString();
           let date=`${dayname}.${month}.${year} From ${from} to ${to}`; 
-          this.bookingInfo.push({name,fees ,mobilePhone,date,clinicAddress,specification,doctorId,doctorRate});
+          this.bookingInfo.push({name,fees ,mobilePhone,date,clinicAddress,specification,doctorId,doctorRate,bookingId:_id});
             }
           
           }
         }
-     return res; 
+     return this.bookingInfo; 
       })).subscribe((res)=>{
         this.isLoaded=true;
         console.log("success",res);
@@ -64,9 +64,10 @@ export class AllappointmentsComponent implements OnInit  {
           
     }
 
-    goToDoctorDetails(id)
+    goToDoctorDetails(id,bookingId)
     {
-      this.router.navigate(['/about-doctor'],{queryParams:{id}});
+      console.log("bookingId",bookingId);
+      this.router.navigate(['/about-doctor'],{queryParams:{id,bookingId}});
     }
 
 }

@@ -108,6 +108,15 @@ export class DoctorserviceService {
       };
       return this._HttpClient.patch(`${environment.ApiUrl}/endBooking/${id}`,body,httpOptions)
     }
+    setinstruction(id,body):Observable<any>
+    {
+      const httpOptions = {
+        headers: new HttpHeaders({      
+          'auth':localStorage.getItem('token')
+        })
+      };
+      return this._HttpClient.patch(`${environment.ApiUrl}/addDoctorInstructions/${id}`,body,httpOptions)
+    }
 
     
 }

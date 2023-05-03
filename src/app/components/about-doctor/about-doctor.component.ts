@@ -16,24 +16,41 @@ doctorId:any;
 doctorInfo:any;
 isLoaded:any;
 userId:any;
+isEnded:any;
 username:any;
+notification:any;
+bookingId:any;
 rateFormControll=new FormControl('',Validators.required);
 message=new FormControl('');
   constructor(private route:ActivatedRoute , private toastr: ToastrService, private auth:AuthService,private http:HttpClient,private router:Router) { }
  
   
   ngOnInit(): void {
+    this.isEnded=false;
     this.isLoaded=false;
     this.route.queryParams.subscribe((params)=>{
 this.doctorId=params['id'];
+this.bookingId=params['bookingId'];
  this.auth.userdata.subscribe((value:any)=>{
   this.userId=value._id;
   this.username=value.name;
 })
+this.getBookingsInfo();
 this.getDoctorInfo()
     })
   }
-
+  getBookingsInfo()
+  {
+    this.http.get(`http://localhost:3000/booking/${this.bookingId}`).subscribe((res)=>{
+      this.isEnded=res['booking'].ended;
+      this.notification=res['booking'].doctorInstructions;
+      // this.notification="Medication: Amoxicillin 500mg \
+      // Dosage: Take 1 capsule by mouth three times per day for 10 days \
+      // Refills: None Instructions: Take with food. Finish all medication as prescribed.";
+      console.log(this.notification);
+      
+    })
+  }
   getDoctorInfo()
   {
     this.http.get(`http://localhost:3000/doctor/${this.doctorId}`).pipe(map((res:any)=>{
