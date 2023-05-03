@@ -10,7 +10,6 @@ import { forkJoin } from 'rxjs';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-
   // options
   legendTitleDepartment: string = 'departments';
   legend: boolean = true;
@@ -28,17 +27,23 @@ export class DashboardComponent implements OnInit {
 
   xAxisLabelDoctors: string = 'Doctors';
 
-
-
   maxXAxisTickLength: number = 30;
   maxYAxisTickLength: number = 30;
   trimXAxisTicks: boolean = false;
   trimYAxisTicks: boolean = false;
   rotateXAxisTicks: boolean = false;
 
-  xAxisTicks: any[] = ['Genre 1', 'Genre 2', 'Genre 3', 'Genre 4', 'Genre 5', 'Genre 6', 'Genre 7']
-  yAxisTicks: any[] = [0, 4, 8, 12, 16, 20]
-  testAxisTicks: any[] = [0.0, 4.0, 8.0, 12.0, 16.0, 20.0]
+  xAxisTicks: any[] = [
+    'Genre 1',
+    'Genre 2',
+    'Genre 3',
+    'Genre 4',
+    'Genre 5',
+    'Genre 6',
+    'Genre 7',
+  ];
+  yAxisTicks: any[] = [0, 4, 8, 12, 16, 20];
+  testAxisTicks: any[] = [0.0, 4.0, 8.0, 12.0, 16.0, 20.0];
 
   animations: boolean = true; // animations on load
 
@@ -46,21 +51,17 @@ export class DashboardComponent implements OnInit {
 
   showDataLabel: boolean = true; // numbers on bars
 
-
   schemeType: string = 'ordinal'; // 'ordinal' or 'linear'
 
-  barPadding: number = 5
+  barPadding: number = 5;
   tooltipDisabled: boolean = false;
 
   yScaleMax: number = 9000;
 
   roundEdges: boolean = false;
-  checkLoader: boolean = false;
-
-  
+  checkLoader: boolean = true;
 
   ngOnInit(): void {
-
     /*this._adminService.getUsersCount().subscribe((res) => {
       this.usersCount = res;
       // console.log(res);
@@ -94,8 +95,8 @@ export class DashboardComponent implements OnInit {
       this.doctorFrequency = res.doctorFrequency
     })*/
 
-      this.getAllData();
-      this.getAllDoctors()
+    this.getAllData();
+    this.getAllDoctors();
   }
 
   getAllData() {
@@ -104,58 +105,52 @@ export class DashboardComponent implements OnInit {
       this._adminService.getDoctorsMostRated(),
       this._adminService.getAllBookings(),
       this._adminService.getDepartmentFrequency(),
-      this._adminService.getDoctorFrequency()
+      this._adminService.getDoctorFrequency(),
     ]).subscribe((res: any) => {
-        this.usersCount = res[0];
-        if (res[1].doctors) {
-          for (let i = 0; i < res[1].doctors.length; i++) {
-            let ratesValues = new Array(res[1].doctors[i].doctorRate)
-            res[1].doctors[i].ratesValues = ratesValues;
-  
-          }
-          this.doctorsMostRated = res[1].doctors;
+      this.usersCount = res[0];
+      if (res[1].doctors) {
+        for (let i = 0; i < res[1].doctors.length; i++) {
+          let ratesValues = new Array(res[1].doctors[i].doctorRate);
+          res[1].doctors[i].ratesValues = ratesValues;
         }
-        this.allBookings = res[2].bookings
-        this.deptFrequency = res[3].deptFrequency;
-        this.doctorFrequency = res[4].doctorFrequency
-        this.checkLoader=true
-
-
-    })
+        this.doctorsMostRated = res[1].doctors;
+      }
+      this.allBookings = res[2].bookings;
+      this.deptFrequency = res[3].deptFrequency;
+      this.doctorFrequency = res[4].doctorFrequency;
+      this.checkLoader = true;
+    });
   }
 
-
-getAllDoctors(){
-  this._adminService.getAllDoctors().subscribe(res =>{
-    this.allDoctors=[]
-    for(let dr of res.allDoctorsData) {
-      if(dr.status==='pending'){
-        this.allDoctors.push(dr)
+  getAllDoctors() {
+    this._adminService.getAllDoctors().subscribe((res) => {
+      this.allDoctors = [];
+      for (let dr of res.allDoctorsData) {
+        if (dr.status === 'pending') {
+          this.allDoctors.push(dr);
+        }
+        // console.log(res.allDoctorsData)
       }
-    // console.log(res.allDoctorsData)
-    }
-})
-}
-openModal(certificate){
-  this.certificate=certificate
-}
+    });
+  }
+  openModal(certificate) {
+    this.certificate = certificate;
+  }
 
+  updateDoctor(id: any, status: any) {
+    this._adminService.updateDoctorDate(id, { status }).subscribe((res) => {
+      console.log('success', res.doctor.status);
+      this.getAllDoctors();
+    });
+  }
 
-updateDoctor(id:any,status:any){
-this._adminService.updateDoctorDate(id,{status}).subscribe(res =>{
-console.log('success',res.doctor.status)
-this.getAllDoctors()
-})
-}
-
-
-certificate:string=''
+  certificate: string = '';
   usersCount: any;
   deptFrequency: any[];
   doctorsMostRated: any[];
   doctorFrequency: any[];
   allBookings: any[];
-  allDoctors: any[]=[];
+  allDoctors: any[] = [];
   single: any[];
   view: [number, number] = [700, 400];
   viewVertical: [number, number] = [600, 400];
@@ -199,13 +194,13 @@ certificate:string=''
   }
   formatString(input: string): string {
     if (input) {
-      return input.toUpperCase()
+      return input.toUpperCase();
     }
-    return "";
+    return '';
   }
   formatNumber(input: number): number {
     if (input) {
-      return input
+      return input;
     }
     return 0;
   }
