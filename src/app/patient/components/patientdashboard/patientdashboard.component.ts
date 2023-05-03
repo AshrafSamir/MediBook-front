@@ -168,10 +168,15 @@ checkLoader:boolean = false
   constructor(private _patientSer:PatientserviceService) { }
   ngOnInit(): void {
    
-    forkJoin([this._patientSer.getUserDepartmentFrequency(), this._patientSer.getUserDoctorFrequency()]).subscribe((res:any)=>{
-      console.log(res[0].userDeptFrequency)
+    forkJoin([
+      this._patientSer.getUserDepartmentFrequency(), 
+      this._patientSer.getUserDoctorFrequency(),
+      this._patientSer.getLast3MonthsRes(),
+    ]).subscribe((res:any)=>{
+      console.log(res)
       this.docNums=res[1].userFrequency
       this.depReservations=res[0].userDeptFrequency
+      this.depEarned = res[2].DeptIncomes
       this.checkLoader=true
     })
   //this.UserDoctorFrequency();

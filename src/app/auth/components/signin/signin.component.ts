@@ -23,7 +23,7 @@ export class SigninComponent implements OnInit {
   {
     this.auth.login(this.loginForm.value).subscribe((res)=>{
       console.log(res)
-      if(res.message == 'wrong password')
+      /*if(res.message == 'wrong password')
       {
         this.toastr.error('error', 'wrong password');
       }
@@ -42,8 +42,6 @@ export class SigninComponent implements OnInit {
           this.auth.userType.next('doctor');
           this.router.navigate(['doctor/addslot'])
           console.log(this.auth.userType.getValue())
-          
-
         }
         else if(res.user.type == 'patient')
         {
@@ -57,6 +55,36 @@ export class SigninComponent implements OnInit {
           this.router.navigate(['admin/dashboard'])
           console.log(this.auth.userType.getValue())
         }
+      }*/
+
+      if(res.message == "user signed in successfully")
+      {
+        this.toastr.success('success', 'Sign in Successfully');
+        localStorage.setItem('userData',JSON.stringify(res.user)) //JSON.stringify()
+        localStorage.setItem('token',res.user.token)
+        if(res.user.type == 'doctor')
+        {
+          this.auth.userType.next('doctor');
+          this.router.navigate(['doctor/addslot'])
+          console.log(this.auth.userType.getValue())
+        }
+        else if(res.user.type == 'patient')
+        {
+          this.auth.userType.next('patient');
+          this.router.navigate(['patient/dashboard'])
+          console.log(this.auth.userType.getValue())
+        }
+        else if(res.user.type == 'admin')
+        {
+          this.auth.userType.next('admin');
+          this.router.navigate(['admin/dashboard'])
+          console.log(this.auth.userType.getValue())
+        }
+      }
+     
+      else
+      {
+        this.toastr.error('error', 'wrong username or email or phone');
       }
     })
   console.log(this.loginForm.value)
