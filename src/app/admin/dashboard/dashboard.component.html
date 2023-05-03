@@ -137,7 +137,7 @@
         </div>
     </div>
     <div class="row mt-4">
-        <div class="col-md-8 ">
+        <div class="col-md-7 ">
             <div class="col-md-12 my-3 rounded-3 shadow p-3">
                 <h2 class=" my-2 fw-bolder p-1">Doctor Requests</h2>
                 <hr>
@@ -155,45 +155,43 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">##</th>
-                                <td>Doctor</td>
-                                <td>Human</td>
-                                <td>General</td>
-                                <td>
-                                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    View Paper
-                                  </button>
-                                </td>
-                                <td><button class="btn btn-outline-success">Accept</button></td>
-                                <td><button class="btn btn-outline-danger">Reject</button></td>
+
+                            <tr *ngFor="let doctor of allDoctors; index as i" key="doctor.doctorId">
+                                <ng-container *ngIf="doctor.status=='pending'">
+                                    <th scope="row">{{i}}</th>
+                                    <td>{{doctor.name}}</td>
+                                    <td>{{doctor.role}}</td>
+                                    <td>{{doctor.specification}}</td>
+                                    <td>
+                                        <button type="button" class="btn btn-outline-primary" (click)="openModal(doctor.certificate)" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                      View Paper
+                    </button>
+                                    </td>
+                                    <td><button class="btn btn-outline-success" (click)="updateDoctor(doctor.doctorId,'accepted')">Accept</button></td>
+                                    <td><button class="btn btn-outline-danger" (click)="updateDoctor(doctor.doctorId,'rejected')">Reject</button></td>
+
+                                    <!---------------- Modal---------------- -->
+                                    <div *ngIf="certificate" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <img [src]="certificate" class="text-center p-3 img-thumbnail" alt="certificate">
+
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-container>
                             </tr>
-                            <tr>
-                                <th scope="row">##</th>
-                                <td>Doctor</td>
-                                <td>Human</td>
-                                <td>General</td>
-                                <td>
-                                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                  View Paper
-                                </button>
-                                </td>
-                                <td><button class="btn btn-outline-success">Accept</button></td>
-                                <td><button class="btn btn-outline-danger">Reject</button></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">##</th>
-                                <td>Doctor</td>
-                                <td>Human</td>
-                                <td>General</td>
-                                <td>
-                                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                View Paper
-                              </button>
-                                </td>
-                                <td><button class="btn btn-outline-success">Accept</button></td>
-                                <td><button class="btn btn-outline-danger">Reject</button></td>
-                            </tr>
+
+
                         </tbody>
                     </table>
 
@@ -370,23 +368,7 @@
   </div> -->
 </div>
 
-<!---------------- Modal---------------- -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Doctor Paper</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <img src="../../../assets/img/about.jpg" class="img-thumbnail">
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
+
 
 
 <!-- <div class="w-50 mx-auto">

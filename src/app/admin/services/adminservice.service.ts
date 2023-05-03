@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AdminserviceService {
+  id:string='';
   constructor(private _httpClient: HttpClient) {}
   getUsers(type: string): Observable<any> {
     if (type) return this._httpClient.get(`${environment.ApiUrl}/all${type}`);
@@ -27,5 +28,17 @@ export class AdminserviceService {
   }
   getDoctorFrequency():Observable<any>{
     return this._httpClient.get(`${environment.ApiUrl}/doctorsFrequency`)
+  }
+  getAllDoctors():Observable<any>{
+    return this._httpClient.get(`${environment.ApiUrl}/alldoctors`)
+  }
+  updateDoctorDate(id:any,status:any):Observable<any>
+  {
+    const httpOptions = {
+      headers: new HttpHeaders({      
+        'auth':localStorage.getItem('token')
+      })
+    };
+    return this._httpClient.patch(`${environment.ApiUrl}/editDoctorStatus/${id}`,status,httpOptions)
   }
 }
