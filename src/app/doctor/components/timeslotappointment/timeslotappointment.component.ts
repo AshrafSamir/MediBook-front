@@ -21,6 +21,7 @@ patients:any=[];
       this.doctorId = params['docId'];
       this.timeId = params['id'];
       this.doctorSer.getAppointmets(this.timeId,this.doctorId).subscribe(res=>{
+        console.log("shit",res);
         let {from,to}=res;
           to=new Date(to);
           from=new Date(from);
@@ -33,7 +34,9 @@ patients:any=[];
           this.date=date;
         for(let key in res['timeSlotBookings'])
         {
-          this.patients.push(res['timeSlotBookings'][key].user);
+          let user=res['timeSlotBookings'][key].user;
+          user.bookingId=res['timeSlotBookings'][key]._id;
+          this.patients.push(user);
         }
         console.log("jjjo",this.patients);
         this.isLoaded=true;
@@ -42,8 +45,8 @@ patients:any=[];
     });
   }
 
-  goToPatient(patientid){
-    this.router.navigate(['/doctor/patient'],{queryParams:{id:patientid}});
+  goToPatient(patientid,bookingId){
+    this.router.navigate(['/doctor/patient'],{queryParams:{id:patientid,timeId:bookingId}});
   }
 
 }
