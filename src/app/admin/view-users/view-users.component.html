@@ -15,11 +15,11 @@
         <table class="table ">
             <thead>
                 <tr>
-                    <th scope="col ">Name</th>
-                    <th scope="col ">Email</th>
-                    <th scope="col ">Gender</th>
-                    <th scope="col ">Mobile Phone</th>
-                    <th scope="col ">Type</th>
+                    <th scope="col ">{{"name" | translate}}</th>
+                    <th scope="col ">{{"Email" | translate}}</th>
+                    <th scope="col ">{{"Gender" | translate}}</th>
+                    <th scope="col ">{{"mobilePhone" | translate}}</th>
+                    <th scope="col ">{{"type" | translate}}</th>
 
                 </tr>
             </thead>
@@ -44,15 +44,15 @@
         </button>
       </div>
 
-     <div class="container">
-        <div class="row d-flex justify-content-center">
-            <div class=" d-flex justify-content-center col-md-6">
-                <ngx-charts-advanced-pie-chart class="my-2 bg-transparent w-100 overflow-none" [results]="users" [scheme]="colorScheme" 
+     <!-- <div class="container">
+        <div class="row ">
+            <div class=" ">
+                <ngx-charts-advanced-pie-chart class="" [results]="users" [scheme]="colorScheme" 
                 [gradient]="gradient" (select)="onSelect($event)" (activate)="onActivate($event)" (deactivate)="onDeactivate($event)">
                 </ngx-charts-advanced-pie-chart>
             </div>
         </div>
-    </div> 
+    </div>  -->
 
      <div class="container">
         <div class="row d-flex justify-content-center">

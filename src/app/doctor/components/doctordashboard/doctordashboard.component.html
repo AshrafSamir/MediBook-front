@@ -29,7 +29,7 @@
         <div class="row mt-5">
             <div class="col-xl-6 ">
                 <div class="shadow ">
-                    <h3 class="text-light bg-primary p-1">Total Reservations</h3>
+                    <h3 class="text-light bg-primary p-1">{{ 'TotalReservations'| translate}}</h3>
                     <ngx-charts-linear-gauge [view]="view" [scheme]="colorScheme" [value]="reservations" [previousValue]="maxReservations" (select)="onSelect($event)" [units]="units">
                     </ngx-charts-linear-gauge>
                 </div>
@@ -37,7 +37,7 @@
             <div class="col-xl-6 cm " *ngIf="timeSlots.length">
                 <div class="shadow ">
 
-                    <h3 class="text-light bg-primary p-1 ">Reservations</h3>
+                    <h3 class="text-light bg-primary p-1 ">{{ 'Reservations'| translate}}</h3>
 
                     <ngx-charts-bar-vertical-2d [view]="view " [scheme]="colorScheme " [results]="timeSlots " [gradient]="gradient " [xAxis]="xAxis " [yAxis]="yAxis " [legend]="showLegend " [showXAxisLabel]="showXAxisLabel " [showYAxisLabel]="showYAxisLabel
                     " [xAxisLabel]="xAxisLabel " yAxisLabel="Reservations " [legendTitle]="legendTitle " (select)="onSelect($event) " (activate)="onActivate($event) " (deactivate)="onDeactivate($event) ">
@@ -46,7 +46,7 @@
             </div>
             <div class="col-xl-6 cmm " *ngIf="patientGenders.length">
                 <div class="shadow ">
-                    <h3 class="text-light bg-primary p-1 ">Avg Visits by Gender</h3>
+                    <h3 class="text-light bg-primary p-1 ">{{ 'AvgVisitsbyGender'| translate}}</h3>
                     <ngx-charts-pie-chart [view]="view" [scheme]="colorScheme" [results]="patientGenders" [gradient]="gradient" [legend]="showLegend" [legendPosition]="legendPosition" [labels]="showLabels" [doughnut]="isDoughnut" (select)="onSelect($event)" (activate)="onActivate($event)"
                         (deactivate)="onDeactivate($event)">
                     </ngx-charts-pie-chart>
@@ -55,7 +55,7 @@
 
             <div class="col-xl-6 cmm" *ngIf="doctorIncomes.length">
                 <div class="shadow">
-                    <h3 class="text-light bg-primary p-1"> Incomes</h3>
+                    <h3 class="text-light bg-primary p-1"> {{ 'Incomes'| translate}}</h3>
                     <ngx-charts-bar-vertical [view]="view" [scheme]="colorScheme" [results]="doctorIncomes" [gradient]=" gradient " [xAxis]="xAxis " [yAxis]="yAxis " [legend]="showLegend " [showXAxisLabel]="showXAxisLabel " [showYAxisLabel]="showYAxisLabel " [xAxisLabel]="xAxisLabel "
                         [yAxisLabel]="yAxisLabel " (select)="onSelect($event) ">
                     </ngx-charts-bar-vertical>
