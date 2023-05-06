@@ -149,14 +149,14 @@
             >{{'ViewUsers'| translate}}</a
           >
         </li>
-        <!-- <li class="nav-item">
+        <li class="nav-item" *ngIf="type!='doctor'">
           <a
             class="nav-link"
             routerLinkActive="active"
             routerLink="/All-appointments"
             >All Appointments</a
           >
-        </li> -->
+        </li>
         <li
           *ngIf="type == 'doctor' || type == 'patient' || type == 'admin'"
           class="nav-item"

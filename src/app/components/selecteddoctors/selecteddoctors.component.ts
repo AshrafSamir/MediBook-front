@@ -30,13 +30,13 @@ export class SelecteddoctorsComponent implements OnInit {
 
   postAppointment(appointment: { department: string, doctors: string, address: string }) {
     this.isLoaded = false;
-    // http://localhost:3000/doctorTimeSlots/
+    // ${environment.ApiUrl}/doctorTimeSlots/
     const httpOptions = {
       headers: new HttpHeaders({
         'auth': localStorage.getItem('token')
       })
     };
-    this.http.get('http://localhost:3000/alldoctors').pipe(map((res) => {
+    this.http.get('${environment.ApiUrl}/alldoctors').pipe(map((res) => {
       this.Doctorsinformations = [];
       for (const key in res) {
         if (key == 'allDoctorsData') {

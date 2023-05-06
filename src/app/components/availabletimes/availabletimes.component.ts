@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { environment } from 'api';
 import { map } from 'rxjs/operators';
 import { AuthService } from 'src/app/shared/services/auth.service';
 @Component({
@@ -33,13 +34,13 @@ export class AvailabletimesComponent implements OnInit {
   }
   getAllTimeSlots() {
     console.log(this.doctorId)
-    this.http.get(`http://localhost:3000/doctorTimeSlots/${this.doctorId}`).pipe(map((res) => {
+    this.http.get(`${environment.ApiUrl}/doctorTimeSlots/${this.doctorId}`).pipe(map((res) => {
       this.DoctorsTimeSlots = [];
       for (let key in res) {
         let { from, to, fullyBooked, _id } = res[key];
         to = new Date(to);
         from = new Date(from);
-        this.dayname = from.toLocaleString('en-US', { weekday: 'long' });
+        this.dayname = from.toLocaleString('en-US', { day: 'numeric' });
         this.month = from.toLocaleString('en-US', { month: 'numeric' });
         this.year = from.toLocaleString('en-US', { year: 'numeric' });
         let date = `${this.dayname}.${this.month}.${this.year}`;
