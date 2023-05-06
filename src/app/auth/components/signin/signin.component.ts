@@ -81,7 +81,9 @@ export class SigninComponent implements OnInit {
           console.log(this.auth.userType.getValue())
         }
       }
-     
+      else if (res=="Your account is pending"){
+        this.toastr.error('error', 'Wait for your account acceptance');
+      }
       else
       {
         this.toastr.error('error', 'wrong username or email or phone');
