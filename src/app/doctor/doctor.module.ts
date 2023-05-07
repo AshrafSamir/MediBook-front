@@ -21,6 +21,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { DoctordashboardComponent } from './components/doctordashboard/doctordashboard.component';
 import { TimeslotappointmentComponent } from './components/timeslotappointment/timeslotappointment.component';
 import { SendNotificationComponent } from './components/send-notification/send-notification.component';
+import { UserhistoryComponent } from './components/userhistory/userhistory.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { SendNotificationComponent } from './components/send-notification/send-n
     GetslotsComponent,
     DoctordashboardComponent,
     TimeslotappointmentComponent,
-    SendNotificationComponent
+    SendNotificationComponent,
+    UserhistoryComponent
   ],
   imports: [
     CommonModule,

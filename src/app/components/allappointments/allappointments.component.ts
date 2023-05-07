@@ -57,6 +57,7 @@ export class AllappointmentsComponent implements OnInit  {
           
           }
         }
+        console.log(this.bookingInfo , 'dddddddddddddd')
      return this.bookingInfo; 
       })).subscribe((res)=>{
         this.isLoaded=true;

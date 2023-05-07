@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { environment } from 'api';
 import { map } from 'rxjs/operators';
 @Component({
   selector: 'app-selecteddoctors',
@@ -36,7 +37,7 @@ export class SelecteddoctorsComponent implements OnInit {
         'auth': localStorage.getItem('token')
       })
     };
-    this.http.get('${environment.ApiUrl}/alldoctors').pipe(map((res) => {
+    this.http.get(`${environment.ApiUrl}/alldoctors`).pipe(map((res) => {
       this.Doctorsinformations = [];
       for (const key in res) {
         if (key == 'allDoctorsData') {
