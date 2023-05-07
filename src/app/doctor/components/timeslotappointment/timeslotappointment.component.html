@@ -12,7 +12,7 @@
             <div class="row my-4   justify-content-center" >
                 
                 <div class="member card col-9 my-3 " *ngFor="let Bookingitem of patients" >
-                    <div class=" d-flex align-items-start " >
+                    <div class="d-flex align-items-start" >
                     <div class="pic"><img src="assets/img/doctors/avatar.jpg" class="img-fluid" alt=""></div>
                     <div class="member-info">
                         <h4>{{Bookingitem.name}}</h4>
@@ -21,7 +21,11 @@
                             <p class="bi bi-telephone">{{Bookingitem.mobilePhone}}</p>
                             <p class="bi bi-envelope">{{Bookingitem.email}}</p>
                         </div>
-                        <button class="btn btn-danger mt-4 " (click)="goToPatient(Bookingitem._id,Bookingitem.bookingId)">Finish appointment</button>
+                      
+                            <button class="btn btn-danger mt-4 mx-2" (click)="goToPatient(Bookingitem._id,Bookingitem.bookingId)">Finish appointment</button>
+                            <a class="btn btn-primary mt-4 mx-2" [routerLink]="['/doctor','history',Bookingitem._id]">View History</a>
+                      
+                       
                     </div>
                     
                    

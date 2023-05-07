@@ -1,0 +1,23 @@
+<div class="spinnerCustomStyle " *ngIf="!isLoaded">
+    <mat-spinner  ></mat-spinner>
+</div>
+
+<div class="container-fluid" *ngIf="isLoaded">
+        <h2 class="cH2 text-center"> {{'Patient' | translate}} : {{patientName}}</h2>
+        <div class="row">
+            <div *ngFor="let doctor of doctors" class="col-md-6" >
+                <div class="content shadow rounded-3 p-3 m-2">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h2>{{'Doctor' | translate}} : {{doctor.doctor.name}}</h2> 
+                    <h2>{{'specification' | translate}} : {{doctor.doctor.specification}}</h2>  
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h2>{{'doctorInstructions' | translate}} : {{doctor.doctorInstructions}}</h2> 
+                        <h2>{{'date' | translate}} : {{doctor.date | date:"yyyy/MM/dd"}}</h2> 
+                    </div>
+                   
+                    
+                </div>
+            </div>
+        </div>
+</div>

@@ -118,5 +118,14 @@ export class DoctorserviceService {
       return this._HttpClient.patch(`${environment.ApiUrl}/addDoctorInstructions/${id}`,body,httpOptions)
     }
 
-    
+
+    getPatientHistory(id:any):Observable<any>
+    {
+      const httpOptions = {
+        headers: new HttpHeaders({      
+          'auth':localStorage.getItem('token')
+        })
+      };
+      return this._HttpClient.get(`${environment.ApiUrl}/patientHistory/${id}`,httpOptions)
+    }  
 }
