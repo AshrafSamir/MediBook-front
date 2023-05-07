@@ -46,7 +46,7 @@
             >
               <div class="row text-center">
                 <div class="col-md-12">
-                  <p class="text-muted">Total Admins</p>
+                  <p class="text-muted">{{ "TotalAdmins" | translate }}</p>
                 </div>
                 <div class="col-md-12">
                   <p class="fw-bold h4">{{ usersCount?.numberOfAdmins }}</p>
@@ -71,7 +71,7 @@
             >
               <div class="row text-center">
                 <div class="col-md-12">
-                  <p class="text-muted">Total Doctors</p>
+                  <p class="text-muted">{{ "TotalDoctors" | translate }}</p>
                 </div>
                 <div class="col-md-12">
                   <p class="fw-bold h4">{{ usersCount?.numberOfDoctors }}</p>
@@ -96,7 +96,7 @@
             >
               <div class="row text-center">
                 <div class="col-md-12">
-                  <p class="text-muted">Total Patients</p>
+                  <p class="text-muted">{{ "TotalPatients" | translate }}</p>
                 </div>
                 <div class="col-md-12">
                   <p class="fw-bold h4">{{ usersCount?.numberOfClients }}</p>
@@ -121,7 +121,7 @@
             >
               <div class="row text-center">
                 <div class="col-md-12">
-                  <p class="text-muted">Total Bookings</p>
+                  <p class="text-muted">{{ "TotalBookings" | translate }}</p>
                 </div>
                 <div class="col-md-12">
                   <p class="fw-bold h4">{{ usersCount?.numberOfBookings }}</p>
@@ -181,6 +181,7 @@
       [xAxis]="showXAxisLabel"
       [yAxis]="showYAxisLabel"
       [legend]="legend"
+      [legendTitle]="legendTitleDoctors"
       [showXAxisLabel]="showXAxisLabel"
       [showYAxisLabel]="showYAxisLabel"
       [xAxisLabel]="xAxisLabelDoctors"
@@ -190,26 +191,26 @@
     </ngx-charts-bar-horizontal>
   </div>
   <div class="my-3 rounded-3 shadow p-3">
-    <h2 class="my-2 fw-bolder p-1">Doctor Requests</h2>
+    <h2 class="my-2 fw-bolder p-1">{{ "DoctorRequests" | translate }}</h2>
     <hr />
     <div>
       <table class="table table-hover">
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Doctor</th>
-            <th scope="col">Role</th>
-            <th scope="col">Specification</th>
-            <th scope="col">Certificate</th>
+            <th scope="col">{{ "Doctor" | translate }}</th>
+            <th scope="col">{{ "role" | translate }}</th>
+            <th scope="col">{{ "specification" | translate }}</th>
+            <th scope="col">{{ "Certificate" | translate }}</th>
           </tr>
         </thead>
         <tbody>
           <tr
-            *ngFor="let doctor of allDoctors; index as i"
+            *ngFor="let doctor of pagedItems; index as i"
             key="doctor.doctorId"
           >
             <ng-container *ngIf="doctor.status == 'pending'">
-              <th scope="row">{{ i }}</th>
+              <th scope="row">{{ i + 1 }}</th>
               <td>{{ doctor.name }}</td>
               <td>{{ doctor.role }}</td>
               <td>{{ doctor.specification }}</td>
@@ -223,19 +224,19 @@
                   data-bs-toggle="modal"
                   data-bs-target="#exampleModal"
                 >
-                  View Paper
+                  {{ "ViewPaper" | translate }}
                 </button>
                 <button
                   class="btn btn-outline-success"
                   (click)="updateDoctor(doctor.doctorId, 'accepted')"
                 >
-                  Accept
+                  {{ "Accept" | translate }}
                 </button>
                 <button
                   class="btn btn-outline-danger"
                   (click)="updateDoctor(doctor.doctorId, 'rejected')"
                 >
-                  Reject
+                  {{ "Reject" | translate }}
                 </button>
               </td>
 
@@ -282,27 +283,39 @@
           </tr>
         </tbody>
       </table>
+      <div
+        class="pagination d-flex justify-content-center align-items-center py-4"
+      >
+        <button
+          class="pagination-item text-center"
+          *ngFor="let page of length"
+          [class.active]="currentPage === page"
+          (click)="setPage(page)"
+        >
+          {{ page }}
+        </button>
+      </div>
     </div>
   </div>
   <div class="d-flex justify-content-center align-items-center flex-wrap">
     <div class="w-75">
       <div class="col-md-12">
-        <p class="h5 fw-bolder mt-2">Appointments</p>
+        <p class="h5 fw-bolder mt-2">{{ "Appointments" | translate }}</p>
       </div>
       <div class="row justify-content-center align-items-center">
         <div class="col-md-12">
           <div class="row">
             <div class="col-md-3 col-sm-3 col-3">
-              <p class="h6 fw-bold">Patient</p>
+              <p class="h6 fw-bold">{{ "Patient" | translate }}</p>
             </div>
             <div class="col-md-2 col-sm-2 col-2">
-              <p class="h6 fw-bold">Date</p>
+              <p class="h6 fw-bold">{{ "date" | translate }}</p>
             </div>
             <div class="col-md-2 col-sm-2 col-2">
-              <p class="h6 fw-bold">Time</p>
+              <p class="h6 fw-bold">{{ "Time" | translate }}</p>
             </div>
             <div class="col-md-2 col-sm-2 col-2">
-              <p class="h6 fw-bold">Doctor name</p>
+              <p class="h6 fw-bold">{{ "Doctorname" | translate }}</p>
             </div>
             <div class="col-md-2 col-sm-2 col-2">
               <p class="h6 fw-bold">test</p>
@@ -310,10 +323,10 @@
           </div>
         </div>
         <div class="col-md-12" *ngIf="allBookings; else noBookingsPart">
-          <div class="row mb-3" *ngFor="let booking of allBookings; index as i">
+          <div class="row mb-3" *ngFor="let booking of pagedItems1; index as i">
             <div class="col-md-3 col-sm-3 col-3">
               <div class="row">
-                <div class="col-md-5 col-sm-5 col-5" style="height: 100%">
+                <div class="col-md-5 col-sm-5 col-5">
                   <div *ngIf="booking.doctor.imageUrl; else elseBlock">
                     <img
                       [src]="booking.doctor.imageUrl"
@@ -352,6 +365,19 @@
               Test
             </div>
           </div>
+
+          <div
+            class="pagination d-flex justify-content-center align-items-center py-4"
+          >
+            <button
+              class="pagination-item text-center"
+              *ngFor="let page of length1"
+              [class.active]="currentPage1 === page"
+              (click)="setPage1(page)"
+            >
+              {{ page }}
+            </button>
+          </div>
         </div>
 
         <ng-template #noBookingsPart>
@@ -359,15 +385,15 @@
         </ng-template>
       </div>
     </div>
-    <div class="row reviews-container rounded-3">
+    <div class="row w-25 reviews-container rounded-3">
       <div class="col-6 text-start">
-        <p class="h5 fw-bolder mt-2">Reviews</p>
+        <p class="h5 fw-bolder mt-2">{{ "Reviews" | translate }}</p>
       </div>
-      <div class="col-6 text-end">
-        <p class="text-decoration-underline mt-2">view All</p>
+      <div class="col-6">
+        <!-- <p class="text-decoration-underline mt-2">view All</p> -->
       </div>
       <div class="col-12" *ngIf="doctorsMostRated; else noDoctorsPart">
-        <div class="row" *ngFor="let doctor of doctorsMostRated; index as i">
+        <div class="row" *ngFor="let doctor of pagedItems2; index as i">
           <div class="col-4 d-flex justify-content-end">
             <div *ngIf="doctor.imageUrl; else elseBlock">
               <img
@@ -400,6 +426,19 @@
             </div>
           </ng-template> -->
         </div>
+      </div>
+
+      <div
+        class="pagination d-flex justify-content-center align-items-center py-4"
+      >
+        <button
+          class="pagination-item text-center"
+          *ngFor="let page of length2"
+          [class.active]="currentPage2 === page"
+          (click)="setPage2(page)"
+        >
+          {{ page }}
+        </button>
       </div>
       <ng-template #noDoctorsPart>
         <div class="col-md-12">Loading</div>
@@ -491,3 +530,21 @@
 
 >
 </ngx-charts-bar-horizontal> -->
+
+<!-- <div *ngIf="booking.doctor.imageUrl; else elseBlock">
+                    <img
+                      [src]="booking.doctor.imageUrl"
+                      class="rounded-circle"
+                      alt="doctor img"
+                      style="height: 2rem"
+                    />
+                  </div>
+
+                  <ng-template #elseBlock>
+                    <img
+                      src="../../../assets/avatar/Avatar.svg"
+                      class="rounded-circle"
+                      alt="doctor img"
+                      style="height: 2rem"
+                    />
+                  </ng-template> -->

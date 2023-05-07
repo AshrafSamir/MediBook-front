@@ -133,14 +133,12 @@ export class DashboardComponent implements OnInit {
   getAllDoctors() {
     this._adminService.getAllDoctors().subscribe((res) => {
       this.allDoctors = [];
-      console.log({ res });
       for (let dr of res.allDoctorsData) {
         if (dr.status === 'pending') {
           this.allDoctors.push(dr);
-          console.log({ dr });
         }
+        // console.log(res.allDoctorsData)
       }
-      console.log(this.allDoctors);
       this.length = Array(Math.ceil(this.allDoctors.length / 10))
         .fill(0)
         .map((_, i) => i + 1);
