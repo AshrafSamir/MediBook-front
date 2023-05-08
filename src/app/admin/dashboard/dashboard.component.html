@@ -136,59 +136,78 @@
   <div
     class="d-flex justify-content-center align-items-center flex-wrap dashboard-container rounded-3 mt-4 p-5"
   >
-    <ngx-charts-bar-vertical
-      class="m-3"
-      [results]="deptFrequency"
-      [view]="viewVertical"
-      [scheme]="colorScheme"
-      [gradient]="gradient"
-      [xAxis]="xAxis"
-      [yAxis]="yAxis"
-      [legend]="legend"
-      [showXAxisLabel]="showXAxisLabel"
-      [showYAxisLabel]="showYAxisLabel"
-      [xAxisLabel]="xAxisLabelDepartment"
-      [yAxisLabel]="yAxisLabelDepartment"
-      [legendTitle]="legendTitleDepartment"
-      [animations]="animations"
-      [showGridLines]="showGridLines"
-      [trimXAxisTicks]="trimXAxisTicks"
-      [trimYAxisTicks]="trimYAxisTicks"
-      [rotateXAxisTicks]="rotateXAxisTicks"
-      [maxXAxisTickLength]="maxXAxisTickLength"
-      [maxYAxisTickLength]="maxYAxisTickLength"
-      [xAxisTickFormatting]="formatString"
-      [yAxisTickFormatting]="formatNumber"
-      [yAxisTicks]="yAxisTicks"
-      [showDataLabel]="showDataLabel"
-      [barPadding]="barPadding"
-      [tooltipDisabled]="tooltipDisabled"
-      [roundEdges]="roundEdges"
-    >
-    </ngx-charts-bar-vertical>
+    <div class="card shadow m-3">
+      <div class="card-header">
+        <h2 class="card-title">
+          {{ "Booking count for each department" | translate }}
+        </h2>
+      </div>
+      <div class="card-body">
+        <ngx-charts-bar-vertical
+          class="m-3"
+          [results]="deptFrequency"
+          [view]="viewVertical"
+          [scheme]="colorScheme"
+          [gradient]="gradient"
+          [xAxis]="xAxis"
+          [yAxis]="yAxis"
+          [legend]="legend"
+          [showXAxisLabel]="showXAxisLabel"
+          [showYAxisLabel]="showYAxisLabel"
+          [xAxisLabel]="xAxisLabelDepartment"
+          [yAxisLabel]="yAxisLabelDepartment"
+          [legendTitle]="legendTitleDepartment"
+          [animations]="animations"
+          [showGridLines]="showGridLines"
+          [trimXAxisTicks]="trimXAxisTicks"
+          [trimYAxisTicks]="trimYAxisTicks"
+          [rotateXAxisTicks]="rotateXAxisTicks"
+          [maxXAxisTickLength]="maxXAxisTickLength"
+          [maxYAxisTickLength]="maxYAxisTickLength"
+          [xAxisTickFormatting]="formatString"
+          [yAxisTickFormatting]="formatNumber"
+          [yAxisTicks]="yAxisTicks"
+          [showDataLabel]="showDataLabel"
+          [barPadding]="barPadding"
+          [tooltipDisabled]="tooltipDisabled"
+          [roundEdges]="roundEdges"
+        >
+        </ngx-charts-bar-vertical>
+      </div>
+    </div>
+
+    <div class="card shadow m-3">
+      <div class="card-header">
+        <h2 class="card-title">
+          {{ "Booking count for each doctor" | translate }}
+        </h2>
+      </div>
+      <div class="card-body">
+        <ngx-charts-bar-horizontal
+          class="m-3"
+          [view]="viewVertical"
+          [scheme]="colorScheme"
+          [results]="doctorFrequency"
+          [gradient]="gradient"
+          [xAxis]="showXAxisLabel"
+          [yAxis]="showYAxisLabel"
+          [legend]="legend"
+          [legendTitle]="legendTitleDoctors"
+          [showXAxisLabel]="showXAxisLabel"
+          [showYAxisLabel]="showYAxisLabel"
+          [xAxisLabel]="xAxisLabelDoctors"
+          [yAxisLabel]="yAxisLabelDoctors"
+          (select)="onSelect($event)"
+        >
+        </ngx-charts-bar-horizontal>
+      </div>
+    </div>
 
     <!-- <ngx-charts-bar-vertical [results]="doctorFrequency" [view]="viewVertical" [scheme]="colorScheme"  [gradient]="gradient" [xAxis]="xAxis" [yAxis]="yAxis" [legend]="legend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
     [xAxisLabel]="xAxisLabelDoctors" [yAxisLabel]="yAxisLabelDoctors" [legendTitle]="legendTitleDoctors" [animations]="animations" [showGridLines]="showGridLines" [trimXAxisTicks]="trimXAxisTicks" [trimYAxisTicks]="trimYAxisTicks"
     [rotateXAxisTicks]="rotateXAxisTicks" [maxXAxisTickLength]="maxXAxisTickLength" [maxYAxisTickLength]="maxYAxisTickLength" [xAxisTickFormatting]="formatString" [yAxisTickFormatting]="formatNumber" [yAxisTicks]="yAxisTicks" [showDataLabel]="showDataLabel"
     [barPadding]="barPadding" [tooltipDisabled]="tooltipDisabled" [roundEdges]="roundEdges">
    </ngx-charts-bar-vertical> -->
-    <ngx-charts-bar-horizontal
-      class="m-3"
-      [view]="viewVertical"
-      [scheme]="colorScheme"
-      [results]="doctorFrequency"
-      [gradient]="gradient"
-      [xAxis]="showXAxisLabel"
-      [yAxis]="showYAxisLabel"
-      [legend]="legend"
-      [legendTitle]="legendTitleDoctors"
-      [showXAxisLabel]="showXAxisLabel"
-      [showYAxisLabel]="showYAxisLabel"
-      [xAxisLabel]="xAxisLabelDoctors"
-      [yAxisLabel]="yAxisLabelDoctors"
-      (select)="onSelect($event)"
-    >
-    </ngx-charts-bar-horizontal>
   </div>
   <div class="my-3 rounded-3 shadow p-3">
     <h2 class="my-2 fw-bolder p-1">{{ "DoctorRequests" | translate }}</h2>
