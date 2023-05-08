@@ -42,6 +42,10 @@ export class AvailabletimesComponent implements OnInit {
       .get(`${environment.ApiUrl}/doctorTimeSlots/${this.doctorId}`)
       .pipe(
         map((res) => {
+
+          if (res != 'this doctor has no timeSlots')
+          {
+            console.log(res)
           this.DoctorsTimeSlots = [];
           for (let key in res) {
             this.disabled = false;
@@ -70,14 +74,29 @@ export class AvailabletimesComponent implements OnInit {
           }
           //this.DoctorsTimeSlots.sort((a, b) => (a.date < b.date) ? 1 : (a.date === b.date) ? ((a.from < b.from) ? 1 : -1) : -1 )
           console.log(this.DoctorsTimeSlots);
-          this.length = Array(Math.ceil(this.DoctorsTimeSlots.length / 4))
+          if(this.DoctorsTimeSlots.length)
+          {
+            this.length = Array(Math.ceil(this.DoctorsTimeSlots.length / 4))
             .fill(0)
             .map((_, i) => i + 1);
+          }
+          
           this.DoctorsTimeSlots.reverse();
+          console.log(this.DoctorsTimeSlots)
           return this.DoctorsTimeSlots;
+          }
+          else
+          {
+            return this.DoctorsTimeSlots;
+          }
         })
       )
       .subscribe((res) => {
+        console.log(res)
+        if(res)
+        {
+          this.checkDataisHere = true
+        }
         this.isLoaded = true;
       });
   }
@@ -97,9 +116,13 @@ export class AvailabletimesComponent implements OnInit {
   totalItems: number;
   get pagedItems() {
     const startIndex = (this.currentPage - 1) * this.pageSize;
-    return this.DoctorsTimeSlots.slice(startIndex, startIndex + this.pageSize);
+    if(this.DoctorsTimeSlots.length != 0)
+    {
+      return this.DoctorsTimeSlots.slice(startIndex, startIndex + this.pageSize);
+    }
   }
   setPage(pageNumber: number) {
     this.currentPage = pageNumber;
   }
+  checkDataisHere:boolean=false
 }

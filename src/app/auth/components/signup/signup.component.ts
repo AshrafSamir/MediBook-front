@@ -15,6 +15,8 @@ export class SignupComponent implements OnInit {
   test: any;
   departmentsarray: string[] = [];
   addressarray: string[] = [];
+  checkLoader:boolean = true
+
   constructor(
     private fb: FormBuilder,
     private toastr: ToastrService,
@@ -45,6 +47,7 @@ export class SignupComponent implements OnInit {
   }
 
   submitForm() {
+    this.checkLoader = false
     console.log(this.signupForm.value);
     const formData: any = new FormData();
     const fileInput: any = document.getElementById('image');
@@ -111,6 +114,7 @@ export class SignupComponent implements OnInit {
       } else {
         this.toastr.error('error', `Can't signup with this data`);
       }
+      this.checkLoader = true
     });
   }
 

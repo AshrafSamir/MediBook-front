@@ -7,43 +7,47 @@
         <div class="col-xl-6  ">
             <div class="shadow px-1 pt-3">
                 <h2>{{"Last3MonthsReservationsperDepartment" | translate}}</h2>
-                <ngx-charts-bar-vertical-2d [results]="depEarned" [view]="view" [scheme]="colorScheme" [schemeType]="schemeType" [gradient]="gradient" [xAxis]="xAxis" [yAxis]="yAxis" [legend]="legend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
+                <ngx-charts-bar-vertical-2d *ngIf="noData3" [results]="depEarned" [view]="view" [scheme]="colorScheme" [schemeType]="schemeType" [gradient]="gradient" [xAxis]="xAxis" [yAxis]="yAxis" [legend]="legend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
                 [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [legendTitle]="legendTitleMulti" [legendPosition]="legendPosition" [animations]="animations" [showGridLines]="showGridLines" [barPadding]="barPadding" [tooltipDisabled]="tooltipDisabled"></ngx-charts-bar-vertical-2d>
-<!--        
-                <ngx-charts-bar-vertical-normalized [results]="depEarned" [view]="view" [scheme]="colorScheme"
-                    [schemeType]="schemeType" [gradient]="gradient" [xAxis]="xAxis" [yAxis]="yAxis" [legend]="legend"
-                    [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel"
-                    [yAxisLabel]="yAxisLabel" [legendTitle]="legendTitleMulti" [legendPosition]="legendPosition"
-                    [animations]="animations" [showGridLines]="showGridLines" [barPadding]="barPadding"
-                    [tooltipDisabled]="tooltipDisabled">
-                </ngx-charts-bar-vertical-normalized> -->
+                <div class="text-center p-5" *ngIf="!noData3">
+                    <h2  class="cH2">{{"NoData" | translate}}</h2>
+                </div>
             </div>
         </div>
         <div class="col-xl-6 cm ">
             <div class="shadow px-1 pt-3">
                 <h2>{{"Last3MonthsReservationsperDepartment" | translate}}</h2>
-                <ngx-charts-line-chart [results]="depEarned" [view]="view" [scheme]="colorScheme"
+                <ngx-charts-line-chart *ngIf="noData3" [results]="depEarned" [view]="view" [scheme]="colorScheme"
                     [legend]="legend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
                     [xAxis]="xAxis" [yAxis]="yAxis" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel"
                     [timeline]="timeline">
                 </ngx-charts-line-chart>
+                <div class="text-center p-5" *ngIf="!noData3">
+                    <h2  class="cH2">{{"NoData" | translate}}</h2>
+                </div>
             </div>
         </div>
         <div class="col-xl-6 cmm ">
             <div class="shadow px-1 pt-3">
                 <h2>{{"ReservationsnumberperDepartment" | translate}}</h2>
-                <ngx-charts-pie-chart [results]="depReservations" [view]="view" [scheme]="colorScheme"
+                <ngx-charts-pie-chart *ngIf="noData2" [results]="depReservations" [view]="view" [scheme]="colorScheme"
                     [gradient]="gradient" [legend]="showLegend" [legendPosition]="legendPosition" [labels]="showLabels"
                     [doughnut]="isDoughnut" (select)="onSelect($event)" (activate)="onActivate($event)"
                     (deactivate)="onDeactivate($event)">
                 </ngx-charts-pie-chart>
+                <div class="text-center p-5" *ngIf="!noData2">
+                    <h2  class="cH2">{{"NoData" | translate}}</h2>
+                </div>
             </div>
         </div>
         <div class="col-xl-6 cmm ">
             <div class="shadow px-1 pt-3">
                 <h2>{{"ReservationsnumberperDoctor" | translate}}</h2>
-                <ngx-charts-number-card [results]="docNums" [view]="view" [scheme]="colorScheme2" [cardColor]="cardColor" (select)="onSelect($event)">
+                <ngx-charts-number-card *ngIf="noData1" [results]="docNums" [view]="view" [scheme]="colorScheme2" [cardColor]="cardColor" (select)="onSelect($event)">
                 </ngx-charts-number-card>
+                <div class="text-center p-5" *ngIf="!noData1">
+                    <h2  class="cH2">{{"NoData" | translate}}</h2>
+                </div>
             </div>
         </div>
     </div>

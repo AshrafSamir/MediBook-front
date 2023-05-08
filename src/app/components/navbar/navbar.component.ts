@@ -14,7 +14,10 @@ export class NavbarComponent implements OnInit {
     this.auth.userType.subscribe((value) => {
       this.type = value;
     });
-    this.userData = JSON.parse(localStorage.getItem('userData'));
+    this.auth.userdata.subscribe((value) => {
+      this.userData = this.auth.userdata.getValue()
+    });
+    //this.userData = JSON.parse(localStorage.getItem('userData'));
     console.log(this.userData, 'userData');
   }
   logout() {

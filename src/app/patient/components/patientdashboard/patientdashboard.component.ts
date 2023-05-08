@@ -9,109 +9,9 @@ import { forkJoin } from 'rxjs';
 })
 export class PatientdashboardComponent implements OnInit {
 
-  docNums:any[]=[ {
-    "name": "ahmed16",
-    "value": 25
-  }, {
-    "name": "7oda",
-    "value": 5
-  }, {
-    "name": "ashraf",
-    "value": 7
-  }, {
-    "name": "fayrouz",
-    "value": 9
-  }, {
-    "name": "mennaa",
-    "value": 10
-  }]
-  depReservations:any[]=[ {
-    "name": "General Medicine",
-    "value": 3
-  }, {
-    "name": "Occupational Therapy",
-    "value": 5
-  }, {
-    "name": "Radiology",
-    "value": 7
-  }, {
-    "name": "Laboratory",
-    "value": 9
-  }, {
-    "name": "Speech Therapy",
-    "value": 10
-  }]
-  depEarned: any[]=[{
-    "name": "General Medicine",
-    "series": [
-      {
-        "name": "January",
-        "value": 125
-      }, {
-        "name": "February",
-        "value": 197
-      }, {
-        "name": "March",
-        "value": 209
-      }
-    ]
-  }, {
-    "name": "Occupational Therapy",
-    "series": [
-      {
-        "name": "January",
-        "value": 210
-      }, {
-        "name": "February",
-        "value": 255
-      }, {
-        "name": "March",
-        "value": 203
-      }
-    ]
-  }, {
-    "name": "Radiology",
-    "series": [
-      {
-        "name": "January",
-        "value": 89
-      }, {
-        "name": "February",
-        "value": 105
-      }, {
-        "name": "March",
-        "value": 66
-      }
-    ]
-  }, {
-    "name": "Laboratory",
-    "series": [
-      {
-        "name": "January",
-        "value": 178
-      }, {
-        "name": "February",
-        "value": 165
-      }, {
-        "name": "March",
-        "value": 144
-      }
-    ]
-  }, {
-    "name": "Speech Therapy",
-    "series": [
-      {
-        "name": "January",
-        "value": 144
-      }, {
-        "name": "February",
-        "value": 250
-      }, {
-        "name": "March",
-        "value": 133
-      }
-    ] 
-  }
+  docNums:any[]=[ ]
+  depReservations:any[]=[ ]
+  depEarned: any[]=[
 ]
 checkLoader:boolean = false
 //ww:number=700
@@ -164,6 +64,9 @@ checkLoader:boolean = false
 
   roundEdges: boolean = false;
   timeline: boolean = true;
+  noData1:boolean=true
+  noData2:boolean=true
+  noData3:boolean=true
 
   constructor(private _patientSer:PatientserviceService) { }
   ngOnInit(): void {
@@ -174,9 +77,33 @@ checkLoader:boolean = false
       this._patientSer.getLast3MonthsRes(),
     ]).subscribe((res:any)=>{
       console.log(res)
-      this.docNums=res[1].userFrequency
-      this.depReservations=res[0].userDeptFrequency
-      this.depEarned = res[2].DeptIncomes
+      
+      if(res[1] != "this user has no bookings")
+      {
+        this.docNums=res[1].userFrequency
+      }
+      else
+      {
+        this.noData1 = false;
+      }
+      if(res[0] != "this user has no bookings")
+      {
+        this.depReservations=res[0].userDeptFrequency
+      }
+      else
+      {
+        this.noData2 = false;
+      }
+
+      if(res[2].DeptIncomes.length != 0)
+      {
+        this.depEarned = res[2].DeptIncomes
+      }
+      else
+      {
+        this.noData3 = false;
+      }
+
       this.checkLoader=true
     })
   //this.UserDoctorFrequency();

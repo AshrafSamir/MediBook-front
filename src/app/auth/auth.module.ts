@@ -10,6 +10,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HttpLoaderFactory } from '../app.module';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -32,6 +33,8 @@ import { HttpLoaderFactory } from '../app.module';
         deps: [HttpClient],
       },
     }),
+    MatProgressSpinnerModule,
+
   ]
 })
 export class AuthModule { }

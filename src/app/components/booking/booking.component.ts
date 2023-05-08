@@ -90,5 +90,10 @@ console.log("fiiin",bookingobj);
     })
   }
 
+  goToHome()
+  {
+    this.router.navigate(['home']);
+  }
+
   
 }

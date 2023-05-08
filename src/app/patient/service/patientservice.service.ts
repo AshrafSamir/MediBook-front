@@ -3,12 +3,19 @@ import { environment } from '../../../../api'
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { AuthService } from 'src/app/shared/services/auth.service';
 @Injectable({
   providedIn: 'root'
 })
 export class PatientserviceService {
-  id = JSON.parse(localStorage.getItem('userData'))._id
-  constructor(private _HttpClient: HttpClient, private _Router: Router) {
+  id :string=''
+  constructor(private _HttpClient: HttpClient, private _Router: Router ,   private _auth:AuthService) {
+    let userData:any
+    this._auth.userdata.subscribe(()=>{
+      userData =this._auth.userdata.getValue();
+      this.id=userData._id
+    //this.username=userData.username;
+    })
   }
   getUserDoctorFrequency(): Observable<any> {
     return this._HttpClient.get(`${environment.ApiUrl}/userDoctorsFrequency/${this.id}`);

@@ -74,17 +74,22 @@ getDoctorTimeSlots(){
   let timeSlots:any=[]
   let obj:any={}
   this._doctorService.getDoctorTimeSlots().subscribe(data=>{
-    timeSlots=data
-    for(let timeSlot of timeSlots){
-      this.getDoctorReservations(timeSlot)
-      if (timeSlot.reservations>0){
-      obj={name:timeSlot.date.slice(0,10),series:[{
-        name:`${timeSlot.from.slice(11,16)}-${timeSlot.to.slice(11,16)}`,
-        value:timeSlot.reservations
-      }]}
-      this.timeSlots.push(obj)
-    }}
-    this.checkLoader=true
+    console.log(data)
+    if(data != 'this doctor has no timeSlots')
+    {
+      timeSlots=data
+      for(let timeSlot of timeSlots){
+        this.getDoctorReservations(timeSlot)
+        if (timeSlot.reservations>0){
+        obj={name:timeSlot.date.slice(0,10),series:[{
+          name:`${timeSlot.from.slice(11,16)}-${timeSlot.to.slice(11,16)}`,
+          value:timeSlot.reservations
+        }]}
+        this.timeSlots.push(obj)
+      }}
+    }
+   
+    //this.checkLoader=true
   })
 }
 
@@ -96,17 +101,22 @@ getDoctorReservations(obj){
 getDoctorIncomes(){
   let obj:any={}
   this._doctorService.getDoctorIncomes().subscribe(data=>{
-    for(let i of data.doctorIncomes){
-      if(i.income>0){
-        obj={name:i.timeSlot.date.slice(0,10),value:i.income}
-        this.doctorIncomes.push(obj)
+    console.log(data)
+    if(data.message != "this doctor has no time Slots")
+    {
+      for(let i of data.doctorIncomes){
+        if(i.income>0){
+          obj={name:i.timeSlot.date.slice(0,10),value:i.income}
+          this.doctorIncomes.push(obj)
+        }
+        // else{
+        //   obj={
+        //     name:'',value:0
+        //   }
+        // }
       }
-      // else{
-      //   obj={
-      //     name:'',value:0
-      //   }
-      // }
     }
+    
     // console.log(this.doctorIncomes)
   })
 }
@@ -114,23 +124,29 @@ getDoctorByID(){
 
   this._doctorService.getDoctorByID().subscribe(data=>{
     this.doctorInfo=data.doctor
-    this.doctorRating=new Array(data.doctor.doctorRate)
+    this.doctorRating=new Array(Math.ceil( data.doctor.doctorRate))
   })
 }
 getDoctorBookings(){
   let mCounter:number = 0
   let fCounter:number = 0
   this._doctorService.getDoctorBookings().subscribe(data=>{
-    for(let booking of data.doctorBookings){
-    if(booking.patient.gender=="male"){
-      mCounter++;
-    }
-    else if(booking.patient.gender=="female"){
-      fCounter++;
-    }
-  }
-this.patientGenders=[{name:'Male',value:mCounter},{name:'Female',value:fCounter}]
+    console.log(data)
+    this.checkLoader=true
 
+    if(data.message != "this doctor has no timeSlots")
+    {
+      for(let booking of data.doctorBookings){
+        if(booking.patient.gender=="male"){
+          mCounter++;
+        }
+        else if(booking.patient.gender=="female"){
+          fCounter++;
+        }
+      }
+    this.patientGenders=[{name:'Male',value:mCounter},{name:'Female',value:fCounter}]
+
+    }
 })
 }
 
@@ -147,4 +163,5 @@ this.patientGenders=[{name:'Male',value:mCounter},{name:'Female',value:fCounter}
   onSelect(data): void {
     console.log('Item clicked', JSON.parse(JSON.stringify(data)));
   }
+
 }

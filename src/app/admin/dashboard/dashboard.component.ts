@@ -110,12 +110,22 @@ export class DashboardComponent implements OnInit {
       this.usersCount = res[0];
       if (res[1].doctors) {
         for (let i = 0; i < res[1].doctors.length; i++) {
-          let ratesValues = new Array(res[1].doctors[i].doctorRate);
-          res[1].doctors[i].ratesValues = ratesValues;
+
+          console.log(i)
+
+          //let ratesValues = Array(Math.ceil(res[1].doctors[i].doctorRate / 10)).fill(0).map((_, i) => i + 1);
+          if(res[1].doctors[i].doctorRate)
+          {
+            let ratesValues = new Array(Math.ceil(res[1].doctors[i].doctorRate));
+            res[1].doctors[i].ratesValues = ratesValues;
+          }
+          
+          //const rating = Array(Math.ceil(res[1].doctors[i].doctorRate)).fill(0).map((_, i) => i + 1);
+          //console.log(rating)
         }
         this.doctorsMostRated = res[1].doctors;
       }
-
+      console.log(res[1])
       this.allBookings = res[2].bookings;
       this.length1 = Array(Math.ceil(this.allBookings.length / 10))
         .fill(0)
@@ -123,7 +133,6 @@ export class DashboardComponent implements OnInit {
       this.length2 = Array(Math.ceil(this.doctorsMostRated.length / 10))
         .fill(0)
         .map((_, i) => i + 1);
-
       this.deptFrequency = res[3].deptFrequency;
       this.doctorFrequency = res[4].doctorFrequency;
       this.checkLoader = true;
