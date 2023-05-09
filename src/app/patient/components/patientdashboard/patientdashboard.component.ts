@@ -5,124 +5,22 @@ import { forkJoin } from 'rxjs';
 @Component({
   selector: 'app-patientdashboard',
   templateUrl: './patientdashboard.component.html',
-  styleUrls: ['./patientdashboard.component.scss']
+  styleUrls: ['./patientdashboard.component.scss'],
 })
 export class PatientdashboardComponent implements OnInit {
+  docNums: any[] = [];
+  depReservations: any[] = [];
+  depEarned: any[] = [];
+  checkLoader: boolean = false;
+  //ww:number=700
+  cardColor: string = '#deaff0';
 
-  docNums:any[]=[ {
-    "name": "ahmed16",
-    "value": 25
-  }, {
-    "name": "7oda",
-    "value": 5
-  }, {
-    "name": "ashraf",
-    "value": 7
-  }, {
-    "name": "fayrouz",
-    "value": 9
-  }, {
-    "name": "mennaa",
-    "value": 10
-  }]
-  depReservations:any[]=[ {
-    "name": "General Medicine",
-    "value": 3
-  }, {
-    "name": "Occupational Therapy",
-    "value": 5
-  }, {
-    "name": "Radiology",
-    "value": 7
-  }, {
-    "name": "Laboratory",
-    "value": 9
-  }, {
-    "name": "Speech Therapy",
-    "value": 10
-  }]
-  depEarned: any[]=[{
-    "name": "General Medicine",
-    "series": [
-      {
-        "name": "January",
-        "value": 125
-      }, {
-        "name": "February",
-        "value": 197
-      }, {
-        "name": "March",
-        "value": 209
-      }
-    ]
-  }, {
-    "name": "Occupational Therapy",
-    "series": [
-      {
-        "name": "January",
-        "value": 210
-      }, {
-        "name": "February",
-        "value": 255
-      }, {
-        "name": "March",
-        "value": 203
-      }
-    ]
-  }, {
-    "name": "Radiology",
-    "series": [
-      {
-        "name": "January",
-        "value": 89
-      }, {
-        "name": "February",
-        "value": 105
-      }, {
-        "name": "March",
-        "value": 66
-      }
-    ]
-  }, {
-    "name": "Laboratory",
-    "series": [
-      {
-        "name": "January",
-        "value": 178
-      }, {
-        "name": "February",
-        "value": 165
-      }, {
-        "name": "March",
-        "value": 144
-      }
-    ]
-  }, {
-    "name": "Speech Therapy",
-    "series": [
-      {
-        "name": "January",
-        "value": 144
-      }, {
-        "name": "February",
-        "value": 250
-      }, {
-        "name": "March",
-        "value": 133
-      }
-    ] 
-  }
-]
-checkLoader:boolean = false
-//ww:number=700
- cardColor: string = '#deaff0';
-
-  view: [number , number] = [600, 370];
+  view: [number, number] = [600, 370];
 
   // options
   legendTitle: string = 'Reservations';
   legendTitleMulti: string = 'Money';
-  legendPosition: any = 'below'; // ['right', 'below'] 
+  legendPosition: any = 'right'; // ['right', 'below']
   legend: boolean = true;
 
   xAxis: boolean = true;
@@ -139,8 +37,16 @@ checkLoader:boolean = false
   trimYAxisTicks: boolean = false;
   rotateXAxisTicks: boolean = false;
 
-  xAxisTicks: any[] = ['Genre 1', 'Genre 2', 'Genre 3', 'Genre 4', 'Genre 5', 'Genre 6', 'Genre 7']
-  yAxisTicks: any[] = [100, 1000, 2000, 5000, 7000, 10000]
+  xAxisTicks: any[] = [
+    'Genre 1',
+    'Genre 2',
+    'Genre 3',
+    'Genre 4',
+    'Genre 5',
+    'Genre 6',
+    'Genre 7',
+  ];
+  yAxisTicks: any[] = [100, 1000, 2000, 5000, 7000, 10000];
 
   animations: boolean = true; // animations on load
 
@@ -149,38 +55,55 @@ checkLoader:boolean = false
   showDataLabel: boolean = true; // numbers on bars
 
   gradient: boolean = false;
-  colorScheme:any = {
-     domain: ['#704FC4', '#4B852C', '#B67A3D', '#5B6FC8', '#25706F'],
+  colorScheme: any = {
+    domain: ['#704FC4', '#4B852C', '#B67A3D', '#5B6FC8', '#25706F'],
     //domain: ['#6B8E23', '#8B4513', '#808080', '#696969', '#4DB76B'],
     //domain: ['#0074D9', '#1ECC40', '#FF4136', '#FF851B', '#B10DC9']
   };
   schemeType: any = 'ordinal'; // 'ordinal' or 'linear'
 
-  activeEntries: any[] = ['book']
-  barPadding: number = 5
+  activeEntries: any[] = ['book'];
+  barPadding: number = 5;
   tooltipDisabled: boolean = false;
 
   yScaleMax: number = 9000;
 
   roundEdges: boolean = false;
   timeline: boolean = true;
+  noData1: boolean = true;
+  noData2: boolean = true;
+  noData3: boolean = true;
 
-  constructor(private _patientSer:PatientserviceService) { }
+  constructor(private _patientSer: PatientserviceService) {}
   ngOnInit(): void {
-   
     forkJoin([
-      this._patientSer.getUserDepartmentFrequency(), 
+      this._patientSer.getUserDepartmentFrequency(),
       this._patientSer.getUserDoctorFrequency(),
       this._patientSer.getLast3MonthsRes(),
-    ]).subscribe((res:any)=>{
-      console.log(res)
-      this.docNums=res[1].userFrequency
-      this.depReservations=res[0].userDeptFrequency
-      this.depEarned = res[2].DeptIncomes
-      this.checkLoader=true
-    })
-  //this.UserDoctorFrequency();
-  //this.UserDepartmentFrequency()
+    ]).subscribe((res: any) => {
+      console.log(res);
+
+      if (res[1] != 'this user has no bookings') {
+        this.docNums = res[1].userFrequency;
+      } else {
+        this.noData1 = false;
+      }
+      if (res[0] != 'this user has no bookings') {
+        this.depReservations = res[0].userDeptFrequency;
+      } else {
+        this.noData2 = false;
+      }
+
+      if (res[2].DeptIncomes.length != 0) {
+        this.depEarned = res[2].DeptIncomes;
+      } else {
+        this.noData3 = false;
+      }
+
+      this.checkLoader = true;
+    });
+    //this.UserDoctorFrequency();
+    //this.UserDepartmentFrequency()
   }
 
   /*UserDoctorFrequency()
@@ -214,7 +137,7 @@ checkLoader:boolean = false
   onSelect(data): void {
     console.log('Item clicked', JSON.parse(JSON.stringify(data)));
   }
-  colorScheme2:any = {
-    domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5']
+  colorScheme2: any = {
+    domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5'],
   };
 }

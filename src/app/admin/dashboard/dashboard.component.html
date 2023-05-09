@@ -96,7 +96,7 @@
             >
               <div class="row text-center">
                 <div class="col-md-12">
-                  <p class="text-muted">{{ "TotalPatients" | translate }} </p>
+                  <p class="text-muted">{{ "TotalPatients" | translate }}</p>
                 </div>
                 <div class="col-md-12">
                   <p class="fw-bold h4">{{ usersCount?.numberOfClients }}</p>
@@ -121,7 +121,7 @@
             >
               <div class="row text-center">
                 <div class="col-md-12">
-                  <p class="text-muted">{{ "TotalBookings" | translate }} </p>
+                  <p class="text-muted">{{ "TotalBookings" | translate }}</p>
                 </div>
                 <div class="col-md-12">
                   <p class="fw-bold h4">{{ usersCount?.numberOfBookings }}</p>
@@ -136,62 +136,81 @@
   <div
     class="d-flex justify-content-center align-items-center flex-wrap dashboard-container rounded-3 mt-4 p-5"
   >
-    <ngx-charts-bar-vertical
-      class="m-3"
-      [results]="deptFrequency"
-      [view]="viewVertical"
-      [scheme]="colorScheme"
-      [gradient]="gradient"
-      [xAxis]="xAxis"
-      [yAxis]="yAxis"
-      [legend]="legend"
-      [showXAxisLabel]="showXAxisLabel"
-      [showYAxisLabel]="showYAxisLabel"
-      [xAxisLabel]="xAxisLabelDepartment"
-      [yAxisLabel]="yAxisLabelDepartment"
-      [legendTitle]="legendTitleDepartment"
-      [animations]="animations"
-      [showGridLines]="showGridLines"
-      [trimXAxisTicks]="trimXAxisTicks"
-      [trimYAxisTicks]="trimYAxisTicks"
-      [rotateXAxisTicks]="rotateXAxisTicks"
-      [maxXAxisTickLength]="maxXAxisTickLength"
-      [maxYAxisTickLength]="maxYAxisTickLength"
-      [xAxisTickFormatting]="formatString"
-      [yAxisTickFormatting]="formatNumber"
-      [yAxisTicks]="yAxisTicks"
-      [showDataLabel]="showDataLabel"
-      [barPadding]="barPadding"
-      [tooltipDisabled]="tooltipDisabled"
-      [roundEdges]="roundEdges"
-    >
-    </ngx-charts-bar-vertical>
+    <div class="card shadow m-3">
+      <div class="card-header">
+        <h2 class="card-title">
+          {{ "Booking count for each department" | translate }}
+        </h2>
+      </div>
+      <div class="card-body">
+        <ngx-charts-bar-vertical
+          class="m-3"
+          [results]="deptFrequency"
+          [view]="viewVertical"
+          [scheme]="colorScheme"
+          [gradient]="gradient"
+          [xAxis]="xAxis"
+          [yAxis]="yAxis"
+          [legend]="legend"
+          [showXAxisLabel]="showXAxisLabel"
+          [showYAxisLabel]="showYAxisLabel"
+          [xAxisLabel]="xAxisLabelDepartment"
+          [yAxisLabel]="yAxisLabelDepartment"
+          [legendTitle]="legendTitleDepartment"
+          [animations]="animations"
+          [showGridLines]="showGridLines"
+          [trimXAxisTicks]="trimXAxisTicks"
+          [trimYAxisTicks]="trimYAxisTicks"
+          [rotateXAxisTicks]="rotateXAxisTicks"
+          [maxXAxisTickLength]="maxXAxisTickLength"
+          [maxYAxisTickLength]="maxYAxisTickLength"
+          [xAxisTickFormatting]="formatString"
+          [yAxisTickFormatting]="formatNumber"
+          [yAxisTicks]="yAxisTicks"
+          [showDataLabel]="showDataLabel"
+          [barPadding]="barPadding"
+          [tooltipDisabled]="tooltipDisabled"
+          [roundEdges]="roundEdges"
+        >
+        </ngx-charts-bar-vertical>
+      </div>
+    </div>
+
+    <div class="card shadow m-3">
+      <div class="card-header">
+        <h2 class="card-title">
+          {{ "Booking count for each doctor" | translate }}
+        </h2>
+      </div>
+      <div class="card-body">
+        <ngx-charts-bar-horizontal
+          class="m-3"
+          [view]="viewVertical"
+          [scheme]="colorScheme"
+          [results]="doctorFrequency"
+          [gradient]="gradient"
+          [xAxis]="showXAxisLabel"
+          [yAxis]="showYAxisLabel"
+          [legend]="legend"
+          [legendTitle]="legendTitleDoctors"
+          [showXAxisLabel]="showXAxisLabel"
+          [showYAxisLabel]="showYAxisLabel"
+          [xAxisLabel]="xAxisLabelDoctors"
+          [yAxisLabel]="yAxisLabelDoctors"
+          (select)="onSelect($event)"
+        >
+        </ngx-charts-bar-horizontal>
+      </div>
+    </div>
 
     <!-- <ngx-charts-bar-vertical [results]="doctorFrequency" [view]="viewVertical" [scheme]="colorScheme"  [gradient]="gradient" [xAxis]="xAxis" [yAxis]="yAxis" [legend]="legend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
     [xAxisLabel]="xAxisLabelDoctors" [yAxisLabel]="yAxisLabelDoctors" [legendTitle]="legendTitleDoctors" [animations]="animations" [showGridLines]="showGridLines" [trimXAxisTicks]="trimXAxisTicks" [trimYAxisTicks]="trimYAxisTicks"
     [rotateXAxisTicks]="rotateXAxisTicks" [maxXAxisTickLength]="maxXAxisTickLength" [maxYAxisTickLength]="maxYAxisTickLength" [xAxisTickFormatting]="formatString" [yAxisTickFormatting]="formatNumber" [yAxisTicks]="yAxisTicks" [showDataLabel]="showDataLabel"
     [barPadding]="barPadding" [tooltipDisabled]="tooltipDisabled" [roundEdges]="roundEdges">
    </ngx-charts-bar-vertical> -->
-    <ngx-charts-bar-horizontal
-      class="m-3"
-      [view]="viewVertical"
-      [scheme]="colorScheme"
-      [results]="doctorFrequency"
-      [gradient]="gradient"
-      [xAxis]="showXAxisLabel"
-      [yAxis]="showYAxisLabel"
-      [legend]="legend"
-      [legendTitle]="legendTitleDoctors"
-      [showXAxisLabel]="showXAxisLabel"
-      [showYAxisLabel]="showYAxisLabel"
-      [xAxisLabel]="xAxisLabelDoctors"
-      [yAxisLabel]="yAxisLabelDoctors"
-      (select)="onSelect($event)"
-    >
-    </ngx-charts-bar-horizontal>
   </div>
   <div class="my-3 rounded-3 shadow p-3">
-    <h2 class="my-2 fw-bolder p-1">{{ "DoctorRequests" | translate }} </h2>
+    <h2 class="my-2 fw-bolder p-1">{{ "DoctorRequests" | translate }}</h2>
     <hr />
     <div>
       <table class="table table-hover">
@@ -210,7 +229,7 @@
             key="doctor.doctorId"
           >
             <ng-container *ngIf="doctor.status == 'pending'">
-              <th scope="row">{{ i+1 }}</th>
+              <th scope="row">{{ i + 1 }}</th>
               <td>{{ doctor.name }}</td>
               <td>{{ doctor.role }}</td>
               <td>{{ doctor.specification }}</td>
@@ -224,20 +243,19 @@
                   data-bs-toggle="modal"
                   data-bs-target="#exampleModal"
                 >
-                {{ "ViewPaper" | translate }}
-                  
+                  {{ "ViewPaper" | translate }}
                 </button>
                 <button
                   class="btn btn-outline-success"
                   (click)="updateDoctor(doctor.doctorId, 'accepted')"
                 >
-                {{ "Accept" | translate }}
+                  {{ "Accept" | translate }}
                 </button>
                 <button
                   class="btn btn-outline-danger"
                   (click)="updateDoctor(doctor.doctorId, 'rejected')"
                 >
-                {{ "Reject" | translate }}
+                  {{ "Reject" | translate }}
                 </button>
               </td>
 
@@ -284,9 +302,15 @@
           </tr>
         </tbody>
       </table>
-      <div class="pagination d-flex justify-content-center  align-items-center py-4">
-        <button class="pagination-item text-center" *ngFor="let page of length" [class.active]="currentPage === page"
-          (click)="setPage(page)">
+      <div
+        class="pagination d-flex justify-content-center align-items-center py-4"
+      >
+        <button
+          class="pagination-item text-center"
+          *ngFor="let page of length"
+          [class.active]="currentPage === page"
+          (click)="setPage(page)"
+        >
           {{ page }}
         </button>
       </div>
@@ -322,11 +346,23 @@
             <div class="col-md-3 col-sm-3 col-3">
               <div class="row">
                 <div class="col-md-5 col-sm-5 col-5">
-                  <img
-                    [src]="booking.doctor.imageUrl"
-                    class="h-100 img-rounded"
-                    alt=""
-                  />
+                  <div *ngIf="booking.doctor.imageUrl; else elseBlock">
+                    <img
+                      [src]="booking.doctor.imageUrl"
+                      class="rounded-circle"
+                      alt="doctor img"
+                      style="height: 2rem"
+                    />
+                  </div>
+
+                  <ng-template #elseBlock>
+                    <img
+                      src="../../../assets/avatar/Avatar.svg"
+                      class="rounded-circle"
+                      alt="doctor img"
+                      style="height: 2rem"
+                    />
+                  </ng-template>
                 </div>
                 <div class="col-md-7 col-sm-7 col-7 d-flex align-items-center">
                   <p>
@@ -349,9 +385,15 @@
             </div>
           </div>
 
-          <div class="pagination d-flex justify-content-center  align-items-center py-4">
-            <button class="pagination-item text-center" *ngFor="let page of length1" [class.active]="currentPage1 === page"
-              (click)="setPage1(page)">
+          <div
+            class="pagination d-flex justify-content-center align-items-center py-4"
+          >
+            <button
+              class="pagination-item text-center"
+              *ngFor="let page of length1"
+              [class.active]="currentPage1 === page"
+              (click)="setPage1(page)"
+            >
               {{ page }}
             </button>
           </div>
@@ -362,21 +404,33 @@
         </ng-template>
       </div>
     </div>
-    <div class="row reviews-container rounded-3">
+    <div class="row w-25 reviews-container rounded-3">
       <div class="col-6 text-start">
         <p class="h5 fw-bolder mt-2">{{ "Reviews" | translate }}</p>
       </div>
-      <div class="col-6 ">
+      <div class="col-6">
         <!-- <p class="text-decoration-underline mt-2">view All</p> -->
       </div>
       <div class="col-12" *ngIf="doctorsMostRated; else noDoctorsPart">
         <div class="row" *ngFor="let doctor of pagedItems2; index as i">
           <div class="col-4 d-flex justify-content-end">
-            <img
-              [src]="doctor.imageUrl"
-              class="w-100 h-50 img-rounded"
-              alt=""
-            />
+            <div *ngIf="doctor.imageUrl; else elseBlock">
+              <img
+                [src]="doctor.imageUrl"
+                class="rounded-circle"
+                alt="doctor img"
+                style="height: 2rem"
+              />
+            </div>
+
+            <ng-template #elseBlock>
+              <img
+                src="../../../assets/avatar/Avatar.svg"
+                class="rounded-circle"
+                alt="doctor img"
+                style="height: 2rem"
+              />
+            </ng-template>
           </div>
           <div class="col-8 mt-2">
             <p class="h6 d-block">{{ doctor.name }}</p>
@@ -392,10 +446,16 @@
           </ng-template> -->
         </div>
       </div>
-      
-      <div class="pagination d-flex justify-content-center  align-items-center py-4">
-        <button class="pagination-item text-center" *ngFor="let page of length2" [class.active]="currentPage2 === page"
-          (click)="setPage2(page)">
+
+      <div
+        class="pagination d-flex justify-content-center align-items-center py-4"
+      >
+        <button
+          class="pagination-item text-center"
+          *ngFor="let page of length2"
+          [class.active]="currentPage2 === page"
+          (click)="setPage2(page)"
+        >
           {{ page }}
         </button>
       </div>
@@ -489,3 +549,21 @@
 
 >
 </ngx-charts-bar-horizontal> -->
+
+<!-- <div *ngIf="booking.doctor.imageUrl; else elseBlock">
+                    <img
+                      [src]="booking.doctor.imageUrl"
+                      class="rounded-circle"
+                      alt="doctor img"
+                      style="height: 2rem"
+                    />
+                  </div>
+
+                  <ng-template #elseBlock>
+                    <img
+                      src="../../../assets/avatar/Avatar.svg"
+                      class="rounded-circle"
+                      alt="doctor img"
+                      style="height: 2rem"
+                    />
+                  </ng-template> -->

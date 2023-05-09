@@ -28,5 +28,9 @@
                  <p class="m-0 p-0">{{errors}}</p>
              </div> -->
     </form>
+    <!-- *ngIf="!checkLoader" -->
+    <div class=" d-flex justify-content-center " *ngIf="!checkLoader">
+        <mat-spinner></mat-spinner>
+      </div>
 
 </div>

@@ -45,6 +45,8 @@ export class AuthService {
    localStorage.removeItem('token')
 
     this.userType.next("null");
+    this.userdata.next("null");
+
     this._Router.navigate(['auth/signin']);
   }
 }

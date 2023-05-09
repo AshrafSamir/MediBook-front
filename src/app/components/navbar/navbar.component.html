@@ -49,7 +49,7 @@
     </div>
 </div> -->
 
-<header id="header" class="sticky-top  " >
+<header id="header" class="sticky-top">
   <div class="container d-flex align-items-center justify-content-around">
     <img
       src="../../../assets/logo/GPLogo.svg"
@@ -71,9 +71,13 @@
           >
         </li>
 
-        <li><a class="nav-link scrollto" href="#about">About</a></li>
+        <!-- <li><a class="nav-link scrollto" href="#about">About</a></li> -->
 
-        <li><a class="nav-link scrollto" href="#doctors">{{"TotalDoctors" | translate}}</a></li>
+        <li>
+          <a class="nav-link scrollto" href="#doctors">{{
+            "TotalDoctors" | translate
+          }}</a>
+        </li>
         <!-- <li class="dropdown"><a href="#">Dropdown<i class="fa-solid fa-caret-down"></i></a>
                     <ul>
                         <li><a href="#">Drop Down 1</a></li>
@@ -138,7 +142,7 @@
             class="nav-link"
             routerLinkActive="active"
             routerLink="/admin/addUser"
-            >{{'AddUser'| translate}}</a
+            >{{ "AddUser" | translate }}</a
           >
         </li>
         <li *ngIf="type == 'admin'" class="nav-item">
@@ -146,24 +150,28 @@
             class="nav-link"
             routerLinkActive="active"
             routerLink="/admin/viewUsers"
-            >{{'ViewUsers'| translate}}</a
+            >{{ "ViewUsers" | translate }}</a
           >
         </li>
-        <!-- <li class="nav-item">
+        <li class="nav-item" *ngIf="type == 'patient'">
           <a
             class="nav-link"
             routerLinkActive="active"
             routerLink="/All-appointments"
-            >All Appointments</a
+            >{{ "AllAppointments" | translate }}</a
           >
-        </li> -->
+        </li>
         <li
           *ngIf="type == 'doctor' || type == 'patient' || type == 'admin'"
           class="nav-item"
         >
-          <a class="nav-link" routerLinkActive="active" (click)="logout()">{{
-            "logout" | translate
-          }}</a>
+          <a
+            class="nav-link"
+            routerLinkActive="active"
+            (click)="logout()"
+            style="cursor: pointer"
+            >{{ "logout" | translate }}</a
+          >
         </li>
         <li *ngIf="type == 'null'" class="nav-item">
           <a
@@ -181,17 +189,37 @@
             >{{ "Sign Up" | translate }}</a
           >
         </li>
-        <li *ngIf="type == 'patient'" class="nav-item">
-          <a class="nav-link" routerLinkActive="active">{{'Patienthome'| translate}}</a>
-        </li>
+        <!-- <li *ngIf="type == 'patient'" class="nav-item" >
+          <a class="nav-link" routerLinkActive="active" style="cursor: pointer">{{
+            "Patienthome" | translate
+          }}</a>
+        </li> -->
       </ul>
       <i class="bi bi-list mobile-nav-toggle"></i>
     </nav>
     <!-- .navbar -->
-
     <a href="#appointment" class="appointment-btn scrollto"
       ><span class="d-none d-md-inline">{{ "Make an" | translate }}</span>
       {{ "Appointment" | translate }}</a
     >
+    <div *ngIf="type != 'null'" class="nav-item" style="margin-left: 3rem">
+      <div *ngIf="userData; else elseBlock">
+        <img
+          [src]="userData.imageUrl"
+          class="rounded-circle"
+          alt="user img"
+          style="height: 2rem"
+        />
+      </div>
+
+      <ng-template #elseBlock>
+        <img
+          src="../../../assets/avatar/Avatar.svg"
+          class="img-rounded"
+          alt="user img"
+          style="height: 2rem"
+        />
+      </ng-template>
+    </div>
   </div>
 </header>

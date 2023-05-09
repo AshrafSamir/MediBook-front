@@ -12,7 +12,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 export class SigninComponent implements OnInit {
 
   constructor(private toastr: ToastrService , private auth:AuthService , private router:Router) { }
-
+  checkLoader:boolean = true
   ngOnInit(): void {
   }
   loginForm:FormGroup=new FormGroup({
@@ -21,6 +21,7 @@ export class SigninComponent implements OnInit {
   })
   submitForm()
   {
+    this.checkLoader = false
     this.auth.login(this.loginForm.value).subscribe((res)=>{
       console.log(res)
       /*if(res.message == 'wrong password')
@@ -65,18 +66,25 @@ export class SigninComponent implements OnInit {
         if(res.user.type == 'doctor')
         {
           this.auth.userType.next('doctor');
+          this.auth.userdata.next(res.user);
           this.router.navigate(['doctor/addslot'])
           console.log(this.auth.userType.getValue())
         }
         else if(res.user.type == 'patient')
         {
           this.auth.userType.next('patient');
+          //this.auth.setUserData();
+          this.auth.userdata.next(res.user);
+
           this.router.navigate(['patient/dashboard'])
           console.log(this.auth.userType.getValue())
         }
         else if(res.user.type == 'admin')
         {
           this.auth.userType.next('admin');
+          //this.auth.setUserData();
+          this.auth.userdata.next(JSON.stringify(res.user));
+
           this.router.navigate(['admin/dashboard'])
           console.log(this.auth.userType.getValue())
         }
@@ -88,6 +96,7 @@ export class SigninComponent implements OnInit {
       {
         this.toastr.error('error', 'wrong username or email or phone');
       }
+      this.checkLoader = true
     })
   console.log(this.loginForm.value)
   }

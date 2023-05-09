@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import {  Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { environment } from 'api';
 import { map } from 'rxjs';
 import { AuthService } from 'src/app/shared/services/auth.service';
 @Component({
@@ -31,7 +32,7 @@ export class AllappointmentsComponent implements OnInit  {
         this.router.navigate(['auth/signin'])
       };
       let bookingItem;
-        this.http.get(`http://localhost:3000/userbookings/${this.userId}`).pipe(map((res)=>{
+        this.http.get(`${environment.ApiUrl}/userbookings/${this.userId}`).pipe(map((res)=>{
         for(let key in res)
         {
           if(key=='userBookings')
@@ -45,17 +46,18 @@ export class AllappointmentsComponent implements OnInit  {
               let {from,to}=bookingItem.timeSlot;
           to=new Date(to);
           from=new Date(from);
-          let dayname=from.toLocaleString('en-US',{weekday:'long'});
+          let dayname=from.toLocaleString('en-US',{day:'numeric'});
           let month=from.toLocaleString('en-US',{month:'numeric'});
           let year=from.toLocaleString('en-US',{year:'numeric'});
           from=from.toLocaleTimeString();
           to=to.toLocaleTimeString();
-          let date=`${dayname}.${month}.${year} From ${from} to ${to}`; 
+          let date=`${dayname}-${month}-${year} From ${from} to ${to}`; 
           this.bookingInfo.push({name,fees ,mobilePhone,date,clinicAddress,specification,doctorId,doctorRate,bookingId:_id});
             }
           
           }
         }
+        console.log(this.bookingInfo , 'dddddddddddddd')
      return this.bookingInfo; 
       })).subscribe((res)=>{
         this.isLoaded=true;

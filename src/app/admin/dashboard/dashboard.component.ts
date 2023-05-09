@@ -110,16 +110,29 @@ export class DashboardComponent implements OnInit {
       this.usersCount = res[0];
       if (res[1].doctors) {
         for (let i = 0; i < res[1].doctors.length; i++) {
-          let ratesValues = new Array(res[1].doctors[i].doctorRate);
-          res[1].doctors[i].ratesValues = ratesValues;
+
+          console.log(i)
+
+          //let ratesValues = Array(Math.ceil(res[1].doctors[i].doctorRate / 10)).fill(0).map((_, i) => i + 1);
+          if(res[1].doctors[i].doctorRate)
+          {
+            let ratesValues = new Array(Math.ceil(res[1].doctors[i].doctorRate));
+            res[1].doctors[i].ratesValues = ratesValues;
+          }
+          
+          //const rating = Array(Math.ceil(res[1].doctors[i].doctorRate)).fill(0).map((_, i) => i + 1);
+          //console.log(rating)
         }
         this.doctorsMostRated = res[1].doctors;
       }
-
+      console.log(res[1])
       this.allBookings = res[2].bookings;
-      this.length1 = Array(Math.ceil(this.allBookings.length/10)).fill(0).map((_, i) => i+1);
-      this.length2 = Array(Math.ceil(this.doctorsMostRated.length/10)).fill(0).map((_, i) => i+1);
-
+      this.length1 = Array(Math.ceil(this.allBookings.length / 10))
+        .fill(0)
+        .map((_, i) => i + 1);
+      this.length2 = Array(Math.ceil(this.doctorsMostRated.length / 10))
+        .fill(0)
+        .map((_, i) => i + 1);
       this.deptFrequency = res[3].deptFrequency;
       this.doctorFrequency = res[4].doctorFrequency;
       this.checkLoader = true;
@@ -135,8 +148,9 @@ export class DashboardComponent implements OnInit {
         }
         // console.log(res.allDoctorsData)
       }
-      this.length = Array(Math.ceil(this.allDoctors.length/10)).fill(0).map((_, i) => i+1);
-
+      this.length = Array(Math.ceil(this.allDoctors.length / 10))
+        .fill(0)
+        .map((_, i) => i + 1);
     });
   }
   openModal(certificate) {
@@ -211,45 +225,42 @@ export class DashboardComponent implements OnInit {
     return 0;
   }
 
-
-  length:number[]=[]
+  length: number[] = [];
 
   currentPage: number = 1;
-pageSize: number = 10;
-totalItems: number;
-get pagedItems() {
-  const startIndex = (this.currentPage - 1) * this.pageSize;
-  return this.allDoctors.slice(startIndex, startIndex + this.pageSize);
-}
-setPage(pageNumber: number) {
-  this.currentPage = pageNumber;
-}
+  pageSize: number = 10;
+  totalItems: number;
+  get pagedItems() {
+    const startIndex = (this.currentPage - 1) * this.pageSize;
+    return this.allDoctors.slice(startIndex, startIndex + this.pageSize);
+  }
+  setPage(pageNumber: number) {
+    this.currentPage = pageNumber;
+  }
 
+  length1: number[] = [];
 
-length1:number[]=[]
+  currentPage1: number = 1;
+  pageSize1: number = 10;
+  totalItems1: number;
+  get pagedItems1() {
+    const startIndex = (this.currentPage1 - 1) * this.pageSize1;
+    return this.allBookings.slice(startIndex, startIndex + this.pageSize1);
+  }
+  setPage1(pageNumber: number) {
+    this.currentPage1 = pageNumber;
+  }
 
-currentPage1: number = 1;
-pageSize1: number = 10;
-totalItems1: number;
-get pagedItems1() {
-const startIndex = (this.currentPage1 - 1) * this.pageSize1;
-return this.allBookings.slice(startIndex, startIndex + this.pageSize1);
-}
-setPage1(pageNumber: number) {
-this.currentPage1 = pageNumber;
-}
+  length2: number[] = [];
 
-
-length2:number[]=[]
-
-currentPage2: number = 1;
-pageSize2: number = 10;
-totalItems2: number;
-get pagedItems2() {
-const startIndex = (this.currentPage2 - 1) * this.pageSize2;
-return this.doctorsMostRated.slice(startIndex, startIndex + this.pageSize2);
-}
-setPage2(pageNumber: number) {
-this.currentPage2 = pageNumber;
-}
+  currentPage2: number = 1;
+  pageSize2: number = 10;
+  totalItems2: number;
+  get pagedItems2() {
+    const startIndex = (this.currentPage2 - 1) * this.pageSize2;
+    return this.doctorsMostRated.slice(startIndex, startIndex + this.pageSize2);
+  }
+  setPage2(pageNumber: number) {
+    this.currentPage2 = pageNumber;
+  }
 }

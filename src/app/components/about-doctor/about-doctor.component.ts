@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { environment } from 'api';
 import { ToastrService } from 'ngx-toastr';
 import { map } from 'rxjs';
 import { AuthService } from 'src/app/shared/services/auth.service';
@@ -41,7 +42,7 @@ this.getDoctorInfo()
   }
   getBookingsInfo()
   {
-    this.http.get(`http://localhost:3000/booking/${this.bookingId}`).subscribe((res)=>{
+    this.http.get(`${environment.ApiUrl}/booking/${this.bookingId}`).subscribe((res)=>{
       this.isEnded=res['booking'].ended;
       this.notification=res['booking'].doctorInstructions;
       // this.notification="Medication: Amoxicillin 500mg \
@@ -53,7 +54,7 @@ this.getDoctorInfo()
   }
   getDoctorInfo()
   {
-    this.http.get(`http://localhost:3000/doctor/${this.doctorId}`).pipe(map((res:any)=>{
+    this.http.get(`${environment.ApiUrl}/doctor/${this.doctorId}`).pipe(map((res:any)=>{
       let {name,mobilePhone,clinicAddress,imageUrl,specification,doctorRate}=res['doctor'];
       if(!imageUrl)imageUrl='assets/img/doctors/doctors-1.jpg';
 this.doctorInfo={name,mobilePhone,clinicAddress,imageUrl,specification,doctorRate};
@@ -73,7 +74,7 @@ this.router.navigate(['/Availabletimes'],{queryParams:{id:this.doctorId}});
       })
     };
     console.log("jjj",this.rateFormControll.value,this.username);
-    this.http.post(`http://localhost:3000/addRate/${this.doctorId}`,{username:this.username,rate:this.rateFormControll.value},httpOptions).subscribe((res:any)=>{
+    this.http.post(`${environment.ApiUrl}/addRate/${this.doctorId}`,{username:this.username,rate:this.rateFormControll.value},httpOptions).subscribe((res:any)=>{
      if(res.message=="rating send successfully")this.toastr.success('success', res.message);
      else{
       this.toastr.error('failed', res.message);

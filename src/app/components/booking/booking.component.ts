@@ -5,6 +5,7 @@ import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import {map} from 'rxjs/operators';
+import { environment } from 'api';
 @Component({
   selector: 'app-booking',
   templateUrl: './booking.component.html',
@@ -47,7 +48,7 @@ export class BookingComponent implements OnInit {
         'auth':localStorage.getItem('token')
       })
     };
-    this.http.get(`http://localhost:3000/gettimeslot/${this.timeId}`).pipe(map((res:any)=>{
+    this.http.get(`${environment.ApiUrl}/gettimeslot/${this.timeId}`).pipe(map((res:any)=>{
       console.log(res);
      
       let {from,to,fullyBooked,bookingPrice,doctorId,_id}=res;
@@ -83,10 +84,15 @@ export class BookingComponent implements OnInit {
     const bookingobj={username:this.bookingForm.get('name').value};
     // const bookingobj={timeslotId:this.timeId,doctorMobilePhone:this.DoctorsInfo.mobilePhone,clinicAddress:this.DoctorsInfo.clinicAddress,Date:this.DoctorsTimeSlot.date,from:this.DoctorsTimeSlot.from,to:this.DoctorsTimeSlot.to,bookingPrice:this.DoctorsTimeSlot.bookingPrice,doctorId:this.DoctorsInfo.id,useremail:this.bookingForm.get('email').value,username:this.bookingForm.get('name').value,usermobile:this.bookingForm.get('mobile').value}
 console.log("fiiin",bookingobj);
-    this.http.post(`http://localhost:3000/book/${this.timeId}`,bookingobj,httpOptions).subscribe(value=>{
+    this.http.post(`${environment.ApiUrl}/book/${this.timeId}`,bookingobj,httpOptions).subscribe(value=>{
       this.toastr.success('success', 'Booked Successfully');
       this.router.navigate(['/Thankyou'],{queryParams:{id:this.userinfo._id}});
     })
+  }
+
+  goToHome()
+  {
+    this.router.navigate(['home']);
   }
 
   

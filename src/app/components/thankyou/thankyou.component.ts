@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import {map} from 'rxjs/operators';
+import { environment } from 'api';
 @Component({
   selector: 'app-thankyou',
   templateUrl: './thankyou.component.html',
@@ -26,7 +27,7 @@ isLoaded:any;
   getuserBookingInfo()
   {
     let lastBooking;
-      this.http.get(`http://localhost:3000/userbookings/${this.userId}`).pipe(map((res)=>{
+      this.http.get(`${environment.ApiUrl}/userbookings/${this.userId}`).pipe(map((res)=>{
       for(let key in res)
       {
         if(key=='userBookings')

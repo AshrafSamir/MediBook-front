@@ -183,7 +183,11 @@
 "TotalReservations":"جميع الحجوزات",
 "Reservations":"الحجوزات",
 "AvgVisitsbyGender":"الحجوزات بالنسبة للنوع",
-"Incomes":"الدخل"
+"Incomes":"الدخل",
+"doctorInstructions":"تعليمات الطبيب",
+"NoData":"لا يوجد بيانات",
+"AllAppointments":"كل المواعيد"
+
 
 
 

@@ -3,6 +3,7 @@ import { environment } from '../../../../api'
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { AuthService } from 'src/app/shared/services/auth.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -12,12 +13,19 @@ export class DoctorserviceService {
   header:any =new HttpHeaders().set("auth",localStorage.getItem('token'));
 
   constructor(private _HttpClient:HttpClient 
-    , private _Router:Router) { 
-      const userData:any =JSON.parse(localStorage.getItem('userData'));
-      this.id=userData._id
-      this.username=userData.username;
+    , private _Router:Router
+    , private _auth:AuthService) { 
+      let userData:any
 
-      console.log("id:",this.id ,this.username );
+      this._auth.userdata.subscribe(()=>{
+        userData =this._auth.userdata.getValue();
+        this.id=userData._id
+      this.username=userData.username;
+      })
+      
+      
+
+      console.log(userData );
 
 
 
@@ -119,5 +127,14 @@ export class DoctorserviceService {
       return this._HttpClient.patch(`${environment.ApiUrl}/addDoctorInstructions/${id}`,body,httpOptions)
     }
 
-    
+
+    getPatientHistory(id:any):Observable<any>
+    {
+      const httpOptions = {
+        headers: new HttpHeaders({      
+          'auth':localStorage.getItem('token')
+        })
+      };
+      return this._HttpClient.get(`${environment.ApiUrl}/patientHistory/${id}`,httpOptions)
+    }  
 }
