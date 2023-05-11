@@ -107,7 +107,6 @@ export class DashboardComponent implements OnInit {
       this._adminService.getDepartmentFrequency(),
       this._adminService.getDoctorFrequency(),
     ]).subscribe((res: any) => {
-      console.log(res)
       this.usersCount = res[0];
       if (res[1].doctors) {
         for (let i = 0; i < res[1].doctors.length; i++) {
@@ -128,19 +127,12 @@ export class DashboardComponent implements OnInit {
       }
       console.log(res[1])
       this.allBookings = res[2].bookings;
-      if(this.allBookings.length)
-    {
       this.length1 = Array(Math.ceil(this.allBookings.length / 10))
         .fill(0)
         .map((_, i) => i + 1);
-    }
-    if(this.doctorsMostRated.length)
-  {
-    this.length2 = Array(Math.ceil(this.doctorsMostRated.length / 10))
+      this.length2 = Array(Math.ceil(this.doctorsMostRated.length / 10))
         .fill(0)
         .map((_, i) => i + 1);
-  }
-      
       this.deptFrequency = res[3].deptFrequency;
       this.doctorFrequency = res[4].doctorFrequency;
       this.checkLoader = true;

@@ -66,7 +66,6 @@ export class DoctorserviceService {
           'auth':localStorage.getItem('token')
         })
       };
-      console.log(`timeSlot: ${environment.ApiUrl}/doctorTimeSlots/${this.id}`)
       // return this._HttpClient.get(`${environment.ApiUrl}/doctorTimeSlots/${this.id}`,httpOptions)
       return this._HttpClient.get(`${environment.ApiUrl}/doctorTimeSlots/${this.id}`,httpOptions)
 
